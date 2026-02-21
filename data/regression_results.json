@@ -1,0 +1,123 @@
+{
+  "_description": "Lead-lag OLS regressions for Section 6.7. Frontend biennial panel 2014-2024, n=5 obs.",
+  "data": {
+    "years": [
+      2014,
+      2016,
+      2018,
+      2020,
+      2022
+    ],
+    "dH_t": [
+      0.58,
+      0.142,
+      0.059,
+      -0.202,
+      0.062
+    ],
+    "share_t_pct": [
+      18.0,
+      44.74,
+      59.42,
+      67.13,
+      71.12
+    ],
+    "share_t2_pct": [
+      44.74,
+      59.42,
+      67.13,
+      71.12,
+      75.45
+    ],
+    "delta_share_pp": [
+      26.74,
+      14.68,
+      7.71,
+      3.99,
+      4.33
+    ],
+    "dH_t2": [
+      -0.438,
+      -0.083,
+      -0.261,
+      0.264,
+      -0.459
+    ]
+  },
+  "reg1_forward": {
+    "_label": "\u0394share(t\u2192t+2) = \u03b1 + \u03b2\u00b7\u0394H(t)",
+    "alpha": 7.457,
+    "beta": 31.441,
+    "se_beta": 6.849,
+    "t_beta": 4.59,
+    "p_beta": 0.019,
+    "r2": 0.875,
+    "n": 5
+  },
+  "reg2_ar1": {
+    "_label": "\u0394share(t\u2192t+2) = \u03b1 + \u03b2\u2081\u00b7\u0394H(t) + \u03b2\u2082\u00b7share(t)",
+    "alpha": 30.052,
+    "beta1_dH": 5.884,
+    "se_b1": 2.42,
+    "t_b1": 2.43,
+    "p_b1": 0.136,
+    "beta2_share": -0.3709,
+    "se_b2": 0.0319,
+    "t_b2": -11.63,
+    "p_b2": 0.007,
+    "r2": 0.998,
+    "n": 5
+  },
+  "reg3_placebo": {
+    "_label": "\u0394H(t+2) = \u03b1 + \u03b4\u00b7share(t)  [reverse test]",
+    "alpha": 0.308,
+    "delta": -0.0072,
+    "se_delta": 0.00438,
+    "t_delta": -1.64,
+    "p_delta": 0.199,
+    "r2": 0.474,
+    "n": 5
+  },
+  "reg4_mobile": {
+    "_label": "Android share ~ \u0394H  [mobile cross-section]",
+    "alpha": 96.33,
+    "beta": -26.133,
+    "se_beta": 7.935,
+    "t_beta": -3.29,
+    "p_beta": 0.022,
+    "r2": 0.684,
+    "n": 7
+  },
+  "spearman": {
+    "forward_rho": 0.9,
+    "placebo_rho": -0.7
+  },
+  "pre_determination": {
+    "react_H_cs_2014": 8.4662,
+    "angular_H_cs_2014": 7.8859,
+    "delta_H_2014": 0.58,
+    "react_npm_share_2014_pct": 18.0,
+    "note": "React entropy advantage predates its market dominance by ~3 years"
+  },
+  "android_market_share_data": {
+    "years": [
+      2011,
+      2013,
+      2015,
+      2017,
+      2019,
+      2021,
+      2023
+    ],
+    "android_share_pct": [
+      55.6,
+      76.7,
+      76.6,
+      79.1,
+      80.4,
+      80.0,
+      80.0
+    ],
+    "source": "IDC/Statcounter, Android share of (Android+iOS) smartphone market"
+  }
+}
