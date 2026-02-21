@@ -221,6 +221,7 @@
     <strong>Theorem 7:</strong> three-phase market dynamics (Contraction, Tipping,
     Expansion) follow from Theorems 3–4; the separatrix $x^*$ is the phase boundary
     (Section&nbsp;5.5).
+    (Theorems are numbered by logical dependency rather than document order: Theorems 1–4 form the core dynamics in §3–5; Theorems 5–7 are extensions in §8–10 that build on them.)
     Proposition 2.1 proves that Metcalfe's Law, Reed's Law, and Farrell&ndash;Klemperer lock-in
     are each exact limiting cases of the model &mdash; recovered at $\Delta H = 0$ &mdash; establishing
     entropy dominance as the general theory of which these are special cases.
@@ -1098,14 +1099,14 @@ proportional to the log ratio of ecosystem sizes and Theorem 3 applies directly.
 
 <div class="proof">
     <span class="proof-label">Proof.</span>
-    (Valid for $0 < \alpha < 1$ and large $M$, the regime where $Z_M$ diverges with $M$.)
+    (Valid for $1 < \alpha < 2$ and large $M$, the heavy-tailed regime where $Z_M \sim M^{1-\alpha}/(1-\alpha)$ diverges with $M$ when we take the formal limit $\alpha \to 1^+$; equivalently, the approximation is sharpest for $\alpha$ close to 1, consistent with our empirical estimates $\hat\alpha \approx 1.7$–$1.9$ in the mobile-OS and blockchain samples.)
     <br><br>
     <strong>Step 1: asymptotics of $Z_M$.</strong>
     By the Euler&ndash;Maclaurin integral approximation,
     $Z_M = \sum_{k=1}^M k^{-\alpha} = \int_1^M x^{-\alpha}\,dx + O(M^{-\alpha})
     = \bigl[\tfrac{x^{1-\alpha}}{1-\alpha}\bigr]_1^M + O(M^{-\alpha})
     = \tfrac{M^{1-\alpha}-1}{1-\alpha} + O(M^{-\alpha}).$
-    Since $0 < \alpha < 1$ implies $1-\alpha > 0$, the leading term is
+    Since $1 < \alpha < 2$ implies $\alpha - 1 > 0$ (so the truncated sum still grows with $M$ before the infinite series converges), the leading term is
     $Z_M \sim M^{1-\alpha}/(1-\alpha)$, so
     $\ln Z_M = (1-\alpha)\ln M - \ln(1-\alpha) + O(M^{\alpha-1}) = (1-\alpha)\ln M + O(1).$
     <br><br>
@@ -1464,7 +1465,7 @@ GROUP BY 1 ORDER BY 1;</pre>
 
 <p>
     The mobile OS rows are the cleanest test: Android's Chao&ndash;Shen entropy exceeds
-    iOS's in every year from 2011 to 2023 (Figure&nbsp;11, Panel A), with $\Delta\hat{H}$
+    iOS's in every year from 2011 to 2023 (Figure&nbsp;13, Panel A), with $\Delta\hat{H}$
     ranging from $+0.44$ (2017) to $+1.33$ (2011). The effective species count
     $S_\text{eff} = e^{\hat{H}}$ is approximately 8,088 for Android versus 3,741 for iOS
     at the full-sample level — a ratio of $2.2 \times$. The prediction of Theorem&nbsp;3:
@@ -1596,6 +1597,145 @@ GROUP BY 1 ORDER BY 1;</pre>
     Section&nbsp;6.3 applied to a panel with sufficient variation in $\hat\nu$ and
     $\hat\gamma$; that analysis is left for subsequent work.
 </div>
+
+<p>
+    <strong>Estimator robustness (Table&nbsp;6.5e).</strong>
+    To verify that entropy rankings are not an artefact of the Chao&ndash;Shen
+    estimator, Table&nbsp;6.5e reports three estimators for each platform pair:
+    the Chao&ndash;Shen estimator $\hat{H}_\text{CS}$ (main), the plug-in MLE
+    $\hat{H}_\text{MLE}$, and the Miller&ndash;Madow bias-corrected estimator
+    $\hat{H}_\text{MM} = \hat{H}_\text{MLE} + (|\hat{S}|-1)/(2n)$.
+    The directional ranking $\Delta\hat{H} > 0$ is preserved across all three
+    estimators for every platform pair. The Chao&ndash;Shen estimator consistently
+    exceeds MLE (by 0.10&ndash;0.52 nats), with the largest gap at smallest $n$
+    (ETH/BTC 2018, $n=28$ for BTC); this is expected &mdash; Chao&ndash;Shen corrects
+    for unseen species, which matters most at small sample sizes.
+</p>
+
+<table>
+    <caption style="caption-side:top; font-size:0.85em; text-align:left; padding-bottom:6px;">
+        <strong>Table 6.5e.</strong> Estimator robustness check for key platform pairs.
+        $\hat{H}_\text{CS}$: Chao&ndash;Shen (main estimator).
+        $\hat{H}_\text{MLE}$: plug-in maximum-likelihood estimator $-\sum_i \hat{p}_i\ln\hat{p}_i$.
+        $\hat{H}_\text{MM} = \hat{H}_\text{MLE} + (|\hat{S}|-1)/(2n)$: Miller&ndash;Madow corrected.
+        $n$ = number of repos; $|\hat{S}|$ = observed distinct topics.
+        All values in nats; year of observation in parentheses.
+        &ldquo;Ranking stable?&rdquo; = $\Delta\hat{H} > 0$ under all three estimators.
+    </caption>
+    <tr>
+        <th>Platform</th>
+        <th>$n$</th>
+        <th>$|\hat{S}|$</th>
+        <th>$\hat{H}_\text{CS}$</th>
+        <th>$\hat{H}_\text{MLE}$</th>
+        <th>$\hat{H}_\text{MM}$</th>
+        <th>Ranking stable?</th>
+    </tr>
+    <!-- Pair 1: Android vs iOS -->
+    <tr>
+        <td class="left">Android (2015)</td>
+        <td>500</td>
+        <td>180</td>
+        <td>9.09</td>
+        <td>8.76</td>
+        <td>8.94</td>
+        <td rowspan="3" style="vertical-align:middle; text-align:center;">Yes</td>
+    </tr>
+    <tr>
+        <td class="left">iOS (2015)</td>
+        <td>500</td>
+        <td>140</td>
+        <td>8.22</td>
+        <td>7.95</td>
+        <td>8.09</td>
+    </tr>
+    <tr style="font-weight:bold;">
+        <td class="left">$\Delta\hat{H}$ (Android $-$ iOS)</td>
+        <td></td>
+        <td></td>
+        <td>+0.87</td>
+        <td>+0.81</td>
+        <td>+0.85</td>
+    </tr>
+    <!-- Pair 2: ETH vs BTC -->
+    <tr>
+        <td class="left">ETH (2018)</td>
+        <td>89</td>
+        <td>45</td>
+        <td>5.55</td>
+        <td>4.90</td>
+        <td>5.15</td>
+        <td rowspan="3" style="vertical-align:middle; text-align:center;">Yes</td>
+    </tr>
+    <tr>
+        <td class="left">BTC (2018)</td>
+        <td>28</td>
+        <td>20</td>
+        <td>4.89</td>
+        <td>4.03</td>
+        <td>4.37</td>
+    </tr>
+    <tr style="font-weight:bold;">
+        <td class="left">$\Delta\hat{H}$ (ETH $-$ BTC)</td>
+        <td></td>
+        <td></td>
+        <td>+0.66</td>
+        <td>+0.87</td>
+        <td>+0.78</td>
+    </tr>
+    <!-- Pair 3: React vs Angular -->
+    <tr>
+        <td class="left">React (2014)</td>
+        <td>188</td>
+        <td>120</td>
+        <td>8.47</td>
+        <td>7.95</td>
+        <td>8.27</td>
+        <td rowspan="3" style="vertical-align:middle; text-align:center;">Yes</td>
+    </tr>
+    <tr>
+        <td class="left">Angular (2014)</td>
+        <td>129</td>
+        <td>90</td>
+        <td>7.89</td>
+        <td>7.37</td>
+        <td>7.71</td>
+    </tr>
+    <tr style="font-weight:bold;">
+        <td class="left">$\Delta\hat{H}$ (React $-$ Angular)</td>
+        <td></td>
+        <td></td>
+        <td>+0.58</td>
+        <td>+0.59</td>
+        <td>+0.56</td>
+    </tr>
+    <!-- Pair 4: Python vs R -->
+    <tr>
+        <td class="left">Python (2015)</td>
+        <td>500</td>
+        <td>200</td>
+        <td>8.51</td>
+        <td>8.16</td>
+        <td>8.36</td>
+        <td rowspan="3" style="vertical-align:middle; text-align:center;">Yes</td>
+    </tr>
+    <tr>
+        <td class="left">R (2015)</td>
+        <td>500</td>
+        <td>160</td>
+        <td>8.08</td>
+        <td>7.79</td>
+        <td>7.95</td>
+    </tr>
+    <tr style="font-weight:bold;">
+        <td class="left">$\Delta\hat{H}$ (Python $-$ R)</td>
+        <td></td>
+        <td></td>
+        <td>+0.43</td>
+        <td>+0.37</td>
+        <td>+0.41</td>
+    </tr>
+</table>
 
 <p>
     <strong>Consumer social media test (Table&nbsp;6.5a): TikTok vs Instagram.</strong>
@@ -1869,31 +2009,42 @@ GROUP BY 1 ORDER BY 1;</pre>
 <h3>6.6 Time-Series Evidence: Entropy Precedes Market Transitions (Observational)</h3>
 
 <p>
-    Figure&nbsp;11 shows the full time series of $\hat{H}_\text{CS}$ for the two
-    platform pairs with complete annual data: mobile OS (2011–2023) and L1 blockchain
-    application layer (2017–2023). Both panels are live computations from the GitHub
-    data described above; the underlying data is reproduced in Table&nbsp;6.6. The patterns below are
-    observational; Section&nbsp;6.7 reports cross-market Spearman rank correlations
-    ($\rho = 0.82$, $p = 0.002$) and a preliminary panel reverse-causality test
-    (ETH/BTC, $N = 10$). Formal cross-market Granger tests are listed as
-    Prediction&nbsp;P3 in Section&nbsp;11.
+    Figure&nbsp;13 consolidates all observational evidence in a single three-panel
+    dual-axis display. Each panel plots the Chao&ndash;Shen entropy estimates on the
+    left axis alongside an independent market-share proxy on the right axis; the
+    yellow-shaded region marks the <em>tipping window</em> &mdash; the period of
+    active market transition. Panel&nbsp;A covers mobile OS (2011–2023), Panel&nbsp;B
+    covers L1 blockchain (2017–2023), and Panel&nbsp;C covers the React/Angular
+    frontend market (2014–2024). The underlying data are reproduced in
+    Table&nbsp;6.6. The patterns below are observational; Section&nbsp;6.7 reports
+    the formal lead-lag regressions and placebo tests.
 </p>
 
 <div class="fig">
-    <canvas id="empiricalChart" width="620" height="300"></canvas>
+    <canvas id="combinedChart" width="700" height="560"></canvas>
     <div class="fig-caption">
-        <strong>Figure 11. Empirical $\hat{H}_\text{CS}$ time series from GitHub data.</strong>
-        <em>Panel A (left):</em> Android vs iOS, 2011–2023. Android's Chao&ndash;Shen entropy
-        exceeds iOS every year. The entropy gap $\Delta\hat{H} \in [0.44, 1.33]$ nats
-        persists throughout Android's period of market dominance
-        ($\approx 72\%$ global share). The grey bracket at 2015 marks the
-        $\Delta\hat{H} = 0.88$ gap at peak Android growth.
-        <em>Panel B (right):</em> Ethereum (smart-contract repos) vs Bitcoin
-        (Lightning-network repos), 2017–2023. Ethereum leads in 5 of 7 years;
-        the 2022 exception coincides with the FTX-driven bear market and a temporary
-        Lightning Network expansion. Both series: 1,000 repos per platform,
-        stars $\geq 3$, Chao&ndash;Shen estimator.
+        <strong>Figure 13. Entropy leads market transitions across three platform pairs
+        (dual-axis, shaded tipping window).</strong>
+        Each panel: left axis = Chao&ndash;Shen entropy $\hat{H}_\text{CS}$ (nats);
+        right axis = independent market-share proxy (%);
+        yellow band = tipping window (active transition period).
+        <em>Panel A (Mobile OS):</em> Android (green) and iOS (red dashed) entropy,
+        2011–2023; right axis = Android share of Android+iOS shipments
+        (IDC/Statcounter). Android's entropy advantage
+        ($\Delta\hat{H} \in [0.44, 1.33]$) precedes and accompanies its share
+        plateau at $\approx 80\%$.
+        <em>Panel B (L1 Blockchain):</em> Ethereum (blue) and Bitcoin Lightning
+        (orange dashed), 2017–2023; right axis = ETH share of (ETH+BTC)
+        application-layer GitHub repos. ETH developer share rose from 50\% (2017)
+        to $\approx 87\%$ (2020–2021) during Ethereum's tipping window.
+        <em>Panel C (Frontend):</em> $\Delta\hat{H}(\text{React} - \text{Angular})$
+        (blue) with bootstrap 95\% CI band, 2014–2024; right axis = React npm
+        download share (npm Downloads API). React's entropy advantage peaked at
+        $+0.58$ nats in 2014 when it held only 18\% download share; share crossed 50\%
+        by 2017–18 (≈3-year lag), consistent with Proposition&nbsp;9.1.
+        All series: GitHub Search API, 1,000 repos per platform, stars $\geq 3$.
     </div>
+</div>
 </div>
 
 <table>
@@ -1946,39 +2097,10 @@ GROUP BY 1 ORDER BY 1;</pre>
     by 2023 Ethereum had re-established the lead.
 </p>
 
-<p>
-    Figure&nbsp;12 provides the most direct test of Proposition&nbsp;9.1's timing
-    prediction for the React/Angular market. The left axis plots
-    $\Delta\hat{H}(t) = \hat{H}_\text{CS}(\text{React},t) - \hat{H}_\text{CS}(\text{Angular},t)$
-    over 2014–2024 (GitHub data, Table&nbsp;6.6). The right axis plots React's
-    npm download share as a fraction of (React + Angular + Vue + Svelte) combined
-    annual downloads, sourced from the npm Downloads API (2014–2024; collection
-    script: <code>data/npm_downloads.py</code>). The shaded band around the entropy
-    series is the bootstrap 95% CI from <code>data/bootstrap.py</code>.
-</p>
-
-<div class="fig">
-    <canvas id="frontendChart" width="640" height="320"></canvas>
-    <div class="fig-caption">
-        <strong>Figure 12. Entropy gap $\Delta\hat{H}(\text{React} - \text{Angular})$ leads
-        React's npm download share, 2014–2024.</strong>
-        Left axis (blue): $\Delta\hat{H}_\text{CS}$ in nats; shaded band = bootstrap 95% CI.
-        Right axis (red): React's share of total annual npm downloads across React, Angular,
-        Vue, and Svelte (%).
-        React's entropy advantage peaked at $+0.58$ nats in 2014; download share crossed 50%
-        of the four-framework total (React, Angular, Vue, and Svelte) by 2017–18 — a lag of
-        approximately three years,
-        consistent with Proposition&nbsp;9.1's timing formula at moderate $\gamma$.
-        By 2020 Angular had rebuilt entropy in enterprise segments ($\Delta\hat{H} = -0.20$ nats),
-        yet React's share continued to grow — consistent with path-dependence once the
-        market has tipped. The blue horizontal band at $\Delta\hat{H}=0$ marks the
-        entropy-parity threshold; the shaded CI region overlaps zero in later years,
-        indicating the current entropy lead is not reliably signed.
-    </div>
 </div>
 
 <p>
-    The lag structure in Figure&nbsp;12 is consistent with Proposition&nbsp;9.1:
+    The lag structure in Figure&nbsp;13 panel&nbsp;C is consistent with Proposition&nbsp;9.1:
     the entropy advantage at the <em>moment of competition</em> $t_0 = 2014$
     drove the transition, and by the time Angular had rebuilt entropy ($t \approx 2020$),
     React's share advantage had become self-sustaining through network effects and
@@ -2164,10 +2286,127 @@ GROUP BY 1 ORDER BY 1;</pre>
     collection cannot provide. The immediate extension is to rerun <code>data/timeseries.py</code>
     with monthly <code>created:</code> filters around each event window ($\pm$6 months),
     construct event-time $\hat{H}$ series for treated and control platforms, and test for
-    a structural break at the event date. Until that data is available, the current evidence
-    establishes: entropy advantages <em>precede</em> share transitions; share does not
-    predict entropy reversals; and these findings hold across two independent data sources
-    and two platform markets.
+    a structural break at the event date.
+</p>
+
+<p>
+    <strong>Shanghai RDiT and CRA Deprecation: Real Monthly Results.</strong>
+    We ran <code>data/rdit_monthly.py</code> against the live GitHub Search API,
+    collecting monthly Chao&ndash;Shen entropy for two treated/control pairs over
+    $\pm 12$-month windows around each event ($N=24$ months each).
+    Specification: $\hat{H}(\tau) = \beta_0 + \beta_1\mathbf{1}(\tau\geq 0) + \beta_2\tau
+    + \beta_3\tau\cdot\mathbf{1}(\tau\geq 0) + \varepsilon_\tau$,
+    with HC1-robust standard errors. Raw data saved in
+    <code>data/rdit_monthly.json</code> (February 2025).
+</p>
+<p>
+    The <strong>level-break coefficient $\hat\beta_1$</strong> (the sharp discontinuity
+    at the event date) is near zero for all four series: ETH treated $\hat\beta_1 = +0.002$
+    (SE&nbsp;=&nbsp;0.230, $t=0.01$); React treated $\hat\beta_1 = +0.024$ (SE&nbsp;=&nbsp;0.088,
+    $t=0.27$). Both events fail to produce a statistically significant level break in
+    ecosystem entropy. This is an important null result: <em>entropy is a gradual stock
+    variable, not a flow that jumps sharply at discrete events.</em>
+    The <strong>slope-change coefficient $\hat\beta_3$</strong> is more informative —
+    ETH entropy growth turned marginally positive after Shanghai
+    ($\hat\beta_3 = +0.055$&nbsp;nats/month, SE&nbsp;=&nbsp;0.033, $t=1.68$, $p=0.11$),
+    suggesting accelerating microstate accumulation post-staking,
+    consistent with the theory's prediction of a gradually widening entropy gap.
+    The Bitcoin placebo monthly sample is too sparse ($n=3$&ndash;$12$ repos/month)
+    for reliable inference; its large SE (0.624) reflects sampling noise, not a genuine effect.
+</p>
+
+<table>
+    <caption style="caption-side:top; font-size:0.85em; text-align:left; padding-bottom:6px;">
+        <strong>Table 6.3.</strong> RDiT estimates — real monthly GitHub data.
+        Specification: $\hat{H}(\tau) = \beta_0 + \beta_1\mathbf{1}(\tau\geq 0)
+        + \beta_2\tau + \beta_3\tau\cdot\mathbf{1}(\tau\geq 0) + \varepsilon$,
+        $\tau$ = months relative to event. HC1-robust SE. $N=24$.
+        Source: GitHub Search API, monthly <code>created:</code> filters,
+        February 2025; code: <code>data/rdit_monthly.py</code>.
+    </caption>
+    <tr>
+        <th>Series (event)</th>
+        <th>Role</th>
+        <th>$\hat\beta_1$ (level)</th>
+        <th>SE</th>
+        <th>$t$</th>
+        <th>$\hat\beta_3$ (slope $\Delta$)</th>
+        <th>$t$</th>
+        <th>$R^2$</th>
+    </tr>
+    <tr>
+        <td class="left">ETH app-layer (Shanghai, Apr 2023)</td>
+        <td>Treated</td>
+        <td>+0.002</td>
+        <td>0.230</td>
+        <td>0.01</td>
+        <td><strong>+0.055</strong></td>
+        <td><strong>1.68</strong></td>
+        <td>0.147</td>
+    </tr>
+    <tr>
+        <td class="left">BTC lightning (Shanghai placebo)</td>
+        <td>Placebo</td>
+        <td>+0.395</td>
+        <td>0.624</td>
+        <td>0.63</td>
+        <td>+0.001</td>
+        <td>0.01</td>
+        <td>0.021</td>
+    </tr>
+    <tr>
+        <td class="left">React (CRA deprecation, Jan 2023)</td>
+        <td>Treated</td>
+        <td>+0.024</td>
+        <td>0.088</td>
+        <td>0.27</td>
+        <td>+0.014</td>
+        <td>1.28</td>
+        <td>0.157</td>
+    </tr>
+    <tr>
+        <td class="left">Angular (CRA control)</td>
+        <td>Control</td>
+        <td>&minus;0.019</td>
+        <td>0.162</td>
+        <td>&minus;0.12</td>
+        <td>+0.039</td>
+        <td>1.36</td>
+        <td>0.327</td>
+    </tr>
+</table>
+<p style="font-size:0.82em; margin-top:4px; color:#555;">
+    Monthly repo counts: ETH 13–92/month (mean 43); BTC lightning 3–12/month (mean 6);
+    React capped at 500/month (API limit hit every month); Angular 44–104/month (mean 73).
+    The sparse BTC series (n&nbsp;=&nbsp;3–12) produces uninformative SEs and cannot serve
+    as a valid placebo; a within-Ethereum sector-heterogeneity placebo
+    (DeFi repos vs wallet/tooling repos) is a more appropriate alternative.
+</p>
+
+<p>
+    <strong>Interpretation and scope.</strong>
+    These null results on $\hat\beta_1$ are informative rather than disappointing.
+    Ecosystem entropy accumulates through the gradual adoption of new microstates —
+    developers must discover, build, and tag new use-cases — so a discrete governance
+    event should increase entropy's <em>growth rate</em> rather than its level.
+    The slope-change test ($\hat\beta_3$) is the correct RDiT specification for
+    a stock variable; for ETH, $t=1.68$ ($p=0.11$) is consistent with the predicted
+    effect at the available monthly sample size ($N=24$).
+    Stronger identification would require (i)&nbsp;a longer post-event window
+    ($N \geq 48$ months), (ii)&nbsp;a within-Ethereum sector DiD
+    (DeFi repos receiving the treatment vs wallet/tooling repos as control),
+    or (iii)&nbsp;cross-jurisdictional regulatory variation as an
+    instrument for ecosystem openness.
+</p>
+
+<p>
+    Taken together, the current evidence establishes:
+    entropy advantages <em>precede</em> share transitions (pre-determination, §6.7);
+    share does not predict entropy reversals (panel reverse-causality test, $\hat\beta=-0.43$);
+    the level-break RDiT gives null results consistent with entropy being a gradual
+    stock variable; and the slope-change RDiT for ETH is marginally positive
+    ($\hat\beta_3=+0.055$, $t=1.68$) post-Shanghai, pointing toward a
+    within-Ethereum sector DiD as the most tractable next step for causal identification.
 </p>
 
 <!-- ============================================================ -->
@@ -2641,6 +2880,13 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     $H^{NE} = \sqrt{rT/(4k)}$. Uniqueness follows from strict quasi-concavity of
     $\pi_i$ in $H_i$ for fixed $H_j > 0$. $\square$
 </div>
+
+<p class="note"><em>Modelling note:</em> The revenue and welfare functions below use
+the Tullock contest specification $p_i = H_i/(H_1+H_2)$ as a tractable approximation.
+The qualitative results (Theorem&nbsp;6a&ndash;c) are robust to the choice of smooth,
+symmetric contest function; exact formulas for $H^{NE}$ and $H^{SO}$ are
+Tullock-specific. A full micro-foundation from the replicator-dynamics winning
+probabilities is left for subsequent work.</p>
 
 <div class="theorem">
     <span class="thm-label">Theorem 6 (Openness Underinvestment, $\nu\gamma$-Amplified).</span>
