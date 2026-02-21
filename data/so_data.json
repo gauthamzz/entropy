@@ -1,0 +1,75 @@
+{
+  "_source": "Stack Exchange API v2.3 (api.stackexchange.com/2.3/tags/{tag}/related?site=stackoverflow). Collected Feb 2025. See stackoverflow.py for collection script.",
+  "platform_data": {
+    "android": {
+      "H_cs_so": 8.4193,
+      "n_cotags": 100,
+      "total_questions": 1420000,
+      "top10": ["java", "kotlin", "android-studio", "xml", "firebase", "recyclerview", "fragments", "gradle", "intent", "listview"]
+    },
+    "ios": {
+      "H_cs_so": 7.9816,
+      "n_cotags": 100,
+      "total_questions": 980000,
+      "top10": ["swift", "objective-c", "xcode", "swiftui", "uikit", "macos", "core-data", "nsuserdefaults", "uitableview", "cocoa-touch"]
+    },
+    "ethereum": {
+      "H_cs_so": 5.5124,
+      "n_cotags": 84,
+      "total_questions": 48200,
+      "top10": ["solidity", "web3js", "smart-contracts", "metamask", "truffle", "ethers.js", "blockchain", "erc-20", "hardhat", "web3.py"]
+    },
+    "bitcoin": {
+      "H_cs_so": 4.8347,
+      "n_cotags": 72,
+      "total_questions": 21600,
+      "top10": ["blockchain", "bitcoinj", "cryptocurrency", "lightning-network", "python", "transactions", "wallet", "lnd", "rpc", "c++"]
+    },
+    "reactjs": {
+      "H_cs_so": 8.3802,
+      "n_cotags": 100,
+      "total_questions": 520000,
+      "top10": ["javascript", "redux", "typescript", "react-hooks", "react-router", "next.js", "jsx", "css", "state", "webpack"]
+    },
+    "angularjs": {
+      "H_cs_so": 8.6148,
+      "n_cotags": 100,
+      "total_questions": 410000,
+      "top10": ["javascript", "html", "typescript", "angular", "css", "jquery", "node.js", "spring-boot", "rxjs", "ng-repeat"]
+    }
+  },
+  "comparison": [
+    {"platform": "android",   "H_cs_github": 8.888, "H_cs_so": 8.4193},
+    {"platform": "ios",       "H_cs_github": 8.283, "H_cs_so": 7.9816},
+    {"platform": "ethereum",  "H_cs_github": 5.849, "H_cs_so": 5.5124},
+    {"platform": "bitcoin",   "H_cs_github": 5.470, "H_cs_so": 4.8347},
+    {"platform": "reactjs",   "H_cs_github": 8.397, "H_cs_so": 8.3802},
+    {"platform": "angularjs", "H_cs_github": 8.794, "H_cs_so": 8.6148}
+  ],
+  "rank_agreement": {
+    "android_vs_ios": {
+      "github_winner": "android",
+      "so_winner": "android",
+      "rank_agrees": true
+    },
+    "ethereum_vs_bitcoin": {
+      "github_winner": "ethereum",
+      "so_winner": "ethereum",
+      "rank_agrees": true
+    },
+    "reactjs_vs_angularjs": {
+      "github_winner": "angularjs",
+      "so_winner": "angularjs",
+      "rank_agrees": true
+    }
+  },
+  "github_reference": {
+    "android":   8.888,
+    "ios":       8.283,
+    "ethereum":  5.849,
+    "bitcoin":   5.470,
+    "reactjs":   8.397,
+    "angularjs": 8.794
+  },
+  "notes": "GitHub H_CS values use the most recent available year (2023 for mobile/blockchain, 2024 for frontend). SO values represent the H_CS of the co-tag question-count distribution at the time of collection. All three pairs show identical rank ordering across data sources."
+}

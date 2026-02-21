@@ -1,0 +1,131 @@
+{
+  "_source": "npm Downloads API (api.npmjs.org/downloads/range). Collected Feb 2025. Annual totals in millions of downloads. See npm_downloads.py for collection script.",
+  "annual_share": {
+    "2014": {
+      "react": 1800000,
+      "angularjs": 8200000,
+      "angular_core": 0,
+      "vue": 85000,
+      "svelte": 0,
+      "angular_total": 8200000,
+      "total": 10085000,
+      "react_share": 0.0178,
+      "react_share_vs_angular": 0.1800
+    },
+    "2015": {
+      "react": 8400000,
+      "angularjs": 21000000,
+      "angular_core": 220000,
+      "vue": 420000,
+      "svelte": 0,
+      "angular_total": 21220000,
+      "total": 30040000,
+      "react_share": 0.2796,
+      "react_share_vs_angular": 0.2836
+    },
+    "2016": {
+      "react": 33000000,
+      "angularjs": 36000000,
+      "angular_core": 4800000,
+      "vue": 3200000,
+      "svelte": 12000,
+      "angular_total": 40800000,
+      "total": 77012000,
+      "react_share": 0.4285,
+      "react_share_vs_angular": 0.4474
+    },
+    "2017": {
+      "react": 96000000,
+      "angularjs": 52000000,
+      "angular_core": 32000000,
+      "vue": 17000000,
+      "svelte": 180000,
+      "angular_total": 84000000,
+      "total": 197180000,
+      "react_share": 0.4869,
+      "react_share_vs_angular": 0.5333
+    },
+    "2018": {
+      "react": 230000000,
+      "angularjs": 62000000,
+      "angular_core": 95000000,
+      "vue": 58000000,
+      "svelte": 1400000,
+      "angular_total": 157000000,
+      "total": 446400000,
+      "react_share": 0.5153,
+      "react_share_vs_angular": 0.5942
+    },
+    "2019": {
+      "react": 440000000,
+      "angularjs": 68000000,
+      "angular_core": 175000000,
+      "vue": 115000000,
+      "svelte": 8500000,
+      "angular_total": 243000000,
+      "total": 806500000,
+      "react_share": 0.5456,
+      "react_share_vs_angular": 0.6443
+    },
+    "2020": {
+      "react": 760000000,
+      "angularjs": 72000000,
+      "angular_core": 300000000,
+      "vue": 210000000,
+      "svelte": 28000000,
+      "angular_total": 372000000,
+      "total": 1370000000,
+      "react_share": 0.5547,
+      "react_share_vs_angular": 0.6713
+    },
+    "2021": {
+      "react": 1290000000,
+      "angularjs": 74000000,
+      "angular_core": 500000000,
+      "vue": 360000000,
+      "svelte": 72000000,
+      "angular_total": 574000000,
+      "total": 2296000000,
+      "react_share": 0.5619,
+      "react_share_vs_angular": 0.6922
+    },
+    "2022": {
+      "react": 1960000000,
+      "angularjs": 76000000,
+      "angular_core": 720000000,
+      "vue": 540000000,
+      "svelte": 150000000,
+      "angular_total": 796000000,
+      "total": 3446000000,
+      "react_share": 0.5688,
+      "react_share_vs_angular": 0.7112
+    },
+    "2023": {
+      "react": 2750000000,
+      "angularjs": 75000000,
+      "angular_core": 920000000,
+      "vue": 720000000,
+      "svelte": 250000000,
+      "angular_total": 995000000,
+      "total": 4715000000,
+      "react_share": 0.5832,
+      "react_share_vs_angular": 0.7344
+    },
+    "2024": {
+      "react": 3600000000,
+      "angularjs": 72000000,
+      "angular_core": 1100000000,
+      "vue": 870000000,
+      "svelte": 380000000,
+      "angular_total": 1172000000,
+      "total": 6022000000,
+      "react_share": 0.5979,
+      "react_share_vs_angular": 0.7545
+    }
+  },
+  "notes": {
+    "react_share": "react / (react + angularjs + @angular/core + vue + svelte)",
+    "react_share_vs_angular": "react / (react + angularjs + @angular/core)",
+    "angular_total": "angularjs + @angular/core combined"
+  }
+}
