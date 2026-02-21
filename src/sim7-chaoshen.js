@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 7: Chao-Shen Estimator Validation ───────────────────────────────
-(function () {
-    const cv = document.getElementById("chaoshenChart");
+lazyDraw("chaoshenChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const pad = { l: 65, r: 30, t: 35, b: 45 };
@@ -148,4 +147,4 @@
         ctx.fillStyle = "#666"; ctx.font = "9px Georgia"; ctx.textAlign = "center";
         ctx.fillText(String(n), px, pad.t + ph + 14);
     });
-})();
+});

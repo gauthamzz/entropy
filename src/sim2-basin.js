@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 2: Basin of Attraction Heat Map ─────────────────────────────────
-(function () {
-    const cv = document.getElementById("basinChart");
+lazyDraw("basinChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const nu = 1.0;
@@ -128,6 +127,6 @@
         ctx.beginPath(); ctx.moveTo(xOff + pad.l + 6, pad.t + 34); ctx.lineTo(xOff + pad.l + 18, pad.t + 34); ctx.stroke();
         ctx.setLineDash([]); ctx.fillStyle = "#333"; ctx.fillText("Separatrix x*(ΔH)", xOff + pad.l + 22, pad.t + 38);
     }
-})();
+});
 
 

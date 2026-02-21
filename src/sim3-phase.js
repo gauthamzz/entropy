@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 3: Phase Portrait on 2-Simplex ──────────────────────────────────
-(function () {
-    const cv = document.getElementById("phaseChart");
+lazyDraw("phaseChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const margin = 55;
@@ -125,5 +124,5 @@
 
     ctx.fillStyle = "#333"; ctx.font = "12px Georgia"; ctx.textAlign = "center";
     ctx.fillText("All 6 trajectories converge to P₁ (max-entropy corner) — unique global attractor", W/2, CH - 8);
-})();
+});
 

@@ -1,7 +1,5 @@
 // ─── Figure 9: Regime Diagram (Proposition 2.1) ─────────────────────────────
-(function () {
-    const cv = document.getElementById("regimeChart");
-    if (!cv) return;
+lazyDraw("regimeChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, H = cv.height;
 
@@ -159,4 +157,4 @@
         ctx.fillStyle = "#666"; ctx.font = "9px Georgia"; ctx.textAlign = "right";
         ctx.fillText(v.toFixed(1), pad.l - 5, py + 4);
     });
-})();
+});

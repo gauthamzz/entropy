@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 5: Convergence Rate ─────────────────────────────────────────────
-(function () {
-    const cv = document.getElementById("rateChart");
+lazyDraw("rateChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const pad = { l: 65, r: 30, t: 35, b: 45 };
@@ -65,5 +64,5 @@
 
     ctx.fillStyle = "#555"; ctx.font = "10px Georgia"; ctx.textAlign = "center";
     ctx.fillText(`ν=${nu}, γ=${gamma}, x₀=${x0}. Dashed lines: theoretical slope −(ΔH+ν).`, W/2, pad.t - 10);
-})();
+});
 

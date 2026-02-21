@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 6: n-Platform Monte Carlo ───────────────────────────────────────
-(function () {
-    const cv = document.getElementById("monteCarloChart");
+lazyDraw("monteCarloChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const pad = { l: 60, r: 30, t: 35, b: 45 };
@@ -89,5 +88,5 @@
 
     ctx.fillStyle = "#555"; ctx.font = "10px Georgia"; ctx.textAlign = "center";
     ctx.fillText(`5 platforms, H=(2.0,1.8,1.5,1.2,0.8), ν=${nu}, γ=${gamma}, σ=${sigma}. All 30 paths → x₁=1.`, W/2, pad.t - 10);
-})();
+});
 

@@ -1,8 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 8: Welfare Gap H^SO / H^NE vs γ ─────────────────────────────────
-(function () {
-    const cv = document.getElementById("welfareGapChart");
-    if (!cv) return;
+lazyDraw("welfareGapChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const pad = { l: 72, r: 40, t: 44, b: 52 };
@@ -107,4 +105,4 @@
         ctx.fillStyle = "#333"; ctx.textAlign = "left";
         ctx.fillText(nuLabels[ci], lx + 24, ly + 4);
     });
-})();
+});

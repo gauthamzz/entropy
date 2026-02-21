@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 4: Invasion Dynamics ────────────────────────────────────────────
-(function () {
-    const cv = document.getElementById("invasionChart");
+lazyDraw("invasionChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const pad = { l: 60, r: 30, t: 35, b: 45 };
@@ -66,5 +65,5 @@
 
     ctx.fillStyle = "#555"; ctx.font = "10px Georgia"; ctx.textAlign = "center";
     ctx.fillText(`x₀ = ${x0}, ν = ${nu}, γ = ${gamma}`, W/2, pad.t - 10);
-})();
+});
 

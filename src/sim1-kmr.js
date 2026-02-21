@@ -1,7 +1,6 @@
 /* global rand, resetSeed, randn, drawAxes, gridLines */
 // ─── Figure 1: KMR Stochastic Stability ─────────────────────────────────────
-(function () {
-    const cv = document.getElementById("kmrChart");
+lazyDraw("kmrChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
     const N = 50;  // agents
@@ -120,5 +119,5 @@
 
     ctx.fillStyle = "#555"; ctx.font = "10px Georgia"; ctx.textAlign = "center";
     ctx.fillText("State k (# on P₁)", W / 2, CH - 4);
-})();
+});
 

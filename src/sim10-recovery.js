@@ -1,7 +1,5 @@
 // ─── Figure 10: Recovery of Existing Theories (Proposition 2.1) ─────────────
-(function () {
-    const cv = document.getElementById("recoveryChart");
-    if (!cv) return;
+lazyDraw("recoveryChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, H = cv.height;
 
@@ -238,4 +236,4 @@
         ctx.fillStyle = "#666"; ctx.font = "9px Georgia"; ctx.textAlign = "center";
         ctx.fillText(v.toFixed(2), px, pad.t + rPlotH + 14);
     });
-})();
+});

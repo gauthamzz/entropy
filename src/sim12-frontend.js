@@ -4,9 +4,7 @@
 //   Right axis : React's npm download share %  (react / react+angular+vue+svelte)
 // Data: GitHub timeseries.json + npm Downloads API (npm_data.json, collected Feb 2025)
 // Proposition 9.1 visual: entropy advantage at t₀ leads market-share transition.
-(function () {
-    const cv = document.getElementById("frontendChart");
-    if (!cv) return;
+lazyDraw("frontendChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, H = cv.height;
 
@@ -191,4 +189,4 @@
     ctx.beginPath(); ctx.moveTo(lx, ly + 17); ctx.lineTo(lx + 22, ly + 17); ctx.stroke();
     ctx.fillStyle = "#333"; ctx.fillText("React npm share (right axis, %)", lx + 26, ly + 21);
 
-})();
+});

@@ -2,9 +2,7 @@
 // ─── Figure 11: Empirical H_CS time series from GitHub data ─────────────────
 // Data collected via GitHub Search API (1,000 repos per platform per year,
 // stars ≥ 3). Microstate = secondary GitHub topic tag. Estimator: Chao–Shen.
-(function () {
-    const cv = document.getElementById("empiricalChart");
-    if (!cv) return;
+lazyDraw("empiricalChart", function(cv) {
     const ctx = cv.getContext("2d");
     const W = cv.width, CH = cv.height;
 
@@ -206,4 +204,4 @@
     });
     ctx.restore();
 
-})();
+});

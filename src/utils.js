@@ -63,3 +63,18 @@ function toCanvasXY(val, min, max, pMin, pMax) {
     return pMin + (val - min) / (max - min) * (pMax - pMin);
 }
 
+// ─── Lazy canvas rendering ───────────────────────────────────────────────────
+// Defers simulation drawing until the canvas is near the viewport.
+// Falls back to immediate execution if IntersectionObserver is unavailable.
+function lazyDraw(canvasId, drawFn) {
+    const cv = document.getElementById(canvasId);
+    if (!cv) return;
+    if (!("IntersectionObserver" in window)) { drawFn(cv); return; }
+    new IntersectionObserver(function(entries, obs) {
+        if (entries[0].isIntersecting) {
+            obs.disconnect();
+            drawFn(cv);
+        }
+    }, { rootMargin: "150px 0px" }).observe(cv);
+}
+
