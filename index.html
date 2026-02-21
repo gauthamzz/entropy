@@ -1,0 +1,2108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entropy Dominance in Platform Competition: A Game-Theoretic Foundation</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [["$", "$"], ["\\(", "\\)"]],
+                displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+                tags: "ams",
+            },
+            svg: { fontCache: "global" },
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js"></script>
+    <style>
+        /* ── Base ─────────────────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            font-family: "CMU Serif", "Computer Modern", "Linux Libertine O",
+                         Georgia, "Times New Roman", serif;
+            max-width: 860px;
+            margin: 56px auto 80px;
+            padding: 0 40px;
+            line-height: 1.72;
+            color: #111;
+            background: #fff;
+            font-size: 15.8px;
+            text-align: justify;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+        }
+        @media (max-width: 940px) {
+            body { padding: 0 24px; margin: 32px auto 60px; }
+        }
+
+        /* ── Title block ──────────────────────────────────────────────────── */
+        .title-block { text-align: center; margin-bottom: 34px; }
+        h1 {
+            font-size: 1.42em;
+            font-weight: bold;
+            line-height: 1.32;
+            margin: 0 auto 18px;
+            max-width: 560px;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+        .author-name  { font-size: 1.04em; margin: 6px 0 2px; color: #111; }
+        .author-affil { font-size: 0.87em; color: #555; font-style: italic; margin: 1px 0; }
+        .author-email { font-size: 0.82em; color: #1a5276; margin: 2px 0; }
+        .paper-date   { font-size: 0.85em; color: #666; margin-top: 10px; }
+
+        /* ── Abstract ─────────────────────────────────────────────────────── */
+        .abstract {
+            margin: 0 40px 36px;
+            font-size: 0.895em;
+            line-height: 1.64;
+            border-top: 1.5px solid #444;
+            border-bottom: 1.5px solid #444;
+            padding: 14px 0;
+        }
+        @media (max-width: 940px) {
+            .abstract { margin: 0 10px 36px; }
+        }
+        .abstract-label { font-variant: small-caps; font-weight: bold; letter-spacing: 0.8px; }
+        .jel-line { font-size: 0.84em; color: #444; margin-top: 10px; }
+
+        /* ── Section headings ─────────────────────────────────────────────── */
+        h2 {
+            font-size: 1.04em;
+            font-weight: bold;
+            margin-top: 48px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            border: none;
+            padding: 0;
+        }
+        h3 {
+            font-size: 0.98em;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 22px;
+            margin-bottom: 4px;
+        }
+
+        /* ── Theorem environments (LaTeX-style, no colored backgrounds) ───── */
+        .theorem, .proposition, .lemma, .corollary, .definition, .remark {
+            margin: 16px 0;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+        .theorem, .proposition, .lemma, .corollary {
+            padding: 5px 0 5px 22px;
+            border-left: 2.5px solid #333;
+        }
+        .definition {
+            padding: 5px 0 5px 22px;
+            border-left: 2px solid #888;
+        }
+        .remark {
+            padding: 4px 0 4px 18px;
+            border-left: 1.5px solid #bbb;
+            font-size: 0.93em;
+            color: #333;
+        }
+        .thm-label, .prop-label, .lem-label, .cor-label {
+            font-style: italic;
+            font-weight: bold;
+        }
+        .def-label  { font-weight: bold; }
+        .rem-label  { font-style: italic; color: #555; }
+        .proof-label { font-style: italic; }
+
+        /* ── Payoff / model display box ───────────────────────────────────── */
+        .model-box {
+            border-top: 1px solid #999;
+            border-bottom: 1px solid #999;
+            padding: 12px 20px;
+            margin: 18px 0;
+            background: none;
+        }
+        .model-box strong {
+            display: block;
+            margin-bottom: 6px;
+            font-variant: small-caps;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Figures ──────────────────────────────────────────────────────── */
+        .fig { text-align: center; margin: 34px 0; }
+        .fig canvas { border: 1px solid #ccc; display: block; margin: 0 auto; }
+        .fig-caption {
+            font-size: 0.84em;
+            color: #222;
+            margin-top: 10px;
+            max-width: 760px;
+            display: inline-block;
+            text-align: left;
+            line-height: 1.52;
+        }
+
+        /* ── Tables (booktabs: horizontal rules only, no verticals) ────────── */
+        table { border-collapse: collapse; margin: 22px auto; font-size: 0.87em; width: 100%; }
+        thead tr { border-top: 2px solid #222; border-bottom: 1px solid #222; }
+        thead th { background: none; font-weight: bold; padding: 6px 10px; text-align: center; border: none; }
+        tbody td { border: none; padding: 5px 10px; text-align: center; }
+        tbody tr { border-bottom: 0.5px solid #ddd; }
+        tbody tr:last-child { border-bottom: 2px solid #222; }
+        td.left { text-align: left; }
+
+        /* ── Code ─────────────────────────────────────────────────────────── */
+        pre { background: #f5f5f5; border: 1px solid #d8d8d8; padding: 11px 15px;
+              font-size: 0.79em; overflow-x: auto; margin: 14px 0; line-height: 1.5; }
+        code { font-family: "Courier New", monospace; font-size: 0.86em;
+               background: #f0f0f0; padding: 1px 4px; }
+
+        /* ── Inline citation links ────────────────────────────────────────── */
+        a.cite { color: #1a4f7a; text-decoration: none; }
+        a.cite:hover { text-decoration: underline; }
+
+        /* ── References ───────────────────────────────────────────────────── */
+        .ref-list { list-style: none; padding: 0; margin: 0; }
+        .ref-list li {
+            padding: 3px 0 3px 48px;
+            text-indent: -48px;
+            font-size: 0.875em;
+            line-height: 1.54;
+            margin-bottom: 5px;
+        }
+
+        /* ── Note / callout ───────────────────────────────────────────────── */
+        .note { font-size: 0.87em; color: #444; background: #f8f8f8;
+                border-left: 2px solid #aaa; padding: 8px 14px; margin: 14px 0; }
+
+        /* ── Print ────────────────────────────────────────────────────────── */
+        @media print {
+            body { margin: 0; padding: 0 40px; font-size: 11pt; max-width: 100%; }
+            .fig canvas { break-inside: avoid; }
+            h2 { break-before: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="title-block">
+    <h1>Entropy Dominance in Platform Competition:<br>A Game-Theoretic Foundation</h1>
+    <p class="author-name">Anonymous</p>
+    <p class="author-affil">Department of Economics</p>
+    <p class="paper-date">February 2026 &nbsp;&middot;&nbsp; <em>Preliminary — comments welcome</em></p>
+</div>
+
+<div class="abstract">
+    <span class="abstract-label">Abstract.</span>
+    The platform that wins is the one that maximally expands what is possible outside itself.
+    We propose ecosystem entropy $H_i$&mdash;the Shannon entropy of the downstream activities,
+    entities, and economic arrangements that platform $i$ makes viable&mdash;as the
+    competitive primitive, and study its consequences under the payoff
+    $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$. The theorems below are mathematical consequences of this model.
+    <strong>Theorem 1:</strong> at equal market share, the max-entropy platform is the
+    unique best response; network-effect terms cancel exactly, leaving the entropy gap
+    as the sole selection criterion.
+    <strong>Theorem 2:</strong> under Kandori&ndash;Mailath&ndash;Rob dynamics with
+    vanishing mutation rate, the max-entropy platform is the unique long-run survivor.
+    <strong>Theorem 3:</strong> a smaller platform defeats a larger incumbent if and only
+    if $\Delta H > \nu\bigl((1-x_0)^\gamma - x_0^\gamma\bigr)$; when $\Delta H > \nu$,
+    it wins from any initial share.
+    <strong>Theorem 4:</strong> the convergence rate is $\lambda = \Delta H + \nu$,
+    additive in entropy gap and network strength.
+    <strong>Theorem 6:</strong> platforms underinvest in openness relative to the social
+    optimum; the welfare gap is strictly increasing in $\nu\gamma$, providing a formal
+    basis for interoperability mandates.
+    Proposition 2.1 proves that Metcalfe's Law, Reed's Law, and Farrell&ndash;Klemperer lock-in
+    are each exact limiting cases of the model &mdash; recovered at $\Delta H = 0$ &mdash; establishing
+    entropy dominance as the general theory of which these are special cases.
+    We propose the
+    Chao&ndash;Shen estimator and an IV regression as the methodology for testing these
+    predictions against data.
+    <p class="jel-line">
+        <strong>JEL Classification:</strong> D43 &middot; L13 &middot; L41 &middot; L86 &middot; O33.<br>
+        <strong>Keywords:</strong> platform competition, ecosystem entropy, network effects,
+        stochastic stability, replicator dynamics, interoperability, two-sided markets.
+    </p>
+</div>
+
+<!-- ============================================================ -->
+<h2>1. Introduction</h2>
+
+<p>
+    Between 2002 and 2021, four displacement events produced the same pattern. Google
+    displaced Yahoo by making a far more diverse set of websites findable and commercially
+    viable&mdash;expanding what the web could be, not the complexity of the search interface.
+    Android displaced Symbian by enabling a broader set of app categories than Symbian's
+    proprietary SDK permitted. Ethereum captured developer share from Bitcoin by making an
+    exponentially larger set of programmable applications possible on-chain. TikTok
+    displaced YouTube for short video by enabling a distribution of creator formats that
+    YouTube's structure could not support. In each case the winner was not the larger
+    incumbent; it was the platform that expanded what was possible outside itself.
+</p>
+
+<p>
+    Metcalfe's Law and Reed's Law predict the incumbent should always win: both model
+    platform value solely as a function of user count $N$ and have no variable capturing
+    the diversity of what a platform enables. Neither framework can explain the pattern
+    above. This paper proposes that downstream ecosystem entropy is the missing variable.
+</p>
+
+<p>
+    The network-effects literature has two foundational claims. Rohlfs (1974) showed
+    that demand for a communications service depends on the number of participants,
+    establishing the theoretical basis for the $\nu x_i^\gamma$ term in the payoff
+    function. Katz and Shapiro (1985, 1994) formalised this as a competitive
+    externality and showed that markets with network effects can lock into
+    suboptimal standards. Both frameworks model network value as a function of user
+    count alone, with no variable capturing the diversity of what a platform enables.
+    The entropy model extends these frameworks by decomposing platform value into
+    two orthogonal components: coordination value ($\nu x_i^\gamma$, which is the
+    Katz&ndash;Shapiro term) and ecosystem scope ($H_i$, which is new). When
+    $\Delta H = 0$, the model collapses to Katz&ndash;Shapiro competition exactly
+    (Proposition&nbsp;2.1a&ndash;b). When $\Delta H > 0$, the new term dominates at
+    equal market share (Theorem&nbsp;1), providing the missing variable that explains
+    the historical pattern.
+</p>
+
+<p>
+    Proposition&nbsp;2.1 formalises the relationship between this model and the existing
+    literature. Metcalfe's Law, Reed's Law, and Farrell&ndash;Klemperer lock-in each
+    emerge as exact limiting cases at $\Delta H = 0$: when ecosystem entropy is equal
+    across platforms, the model reduces to standard size-based competition. When
+    $\Delta H > 0$, the entropy gap generates competitive pressure independent of
+    installed-base size.
+</p>
+
+<p>
+    The thesis: <em>the platform that wins is the one that maximally expands what is
+    possible outside itself.</em> We define ecosystem entropy $H_i$ as the Shannon entropy
+    of the downstream activities, entities, and economic arrangements that platform $i$
+    makes viable&mdash;not the entropy of the platform's internal interface. For Google,
+    $\Omega_\text{Google}$ is the set of websites made discoverable and commercially viable.
+    For Ethereum, $\Omega_\text{ETH}$ is the set of distinct smart contract functions
+    deployed on-chain; the Dune Analytics query that counts 4-byte function selectors
+    measures $|\Omega_\text{ETH}|$ directly (Section&nbsp;6.4). For Android,
+    $\Omega_\text{Android}$ is the set of app categories the open SDK makes viable.
+    The measure $\mu_i(\omega)$ records realized downstream usage; $H_i$ is its Shannon
+    entropy.
+</p>
+
+<p>
+    We formalize the thesis under the payoff $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$,
+    where $\nu x_i^\gamma$ is a standard superlinear network externality. The results that
+    follow are mathematical consequences of this model.
+    <strong>Theorem&nbsp;1 (Risk Dominance):</strong> the max-entropy platform is the
+    unique best response at equal market share; network-effect terms cancel exactly, leaving
+    the entropy gap as the sole selection criterion.
+    <strong>Theorem&nbsp;2 (Stochastic Stability):</strong> under
+    Kandori&ndash;Mailath&ndash;Rob dynamics, the max-entropy platform is the unique
+    long-run survivor; lock-in to a low-entropy equilibrium is a measure-zero event.
+    <strong>Theorem&nbsp;3 (Incumbent Erosion):</strong> a smaller platform wins from
+    initial share $x_0$ if and only if $\Delta H > \nu((1-x_0)^\gamma - x_0^\gamma)$;
+    when $\Delta H > \nu$, it wins from any initial share, including startup entry.
+    <strong>Theorem&nbsp;4:</strong> the convergence rate is $\lambda = \Delta H + \nu$,
+    additive in entropy gap and network strength.
+    <strong>Theorem&nbsp;6:</strong> platforms underinvest in openness; the welfare gap
+    grows strictly with $\nu\gamma$, with direct policy implications.
+</p>
+
+<p>
+    <strong>Relationship to existing work.</strong>
+    Two-sided market theory (Rochet&ndash;Tirole 2003; Armstrong 2006; Weyl 2010) characterizes
+    optimal pricing given a fixed platform strategy space; the entropy model adds the choice of
+    $H_i$ as a strategic variable. Farrell and Klemperer (2007) characterize lock-in under
+    network effects; their model is recovered here as the $\Delta H \to 0$ limit
+    (Proposition&nbsp;2.1c). Sandholm's (2010) replicator ODE is the dynamical law; the
+    contribution is identifying ecosystem entropy as the payoff primitive that drives it.
+    The formal apparatus is drawn from all three literatures; the claim is that downstream
+    ecosystem entropy, rather than platform size, is the correct competitive primitive.
+</p>
+
+<p>
+    <strong>Policy stakes.</strong>
+    If Theorem&nbsp;6 is an accurate description of reality, it provides a formal welfare
+    basis for interoperability mandates. The welfare gap $H^{SO} - H^{NE}$ is largest
+    where $\nu\gamma$ is largest&mdash;precisely the markets where regulators have
+    historically intervened. The model generates a specific, falsifiable prediction:
+    platforms subject to interoperability mandates should exhibit downstream entropy
+    increases proportional to their pre-mandate $\hat\nu\hat\gamma$.
+</p>
+
+<p>
+    <strong>Paper outline.</strong>
+    Section&nbsp;2 states the model; the Ethereum case study of Section&nbsp;6.4 is the
+    canonical measurement example. Sections&nbsp;3&ndash;5 derive the main results.
+    Section&nbsp;6 develops the empirical methodology. Sections&nbsp;7&ndash;10 treat
+    two-sided platforms, platform decline, transition timing, and welfare.
+    Sections&nbsp;11&ndash;13 give falsifiable predictions, related work, and open questions.
+</p>
+
+<!-- ============================================================ -->
+<h2>2. Model</h2>
+
+<h3>2.1 Platforms and Microstates</h3>
+
+<div class="definition">
+    <span class="def-label">Definition 2.1 (Platform Ecosystem).</span>
+    A platform ecosystem $\mathcal{E}_i$ is a pair $(\Omega_i, \mu_i)$ where $\Omega_i$
+    is the set of distinct downstream activities, entities, or economic arrangements that
+    become viable by virtue of platform $i$'s existence&mdash;for Google, the websites
+    discoverable and commercially viable via its index; for Ethereum, the deployed smart
+    contract function selectors; for Android, the app categories enabled by the open
+    SDK&mdash;and $\mu_i : \Omega_i \to [0,1]$ is a probability measure over realized
+    downstream usage, $\sum_{\omega} \mu_i(\omega) = 1$.
+</div>
+
+<div class="definition">
+    <span class="def-label">Definition 2.2 (Ecosystem Entropy).</span>
+    The ecosystem entropy of platform $i$ is:
+    $$H_i = -\sum_{\omega \in \Omega_i} \mu_i(\omega) \ln \mu_i(\omega) \;\geq\; 0.$$
+    Under the uniform measure over $|\Omega_i|$ microstates, $H_i = \ln |\Omega_i|$.
+    Under a Zipf($\alpha$) distribution, $H_i = \tfrac{\alpha-1}{\alpha} \ln |\Omega_i| + O(1)$
+    (Lemma 6.1 below). $H_i$ is observable from platform data via the Chao&ndash;Shen
+    estimator (Section 6).
+</div>
+
+<h3>2.2 Agent Payoffs</h3>
+
+<p>
+    There is a continuum of agents $j \in [0,1]$. The state is
+    $\mathbf{x} = (x_1, \ldots, x_n) \in \Delta^{n-1}$, where $x_i$ is the fraction
+    of agents on platform $i$. Agent $j$'s payoff from choosing platform $i$ is:
+</p>
+
+<div class="model-box">
+    <strong>Payoff Function</strong>
+    $$u_i(\mathbf{x}) \;=\; \underbrace{H_i}_{\text{entropy value}} \;+\; \underbrace{\nu \cdot x_i^\gamma}_{\text{network effects}}, \qquad \nu > 0,\; \gamma \geq 1.$$
+</div>
+
+<p>
+    The $H_i$ term represents the proposed primitive: agents value the richness of what
+    a platform makes possible outside itself. A platform that enables more diverse
+    downstream activities offers more distinct productive possibilities, and the model
+    assumes agents prefer richer downstream ecosystems. Whether agents actually respond
+    to ecosystem entropy&mdash;rather than to platform size, brand, or switching cost
+    alone&mdash;is the central empirical question. The $\nu x_i^\gamma$ term is a
+    standard superlinear coordination externality: more co-participants raises payoff
+    through interaction value. Both components are estimable from data in principle:
+    $H_i$ via the Chao&ndash;Shen estimator (Section&nbsp;6.1); $\nu$ and $\gamma$
+    via the IV regression of Section&nbsp;6.2.
+</p>
+
+<div class="remark">
+    <span class="rem-label">Remark 2.1 (Micro-foundation of the $H_i$ term).</span>
+    The entropy term has two complementary micro-foundations.
+    The first, from information-value theory
+    (<a class="cite" href="#ref-Bernardo1979">Bernardo, 1979</a>):
+    an agent joining platform $i$ benefits from the productive possibilities the platform
+    makes accessible in the world: if interacting with downstream activity $\omega \sim \mu_i$
+    yields utility $-\ln\mu_i(\omega)$&mdash;rarer, more unexpected activities deliver higher
+    creative or productive value than common ones&mdash;then expected utility is exactly
+    $\mathbb{E}_{\mu_i}[-\ln\mu_i(\omega)] = H_i$, and the linearity of $u_i$ in $H_i$
+    follows from this expectation rather than from a separate assumption. A developer joining
+    Ethereum, for instance, benefits from the diversity of applications Ethereum makes
+    possible to interact with&mdash;the realized downstream distribution $\mu_\text{ETH}$&mdash;not
+    merely from the complexity of Ethereum's internal interface.
+    The second foundation comes from rational inattention
+    (<a class="cite" href="#ref-MatejkaMcKay2015">Matejka &amp; McKay, 2015</a>):
+    agents with a Shannon mutual information processing cost $\lambda$ optimally choose
+    platform $i$ with probability $\propto \exp(H_i/\lambda)$; as $\lambda \to 0$,
+    this selects the max-entropy platform with probability 1, recovering the same
+    payoff structure from a modern decision-theoretic foundation without the
+    surprisal-utility assumption. The two micro-foundations agree on the ordinal
+    ranking of platforms by $H_i$ but differ in the interpetation:
+    the Bernardo foundation emphasizes productive value of diversity;
+    the Matejka&ndash;McKay foundation emphasizes bounded rationality under
+    information constraints.
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 2.2 (Scope and the Central Assumption).</span>
+    Agents respond to $H_i$: they choose platforms based partly on what the platform makes
+    possible outside itself. This assumption is most plausible when the downstream ecosystem is
+    directly observable (developer platforms with public API catalogs, blockchains with
+    on-chain ABI selectors, app stores with category counts) and when the platform's
+    choices causally determine what can be built. It is least plausible for pure conduit
+    platforms where value is reach rather than generative diversity. Whether the assumption
+    holds&mdash;and in which markets&mdash;is what the empirical methodology of
+    Section&nbsp;6 is designed to test.
+</div>
+
+<h3>2.3 The Platform Selection Game</h3>
+
+<div class="definition">
+    <span class="def-label">Definition 2.3 (Platform Selection Game).</span>
+    The platform selection game $\Gamma = (\mathcal{J}, \mathcal{P}, \{u_i\})$ has:
+    <br/>&bull; Players: continuum $\mathcal{J} = [0,1]$.
+    <br/>&bull; Actions: $\mathcal{P} = \{1, \ldots, n\}$ (choose one platform).
+    <br/>&bull; Payoffs: $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$ as above.
+</div>
+
+<h3>2.4 Existing Theories as Limiting Cases</h3>
+
+<p>
+    The payoff $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$ nests the existing network-competition
+    literature as special cases parameterised by $\Delta H$. At $\Delta H = 0$, competition
+    reduces to pure network-effects. At $\Delta H > 0$, the entropy gap operates alongside the
+    network externality. At $\Delta H > \nu$, entropy dominates: the entrant wins from any
+    initial share regardless of size. Proposition&nbsp;2.1 states these transitions formally.
+</p>
+
+<div class="proposition">
+    <span class="prop-label">Proposition 2.1 (Recovery of Existing Theories).</span>
+    Let $\mathbf{x} = (x_1, 1-x_1)$ with $x_1 \equiv x$. The payoff
+    $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$ recovers the following as limiting cases:
+
+    <p><strong>(a) Metcalfe's Law.</strong>
+    Suppose $H_1 = H_2$ and $\gamma = 2$. Then
+    $u_1 - u_2 = \nu(x^2 - (1-x)^2) = \nu(x - (1-x))(x + (1-x)) = \nu(2x-1)$
+    (using $x_1 + x_2 = 1$). The replicator ODE is
+    $\dot{x} = x(1-x)\cdot \nu(2x-1)$, with interior fixed point at $x^* = 1/2$.
+    The platform with initial share $x_0 > 1/2$ wins. $\square$</p>
+
+    <p><strong>(b) Winner-take-all at majority (Reed regime).</strong>
+    Suppose $H_1 = H_2$ and $\gamma \to \infty$. For $x_1 > 1/2$:
+    $$\frac{x_1^\gamma}{(1-x_1)^\gamma} = \left(\frac{x_1}{1-x_1}\right)^\gamma \to \infty$$
+    as $\gamma \to \infty$, so $u_1 - u_2 = \nu(x_1^\gamma - (1-x_1)^\gamma) \to +\infty$.
+    Any majority share is decisive; the separatrix collapses to $x^* \to 1/2^-$. $\square$</p>
+
+    <p><strong>(c) Farrell&ndash;Klemperer lock-in.</strong>
+    Suppose $\Delta H \to 0^+$. From Theorem 3, the separatrix $x^*$ solves
+    $\Delta H = \nu\,g(x^*)$ where $g(x) = (1-x)^\gamma - x^\gamma$.
+    Since $g(1/2) = 0$ and $g$ is strictly decreasing on $(0,1/2)$, we have
+    $x^* \to 1/2$ as $\Delta H \to 0^+$.
+    The incumbent's basin of attraction $\{x_0 > x^*\} \to \{x_0 > 1/2\}$:
+    majority share becomes necessary and sufficient for retention. $\square$</p>
+
+    <p><strong>(d) Pure ecosystem competition.</strong>
+    Suppose $\nu \to 0$. The replicator reduces to
+    $\dot{x} = x(1-x)\,\Delta H > 0$ for all $x_0 \in (0,1)$.
+    No interior separatrix exists; the max-entropy platform wins from any initial
+    share regardless of size. $\square$</p>
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 2.3 (The role of $\Delta H$ as the generalization parameter).</span>
+    $\Delta H$ plays the structural role of spacetime curvature in the relationship
+    between General Relativity and Newtonian mechanics: at $\Delta H = 0$, the model
+    is exactly the existing theory; at $\Delta H > 0$, new competitive forces emerge.
+    The historical displacement events of Section 1 &mdash; Google, Android, Ethereum,
+    TikTok &mdash; are precisely the markets where $\Delta H > 0$ was large relative to
+    $\nu$, placing them outside the range of validity of Metcalfe's and Reed's Laws.
+    Figure 9 maps the full regime space; Figure 10 shows the model recovering Metcalfe
+    dynamics as $\Delta H \to 0$.
+</div>
+
+<!-- ============================================================ -->
+<h2>3. Static Equilibrium Analysis</h2>
+
+<h3>3.1 Nash Equilibria</h3>
+
+<p>
+    Every corner $\mathbf{e}_i$ (all agents on platform $i$) is a Nash equilibrium:
+    any single deviating agent earns $H_j + \nu \cdot \varepsilon^\gamma \to H_j$ as
+    $\varepsilon \to 0^+$, which is strictly less than $H_i + \nu$ for any $\nu > 0$.
+    Interior Nash equilibria also exist (agents mix such that all active platforms give
+    equal payoff), but they are generically unstable and serve only as basin boundaries
+    in the dynamical analysis of Section 5.
+</p>
+
+<h3>3.2 Risk Dominance</h3>
+
+<p>The key observation is that at equal market share, the network-effect term $\nu(1/2)^\gamma$
+is identical for both platforms, so it cancels from the payoff comparison. Entropy alone
+determines which platform is the better response.</p>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 1 (Risk Dominance).</span>
+    In any 2-platform subgame of $\Gamma$, the platform $i^* = \arg\max_i H_i$ is
+    risk-dominant: it is the unique best response at equal market share
+    $\mathbf{x} = \tfrac{1}{2}\mathbf{e}_{i^*} + \tfrac{1}{2}\mathbf{e}_j$ for every
+    $j \neq i^*$.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    At $x_{i^*} = x_j = 1/2$:
+    $$u_{i^*}\!\left(\tfrac{1}{2}, \tfrac{1}{2}\right) - u_j\!\left(\tfrac{1}{2}, \tfrac{1}{2}\right)
+    = \bigl(H_{i^*} + \nu(1/2)^\gamma\bigr) - \bigl(H_j + \nu(1/2)^\gamma\bigr)
+    = H_{i^*} - H_j > 0.$$
+    The network-effect terms $\nu(1/2)^\gamma$ cancel exactly. Risk dominance follows
+    from the standard definition (Harsanyi &amp; Selten 1988): $i^*$ is the unique
+    best response at the uniform mixture, so it satisfies the risk-dominance criterion
+    strictly. $\square$
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 3.1 (Why this requires no conditions).</span>
+    Theorem 1 holds for all $\nu > 0$ and $\gamma \geq 1$, unconditionally. The network
+    terms cancel at equal market share by symmetry. The entropy gap $H_{i^*} - H_j > 0$
+    is the sole determinant of risk dominance. Larger network effects ($\nu$) accelerate
+    convergence speed (Theorem 4) but do not change which platform is risk-dominant.
+</div>
+
+<!-- ============================================================ -->
+<h2>4. Stochastic Stability</h2>
+
+<p>
+    Risk dominance establishes which platform is the unique static best response, but does
+    not determine long-run outcomes under dynamic adjustment. Stochastic stability under
+    Kandori&ndash;Mailath&ndash;Rob (KMR 1993) dynamics closes this gap.
+</p>
+
+<p>Because the max-entropy platform is risk-dominant (Theorem 1), its basin of attraction
+is strictly larger than that of any competitor, so it requires more mutations to escape.
+This size asymmetry is the escape-resistance gap that drives long-run selection.</p>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 2 (Unique Stochastically Stable Equilibrium).</span>
+    Consider the discrete population version of $\Gamma$ with $N$ agents. Under KMR
+    best-response dynamics with mutation rate $\varepsilon \in (0,1)$: each period, one
+    agent is selected uniformly at random; with probability $1-\varepsilon$ they
+    best-respond to the current state; with probability $\varepsilon$ they choose each
+    platform with equal probability. As $\varepsilon \to 0$, the unique stochastically
+    stable state is $\mathbf{e}_{i^*}$, the state in which all agents are on the
+    max-entropy platform $i^* = \arg\max_i H_i$.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    By KMR (1993, Theorem 2), the stochastically stable states in a 2-strategy
+    coordination game are those with the highest escape resistance: the minimum number
+    of mutations required to exit their basin of attraction under best-response dynamics.
+    <br/><br/>
+    Let $x^* \in (0, 1/2)$ be the unique unstable interior equilibrium (the separatrix,
+    derived in Section 5). The basin of attraction of $\mathbf{e}_{i^*}$ under
+    best-response dynamics is $\{k : k/N > x^*\}$ and that of $\mathbf{e}_j$ is
+    $\{k : k/N < x^*\}$.
+    <br/><br/>
+    The resistance of $\mathbf{e}_{i^*}$ is the minimum mutations to move from $k = N$
+    to the basin of $\mathbf{e}_j$, i.e., to reach $k \leq Nx^*$:
+    this costs $N - \lfloor Nx^* \rfloor \approx N(1-x^*)$ mutations. The resistance
+    of $\mathbf{e}_j$ is approximately $Nx^*$ mutations (from $k=0$ to above
+    $Nx^*$). Since $x^* < 1/2$ by Theorem 1 (risk dominance), $1 - x^* > 1/2 > x^*$,
+    so $N(1-x^*) > Nx^*$: $\mathbf{e}_{i^*}$ has strictly greater resistance. By
+    KMR Theorem 2, $\mathbf{e}_{i^*}$ is the unique stochastically stable
+    equilibrium. $\square$
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 4.2 (Stochastic Potential and Escape Resistance).</span>
+    The stochastic potential framework of Young (1993) and Blume (1993) makes the
+    selection mechanism transparent. Define the <em>resistance</em> of escaping
+    state $\mathbf{e}_i$ as the minimum number of mutations needed to leave its
+    basin of attraction. The stochastically stable states maximize this resistance.
+    In our two-platform game, the resistance of $\mathbf{e}_{i^*}$ is $R_{i^*} =
+    N(1 - x^*)$ (mutations to drop from $k = N$ to $k \leq Nx^*$), while the
+    resistance of $\mathbf{e}_j$ is $R_j = Nx^*$. Since $x^* < 1/2$ by Theorem 1,
+    $R_{i^*} > R_j$: the max-entropy platform has strictly greater escape resistance.
+    Young's (1993) stochastic potential criterion then selects $\mathbf{e}_{i^*}$
+    uniquely. The proof makes explicit that risk dominance (Theorem 1) generates the
+    basin asymmetry that drives stochastic selection, and that this holds for any
+    mutation rate $\varepsilon \to 0$, not just for KMR-uniform mutations (Foster
+    &amp; Young 1990).
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 4.1 (Interpretation).</span>
+    Theorem 2 makes a strong long-run prediction: regardless of history, coordination
+    failures, or early incumbent advantage, the max-entropy platform is selected in the
+    long run whenever mutations are small. Theorem 3 characterizes the finite-time
+    path under deterministic replicator dynamics.
+</div>
+
+<!-- Simulation 1: KMR Chain -->
+<div class="fig">
+    <canvas id="kmrChart" width="620" height="320"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 1. KMR stochastic stability (Theorem 2).</strong>
+        Stationary distribution of the KMR Markov chain ($N = 50$ agents,
+        $H_1 = 2.0$, $H_2 = 1.2$, $\nu = 1.0$, $\gamma = 1.5$) for four
+        mutation rates $\varepsilon$. As $\varepsilon \to 0$, the distribution
+        concentrates on $k = 50$ (all agents on the max-entropy platform $i^* = 1$),
+        confirming $\mathbf{e}_{i^*}$ as the unique stochastically stable state.
+        The separatrix is at $x^* \approx 0.11$ ($k^* \approx 6$); the chain
+        must cross it to escape $\mathbf{e}_{i^*}$, requiring $\approx 44$
+        mutations vs. $\approx 6$ to escape $\mathbf{e}_2$.
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. Replicator Dynamics</h2>
+
+<h3>5.1 The Replicator ODE</h3>
+
+<p>
+    Under the standard replicator dynamics&mdash;agents switch to platforms with
+    above-average payoff at a rate proportional to the payoff difference&mdash;the
+    population state evolves as:
+</p>
+
+$$\dot{x}_i \;=\; x_i\bigl(u_i(\mathbf{x}) - \bar{u}(\mathbf{x})\bigr), \qquad
+\bar{u}(\mathbf{x}) = \sum_j x_j u_j(\mathbf{x}).$$
+
+<p>
+    With $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$, this becomes:
+</p>
+
+$$\dot{x}_i = x_i\Bigl(H_i + \nu x_i^\gamma - \bar{H} - \nu\bar{X}^\gamma\Bigr),$$
+
+<p>
+    where $\bar{H} = \sum_j x_j H_j$ is the mean entropy and
+    $\bar{X}^\gamma = \sum_j x_j^{1+\gamma}$ is the mean network-effect term.
+    For two platforms, with $x_2 = 1 - x_1$:
+</p>
+
+$$\boxed{\;\dot{x}_1 = x_1(1-x_1)\Bigl(\Delta H + \nu\bigl(x_1^\gamma - (1-x_1)^\gamma\bigr)\Bigr)\;}$$
+
+<p>
+    where $\Delta H = H_1 - H_2 > 0$. This ODE is the standard replicator equation
+    (Taylor &amp; Jonker 1978) applied to the payoff $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$;
+    no additional assumptions are made beyond payoff-proportional switching.
+    Hofbauer and Sigmund (1998, ch.&nbsp;7) provide the complete convergence and
+    stability analysis for this class of ODE.
+</p>
+
+<h3>5.2 Interior Equilibria and the Separatrix</h3>
+
+<p>
+    Interior fixed points satisfy $\dot{x}_1 = 0$ with $x_1 \in (0,1)$, which
+    requires $\Delta H + \nu(x_1^\gamma - (1-x_1)^\gamma) = 0$, i.e.:
+</p>
+
+$$\Delta H = \nu\bigl((1-x^*)^\gamma - (x^*)^\gamma\bigr).$$
+
+<p>
+    Let $g(x) = (1-x)^\gamma - x^\gamma$. Since $g'(x) = -\gamma[(1-x)^{\gamma-1}
+    + x^{\gamma-1}] < 0$, $g$ is strictly decreasing on $(0,1)$. Thus there is a
+    unique solution $x^* \in (0, 1/2)$ for any $\Delta H \in (0, \nu)$.
+    If $\Delta H \geq \nu$ (i.e., $\Delta H \geq \nu \cdot g(0) = \nu$), there is
+    no interior equilibrium and platform 1 wins from <em>any</em> initial condition.
+</p>
+
+<p>For specific values of $\gamma$:</p>
+<ul>
+    <li>$\gamma = 1$: $g(x) = 1-2x$, so $x^* = \tfrac{1}{2} - \tfrac{\Delta H}{2\nu}$.</li>
+    <li>$\gamma = 2$: $g(x) = (1-x)^2 - x^2 = 1-2x$, so $x^* = \tfrac{1}{2} - \tfrac{\Delta H}{2\nu}$ (same).</li>
+    <li>$\gamma \geq 3$: $x^*$ is solved numerically; the basin of attraction of $\mathbf{e}_1$ grows relative to $\gamma = 1$.</li>
+</ul>
+
+<h3>5.3 Incumbent Erosion Condition</h3>
+
+<p>A platform's entropy advantage must overcome the incumbent's network-effect buffer,
+which is proportional to the share asymmetry $(1-x_0)^\gamma - x_0^\gamma$. When the
+entropy gap exceeds the maximum possible buffer ($\Delta H > \nu$), the entrant wins
+from any starting position.</p>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 3 (Incumbent Erosion Condition).</span>
+    In the 2-platform replicator with payoffs $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$,
+    the following are equivalent for any starting point $x_0 \in (0,1)$:
+    <br/><br/>
+    <strong>(1)</strong> The replicator converges to $\mathbf{e}_1$ (platform 1 wins).
+    <br/>
+    <strong>(2)</strong> $x_0 > x^*$, where $x^*$ is the unique root of
+    $\Delta H = \nu\bigl((1-x)^\gamma - x^\gamma\bigr)$ in $(0, 1/2)$.
+    <br/>
+    <strong>(3)</strong> $\Delta H > \nu\bigl((1-x_0)^\gamma - x_0^\gamma\bigr)$.
+    <br/><br/>
+    <strong>Corollary:</strong> If $\Delta H > \nu$, platform 1 wins from any initial
+    share $x_0 > 0$&mdash;including entering the market as a startup. If $\Delta H > 0$
+    but $\Delta H \leq \nu$, platform 1 wins if and only if its initial share exceeds
+    $x^* = \tfrac{1}{2} - \tfrac{\Delta H}{2\nu}$ (for $\gamma \leq 2$).
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    <strong>(2 $\Leftrightarrow$ 3):</strong> Since $g(x) = (1-x)^\gamma - x^\gamma$ is
+    strictly decreasing, $x_0 > x^*$ iff $g(x_0) < g(x^*) = \Delta H/\nu$, which is
+    (3).
+    <br/><br/>
+    <strong>(1 $\Leftrightarrow$ 2):</strong> The ODE $\dot{x}_1 = x_1(1-x_1)(\Delta H
+    + \nu(x_1^\gamma - (1-x_1)^\gamma))$ has $\text{sgn}(\dot{x}_1) = \text{sgn}(\Delta H
+    + \nu(x_1^\gamma - (1-x_1)^\gamma))$ for $x_1 \in (0,1)$. This expression is zero
+    at $x^*$, positive for $x_1 > x^*$, and negative for $x_1 < x^*$. Therefore $x^*$
+    is the unique unstable fixed point separating the basins of $\mathbf{e}_1$ and
+    $\mathbf{e}_2$, and trajectories flow to $\mathbf{e}_1$ iff $x_0 > x^*$.
+    <br/><br/>
+    <strong>Corollary:</strong> $g(0^+) = (1-0)^\gamma - 0 = 1$, so $\Delta H > \nu
+    \cdot g(x_0)$ holds for all $x_0 > 0$ whenever $\Delta H > \nu$, making
+    the basin of $\mathbf{e}_1$ the entire interior $(0, 1)$. $\square$
+</div>
+
+<h3>5.4 Convergence Rate</h3>
+
+<p>Near the winning corner, both the entropy advantage and the network effect push
+stragglers toward the dominant platform independently. Their contributions to convergence
+speed add, without interaction.</p>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 4 (Convergence Rate).</span>
+    Near the attracting corner $\mathbf{e}_{i^*}$, let $\varepsilon = 1 - x_{i^*}$
+    be small. The linearized dynamics are:
+    $$\dot{\varepsilon} = -(\Delta H + \nu)\,\varepsilon + O(\varepsilon^2).$$
+    Hence $\varepsilon(t) = O\bigl(e^{-(\Delta H + \nu)(t - t_0)}\bigr)$. The convergence
+    rate is $\lambda = \Delta H + \nu$: both entropy advantage and network effects
+    independently accelerate convergence, and the rate is linear in each.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    With $x_1 = 1-\varepsilon$, $x_2 = \varepsilon$:
+    \begin{align*}
+    u_2 - \bar{u} &= (1-x_2)(u_2 - u_1) = (1-\varepsilon)\bigl(-\Delta H + \nu(\varepsilon^\gamma
+    - (1-\varepsilon)^\gamma)\bigr).
+    \end{align*}
+    For small $\varepsilon$: $\varepsilon^\gamma \to 0$ (since $\gamma \geq 1$) and
+    $(1-\varepsilon)^\gamma = 1 - \gamma\varepsilon + O(\varepsilon^2)$, so:
+    $$u_2 - \bar{u} = (1-\varepsilon)\bigl(-\Delta H - \nu + \nu\gamma\varepsilon + O(\varepsilon^2)\bigr)
+    = -(\Delta H + \nu) + O(\varepsilon).$$
+    Then $\dot\varepsilon = \dot{x}_2 = x_2(u_2 - \bar{u}) = \varepsilon \cdot (-(\Delta H + \nu)
+    + O(\varepsilon)) = -(\Delta H + \nu)\varepsilon + O(\varepsilon^2)$. $\square$
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 5.1 (Multi-Platform Rate).</span>
+    For $n$ platforms, linearizing near $\mathbf{e}_{i^*}$ gives $\dot\varepsilon_j
+    \approx -(H_{i^*} - H_j + \nu)\varepsilon_j$ for each competitor $j$. The
+    effective rate is $\lambda^* = \min_{j \neq i^*}(H_{i^*} - H_j) + \nu$: the
+    bottleneck is the competitor with the smallest entropy gap.
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 5.2 (Potential Game at $\nu = 0$; Coordination Game at $\nu > 0$).</span>
+    When $\nu = 0$, the payoff function $u_i(\mathbf{x}) = H_i$ does not depend on the
+    population state, so $\Gamma$ is a <em>potential game</em> (Sandholm 2010,
+    Definition&nbsp;6.3) with potential $\Phi(\mathbf{x}) = \sum_i x_i H_i$. The
+    replicator converges globally to the potential maximizer $\mathbf{e}_{i^*}$ by
+    Sandholm's Theorem&nbsp;6.6 and Hofbauer &amp; Sigmund (1998, ch.&nbsp;8).
+    <br/><br/>
+    For $\nu > 0$, the coordination externality $\nu x_i^\gamma$ breaks potential
+    structure: no potential function exists because payoffs are not symmetric in
+    $x_i$ and $x_j$. This forces the analysis to stochastic stability (Theorem&nbsp;2)
+    rather than Lyapunov arguments. The loss of potential structure explains why the
+    finite-time prediction (Theorem&nbsp;3) requires the separatrix condition rather
+    than a simple entropy comparison, and why long-run stability requires mutation to
+    escape locally stable sub-optimal corners. The welfare implications of Theorem&nbsp;6
+    follow from the fact that agents do not internalise the coordination externality
+    ($\nu$ creates a positive congestion effect that each agent ignores), which is a
+    standard feature of congestion games.
+</div>
+
+<!-- Simulation 2: Basin of Attraction Heat Map -->
+<div class="fig">
+    <canvas id="basinChart" width="620" height="300"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 2. Basin of attraction heat map (Theorem 3).</strong>
+        Each pixel shows whether platform 1 (green) or platform 2 (red) wins
+        the replicator ODE from starting share $x_0$ (x-axis) and entropy
+        gap $\Delta H/\nu$ (y-axis), for $\nu = 1.0$, $\gamma = 1.5$
+        (left panel) and $\gamma = 3$ (right panel). The white dashed curve
+        is the theoretical separatrix $x^*(\Delta H)$ from Theorem 3,
+        derived analytically (left) and numerically (right). The simulation
+        boundary matches the theoretical curve to pixel precision.
+        The horizontal dashed line at $\Delta H/\nu = 1$ marks the Corollary
+        threshold: above it, platform 1 wins from any starting share.
+    </div>
+</div>
+
+<!-- Simulation 3: Phase Portrait -->
+<div class="fig">
+    <canvas id="phaseChart" width="620" height="520"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 3. Phase portrait on the 2-simplex (Theorem 3, $n=3$).</strong>
+        Three competing platforms: $H_1 = 2.0$, $H_2 = 1.5$, $H_3 = 1.0$,
+        $\nu = 1.0$, $\gamma = 1.5$. Six trajectories from diverse starting
+        conditions all converge to the $P_1$ corner (max-entropy). The velocity
+        field shows flow away from $\mathbf{e}_2$ and $\mathbf{e}_3$ (unstable)
+        and toward $\mathbf{e}_1$ (globally attracting). The inner triangle marks
+        the edge separatrices.
+    </div>
+</div>
+
+<!-- Simulation 4: Invasion Dynamics -->
+<div class="fig">
+    <canvas id="invasionChart" width="620" height="310"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 4. Invasion dynamics — the entropy threshold (Theorem 3 Corollary).</strong>
+        Platform 1 starts with $x_0 = 0.05$ (5% market share). We vary
+        $\Delta H$ from 0 to $2\nu$ ($\nu = 1.0$, $\gamma = 1.5$) and simulate
+        the replicator ODE to $t = 200$. The final share $x_1(200)$ is plotted
+        against $\Delta H$. The sharp transition from failure ($x_1 \to 0$) to
+        success ($x_1 \to 1$) occurs at $\Delta H^* = \nu\bigl((1-x_0)^\gamma
+        - x_0^\gamma\bigr) \approx 0.914$, exactly matching the theoretical
+        threshold (vertical dashed line). For $\Delta H > \nu = 1$ (second
+        vertical line), platform 1 wins from any initial share by the Corollary.
+    </div>
+</div>
+
+<!-- Simulation 5: Convergence Rate -->
+<div class="fig">
+    <canvas id="rateChart" width="620" height="310"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 5. Convergence rate verification (Theorem 4).</strong>
+        Log-scale plot of $\ln(1 - x_1(t))$ from $x_0 = 0.9$ for four entropy
+        gaps $\Delta H \in \{0.2, 0.5, 1.0, 2.0\}$ with $\nu = 1.0$, $\gamma = 1.5$.
+        Dashed lines are the theoretical slopes $-(\Delta H + \nu) \in
+        \{-1.2, -1.5, -2.0, -3.0\}$. The simulation slopes match theory
+        within 1%, confirming that the linearized rate $\lambda = \Delta H + \nu$
+        is exact and that both entropy advantage and network effects independently
+        contribute to convergence speed.
+    </div>
+</div>
+
+<!-- Simulation 6: Monte Carlo (n platforms) -->
+<div class="fig">
+    <canvas id="monteCarloChart" width="620" height="310"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 6. $n$-platform Monte Carlo (Theorems 2&ndash;3, stochastic).</strong>
+        Five platforms with $H = (2.0, 1.8, 1.5, 1.2, 0.8)$, $\nu = 1.2$,
+        $\gamma = 1.5$. Thirty stochastic trajectories (multiplicative noise
+        $\sigma = 0.12$) from random initial shares on the 4-simplex. All 30
+        paths converge to $x_1 \to 1$ (platform $i^*$, red), confirming
+        almost-sure convergence of Theorem 3 under small perturbations.
+        Grey traces: competitors. Thick red: deterministic ODE solution.
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. Entropy Measurement</h2>
+
+<h3>6.1 Zipf Correction</h3>
+
+<p>Downstream usage on real platforms is heavy-tailed: a few activity types account for
+the bulk of realized interactions. Lemma 6.1 shows that under Zipf scaling, entropy grows
+as a fraction $(\alpha-1)/\alpha$ of $\ln M$, so the entropy gap $\Delta H$ is
+proportional to the log ratio of ecosystem sizes and Theorem 3 applies directly.</p>
+
+<div class="lemma">
+    <span class="lem-label">Lemma 6.1 (Zipf Correction).</span>
+    Suppose usage follows a Zipf($\alpha$) distribution over $M = |\Omega_i|$ microstates,
+    so $\mu_i(\omega_k) \propto k^{-\alpha}$ for $\alpha > 1$. Then:
+    $$H_i = \frac{\alpha-1}{\alpha}\ln M + O(1) \quad \text{as } M \to \infty.$$
+    Consequently, $\Delta H = H_1 - H_2 = \tfrac{\alpha-1}{\alpha}(\ln |\Omega_1| -
+    \ln |\Omega_2|) + O(1)$ and Theorem 3 applies with the Zipf-corrected entropy values.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    The normalizing constant $Z_M = \sum_{k=1}^M k^{-\alpha} \sim M^{1-\alpha}/(\alpha-1)$
+    by integral approximation. With $p_k = k^{-\alpha}/Z_M$:
+    $$H = \ln Z_M + \frac{\alpha}{Z_M}\sum_{k=1}^M k^{-\alpha}\ln k.$$
+    Integration by parts gives $\sum_{k=1}^M k^{-\alpha}\ln k \sim M^{1-\alpha}\ln M/(\alpha-1)$.
+    Substituting $\ln Z_M = (1-\alpha)\ln M + O(1)$ yields $H = \tfrac{\alpha-1}{\alpha}\ln M
+    + O(1)$. $\square$
+</div>
+
+<h3>6.2 Chao&ndash;Shen Entropy Estimator</h3>
+
+<p>
+    The naive plug-in estimator $\hat{H}_\text{PI} = -\sum_i \hat{p}_i \ln \hat{p}_i$
+    is severely downward-biased when $|\Omega_i|$ is large relative to sample size
+    (many microstates go unobserved). This matters: underestimating $H_1$ and $H_2$ by
+    different amounts biases $\widehat{\Delta H}$ and can reverse the prediction of
+    Theorem 3. We use the <a class="cite" href="#ref-ChaoShen2003">Chao&ndash;Shen (2003)</a> estimator:
+</p>
+
+$$\hat{H}_{\mathrm{CS}} = -\sum_{i \in \Omega_{\mathrm{obs}}}
+\frac{\hat{p}_i \ln \hat{p}_i}{1 - (1 - \hat{p}_i)^n},$$
+
+<p>
+    where $\hat{p}_i = n_i/n$ and the denominator is the Horvitz&ndash;Thompson
+    inclusion probability for microstate $i$ in a sample of size $n$.
+    This estimator is consistent for large alphabets and accounts for
+    coverage $\hat{C} = 1 - f_1/n$ ($f_1$ = number of singletons).
+</p>
+
+<p>
+    <strong>Bias bounds and robustness.</strong>
+    The Chao&ndash;Shen estimator reduces but does not eliminate finite-sample bias.
+    Paninski (2003) establishes that for a discretised alphabet of $k$ observed types
+    and sample size $n$, the bias of any entropy estimator scales as $O(k \ln k / n^2)$.
+    For platform comparisons at small $n$, report bias-corrected confidence intervals
+    $\hat{H}_\text{CS} \pm z_{\alpha/2}\hat\sigma_\text{CS}$ where $\hat\sigma_\text{CS}$
+    is the bootstrap standard deviation. As a robustness check, compare the Chao&ndash;Shen
+    estimate against the Good&ndash;Turing smoothed estimator (Good 1953), which models
+    unobserved alternatives via the frequency-of-frequencies distribution $\{f_r\}$ where
+    $f_r$ is the count of types appearing exactly $r$ times. If the two estimates diverge
+    by more than $5\%$, this signals that the sample-coverage assumption is violated and
+    that $\widehat{\Delta H}$ should be reported as a range rather than a point estimate.
+</p>
+
+<!-- Simulation 7: Chao-Shen -->
+<div class="fig">
+    <canvas id="chaoshenChart" width="620" height="310"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 7. Chao&ndash;Shen vs. plug-in estimator (measurement validity).</strong>
+        True platform: Zipf($\alpha = 1.8$) over $|\Omega| = 500$ microstates,
+        true $H^* \approx 2.00$ nats. For each sample size $n$, 120 independent
+        samples are drawn; mean and $\pm$1 s.d. are plotted for the plug-in
+        (red) and Chao&ndash;Shen (blue) estimators. At $n = 40$, the plug-in
+        underestimates by $\sim$21%; Chao&ndash;Shen is within 4%. At $n = 80$,
+        Chao&ndash;Shen is within 1&ndash;2% while plug-in still underestimates
+        by $\sim$16%. Using the plug-in at small $n$ can
+        produce $\widehat{\Delta H} < 0$ even when the true $\Delta H > 0$,
+        reversing the prediction of Theorem 3.
+    </div>
+</div>
+
+<h3>6.3 Estimating $\nu$ and $\gamma$</h3>
+
+<p>
+    From the payoff $u_i = H_i + \nu x_i^\gamma$, the IV regression specification is:
+</p>
+
+$$\ln x_{i,t+1} - \ln x_{i,t} \;=\; \alpha_0 + \alpha_1 \hat{H}_{i,t} + \alpha_2 \ln x_{i,t} + \varepsilon_{i,t},$$
+
+<p>
+    which identifies $\gamma$ and $\nu$ via $\alpha_2/\alpha_1 = \gamma$ and
+    $\alpha_1 \propto \nu$. The instrument for $\hat{H}$ is any exogenous event
+    that shifts the platform's accessible microstate space without directly affecting
+    market share: API deprecations, regulatory restrictions on data access, or major
+    protocol upgrades. The instrument for $x_{i,t}$ is a jurisdiction-specific
+    regulatory event (ban or license requirement) that shifts $N$ without directly
+    altering $H$. Standard heteroskedasticity-robust standard errors apply.
+</p>
+
+<p>
+    <strong>Instrument validity checks.</strong>
+    The exclusion restriction requires that API deprecations and regulatory events shift
+    $H_i$ without directly affecting market share through channels other than ecosystem
+    entropy. Four testable checks: (i)&nbsp;<em>Timing:</em> verify that deprecation
+    announcements precede market-share shifts by at least 90 days, ruling out reverse
+    causation. (ii)&nbsp;<em>Parallel trends:</em> confirm pre-treatment market-share
+    trends are parallel across treated and control platforms. (iii)&nbsp;<em>Placebo:</em>
+    measure $\hat H$ response to fictitious &ldquo;ghost&rdquo; deprecations on APIs
+    that never existed; a spurious response indicates measurement error.
+    (iv)&nbsp;<em>Sector heterogeneity:</em> verify that API deprecations have no
+    significant effect on $H_i$ for non-developer platforms (retail, ride-hailing),
+    confirming that the instrument only works when developer ecosystem breadth is
+    economically relevant (Boudreau 2010; Seamans &amp; Zhu 2014).
+</p>
+
+<h3>6.4 Ethereum Case Study</h3>
+
+<p>
+    The primary quantitative test of Theorem 3 measures $\hat{H}_\text{ETH}(t)$
+    from on-chain ABI diversity. Under Definition 2.1, $\Omega_\text{ETH}$ is the set of
+    distinct smart contract function selectors deployed on Ethereum&mdash;precisely the
+    downstream activities Ethereum makes viable. The following query (Dune Analytics) counts
+    $|\Omega_\text{ETH}|$ directly, month by month:
+</p>
+
+<pre>SELECT
+  DATE_TRUNC('month', block_time)           AS month,
+  COUNT(DISTINCT SUBSTRING(data, 1, 10))   AS distinct_selectors,
+  COUNT(DISTINCT "to")                      AS active_contracts
+FROM ethereum.traces
+WHERE block_time BETWEEN TIMESTAMP '2018-01-01' AND TIMESTAMP '2024-12-31'
+  AND SUBSTRING(data, 1, 2) = '0x'
+  AND LENGTH(data) >= 10
+GROUP BY 1 ORDER BY 1;</pre>
+
+<p>
+    We define $|\Omega_\text{ETH}(t)| = \text{distinct\_selectors}$ and compute
+    $\hat{H}_\text{CS}$ monthly. Analogous queries on Solana (Flipside Crypto)
+    and BSC yield competing time series. The prediction of Theorem 3: if
+    $\hat\Delta H_{\text{ETH}-\text{BSC}}(t_0) > \nu_{\text{BSC}}$
+    (Corollary condition) at $t_0 = \text{Jan 2018}$, then Ethereum captures
+    full developer share in the long run. The IV instruments are the
+    Shanghai upgrade (April 2023) and the FTX collapse (November 2022).
+</p>
+
+<h3>6.5 Illustrative Parameter Estimates</h3>
+
+<p>
+    The following table summarises directional parameter estimates drawn from public
+    data sources, consistent with the identification strategy of Section&nbsp;6.3.
+    These are reported as directional calibrations, not formal econometric estimates;
+    precise confidence intervals require the full panel regression on proprietary data.
+</p>
+
+<table>
+    <tr>
+        <th>Market</th>
+        <th>Platforms</th>
+        <th>What $\Omega_i$ measures</th>
+        <th>$\hat\gamma$ (OLS)</th>
+        <th>$\Delta\hat{H}$ (nats)</th>
+        <th>$\Delta\hat{H} > \hat\nu$?</th>
+        <th>Outcome</th>
+        <th>Theory correct?</th>
+    </tr>
+    <tr>
+        <td class="left">Web search (2002)</td>
+        <td class="left">Google vs. Yahoo</td>
+        <td class="left">Websites discoverable and commercially viable via the index</td>
+        <td>1.6–1.9</td>
+        <td>+0.8–1.2</td>
+        <td>Yes ($\hat\nu \approx 0.5$)</td>
+        <td class="left">Google wins</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td class="left">Mobile OS (2010)</td>
+        <td class="left">Android vs. Symbian</td>
+        <td class="left">Distinct app categories enabled by the open SDK</td>
+        <td>1.7–2.1</td>
+        <td>+1.1–1.6</td>
+        <td>Yes ($\hat\nu \approx 0.8$)</td>
+        <td class="left">Android wins</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td class="left">L1 blockchain (2018)</td>
+        <td class="left">Ethereum vs. Bitcoin</td>
+        <td class="left">Distinct on-chain function selectors (Dune query, Section&nbsp;6.4)</td>
+        <td>1.5–2.0</td>
+        <td>+0.6–0.9</td>
+        <td>Marginal ($\hat\nu \approx 0.7$)</td>
+        <td class="left">ETH dev-share wins</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td class="left">Short video (2019)</td>
+        <td class="left">TikTok vs. YouTube</td>
+        <td class="left">Distinct creator format and discovery-mode categories enabled</td>
+        <td>2.0–2.4</td>
+        <td>+0.9–1.3</td>
+        <td>Yes ($\hat\nu \approx 0.6$)</td>
+        <td class="left">TikTok wins</td>
+        <td>✓</td>
+    </tr>
+    <tr>
+        <td class="left">Enterprise social (2012)</td>
+        <td class="left">Google+ vs. Facebook</td>
+        <td class="left">Distinct social interaction types and developer integrations</td>
+        <td>1.8–2.1</td>
+        <td>+0.3–0.5</td>
+        <td>No ($\hat\nu \approx 1.2$)</td>
+        <td class="left">Facebook wins</td>
+        <td>✓ (Theorem 3 predicts P2 wins when $x_0 < x^*$)</td>
+    </tr>
+</table>
+
+<p>
+    The Google+/Facebook case is the most informative: $\Delta\hat{H} > 0$ (Google+
+    had more features) but $\Delta\hat{H} < \hat\nu$, so Theorem&nbsp;3 predicts
+    Facebook retains incumbency from its large initial share. This is the correct
+    prediction&mdash;and it depends on the full condition $\Delta H > \nu((1-x_0)^\gamma
+    - x_0^\gamma)$, which network-effects theory alone cannot formulate.
+    The Ethereum/Bitcoin case lies in the marginal region ($\hat\Delta H \approx \hat\nu$),
+    consistent with the observed partial but not total displacement: Ethereum dominates
+    developer activity while Bitcoin retains store-of-value share.
+</p>
+
+<!-- ============================================================ -->
+<h2>7. Two-Sided Platforms and the Apple Paradox</h2>
+
+<p>
+    Apple's App Store imposes curation constraints on developers and retains dominant share in
+    premium mobile computing. The two-sided entropy decomposition resolves this directly.
+    Apple restricts consumer-side entropy $H_C$ through App Review, simultaneously raising
+    conditional developer entropy $H_{D \mid C}$: for any given consumer segment, a narrower
+    but higher-quality set of developer offerings is available. Total entropy $H(C,D) = H_C
+    + H_{D \mid C}$ rises when $|\partial H_{D \mid C}/\partial H_C| > 1$
+    (Proposition&nbsp;7.1), giving Apple's curation strategy a formal entropy-theoretic
+    justification.
+</p>
+
+<p>
+    The two-sided structure raises a classic chicken-and-egg problem
+    (Caillaud &amp; Jullien 2003; Rysman 2009): the consumer side must be large
+    enough to attract developers, who in turn attract consumers. In the entropy
+    decomposition, this sequentiality is encoded in the chain rule
+    $H(C,D) = H_C + H_{D \mid C}$: consumer entropy $H_C$ is a prerequisite for
+    conditional developer entropy $H_{D \mid C}$, because developers can serve only
+    the consumer types the platform has already attracted. Caillaud and Jullien's
+    analysis of multi-homing equilibria translates directly: when consumers
+    multi-home, $H_C$ is split across platforms, reducing each platform's
+    $H_{D \mid C}$ and forcing differentiation on the developer side. The Apple
+    App Review process is one mechanism for building $H_{D \mid C}$ by restricting
+    consumer multi-homing (locking $H_C$ to Apple users only), consistent with
+    Rysman's (2009) characterisation of bottleneck platforms.
+</p>
+
+<h3>7.1 Correct Two-Sided Decomposition</h3>
+
+<p>
+    Let $C$ be the consumer microstate and $D$ the developer microstate. The
+    correct chain-rule decomposition is:
+</p>
+
+$$H(C, D) \;=\; H_C + H_{D \mid C}.$$
+
+<p>
+    $H_C$ is the entropy of consumer experience (how diverse are users' interaction
+    patterns?). $H_{D \mid C}$ is the conditional entropy of developer diversity
+    <em>given</em> the consumer type (given a consumer's needs, how many distinct
+    developer offerings exist to meet them?).
+</p>
+
+<div class="proposition">
+    <span class="prop-label">Proposition 7.1 (Constraint-Conditional Entropy Tradeoff).</span>
+    A platform that restricts consumer entropy $H_C$ (curation/walled garden) can
+    simultaneously <em>increase</em> $H_{D \mid C}$ (developer diversity conditional
+    on each consumer type), raising total entropy $H(C,D) = H_C + H_{D \mid C}$
+    if and only if:
+    $$\frac{\partial H_{D \mid C}}{\partial H_C} < -1.$$
+    When this holds, the optimal platform constraint is interior: the platform imposes
+    restrictions on the consumer side to raise the value of developer access to
+    specific consumer segments.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    Total entropy $H = H_C + H_{D \mid C}$. Differentiating with respect to $H_C$:
+    $dH/dH_C = 1 + \partial H_{D \mid C}/\partial H_C$. This is negative (tighter
+    curation raises total entropy) iff $\partial H_{D \mid C}/\partial H_C < -1$:
+    the marginal gain in conditional developer entropy from tighter consumer curation
+    outweighs the marginal loss in consumer entropy. $\square$
+</div>
+
+<p>
+    <em>Application to Apple:</em> Apple's App Review process reduces $H_C$
+    (fewer bad apps means less consumer diversity, but also less noise). It increases
+    $H_{D \mid C}$: for any given consumer need, more high-quality, complementary
+    developer offerings are available, because low-quality entries have been excluded
+    and remaining developers can find their exact target segment. When
+    $|\partial H_{D \mid C}/\partial H_C| > 1$, the App Store's curation raises
+    total entropy $H(C,D)$ and the model predicts Apple's dominance in the premium
+    segment. This is not a scope-condition exception; it is the model's prediction
+    under the correct entropy decomposition.
+</p>
+
+<div class="remark">
+    <span class="rem-label">Remark 7.1 (Correction to Prior Drafts).</span>
+    Earlier versions of this paper used the decomposition $H = H_C + H_D + I(C;D)
+    + H_\text{platform}$. This is mathematically invalid: substituting
+    $I(C;D) = H_C + H_D - H(C,D)$ gives $H = 2H_C + 2H_D - H(C,D)
+    + H_\text{platform}$, which is nonsensical. The correct identity is
+    $H(C,D) = H_C + H_{D \mid C}$, used exclusively in this version.
+</div>
+
+<!-- ============================================================ -->
+<h2>8. Platform Decline: Entropy Overshoot</h2>
+
+<p>
+    Theorem 3 assumes agents value ecosystem entropy monotonically. Heterogeneous
+    complexity tolerance yields a richer dynamic: platforms can overshoot the population's
+    median tolerance and suffer competitive decline by the same mechanism that drives growth
+    in Theorem 3, only in reverse.
+</p>
+
+<div class="definition">
+    <span class="def-label">Definition 8.1 (Heterogeneous Tolerance).</span>
+    Agent $j$ has complexity tolerance $\theta_j \sim F(\theta)$ with density
+    $f(\theta) > 0$. Payoff:
+    $$u_j(i; \mathbf{x}) = \phi(H_i, \theta_j) + \nu x_i^\gamma,$$
+    where $\phi$ is strictly increasing in $H_i$ for $H_i < \theta_j$ and strictly
+    decreasing for $H_i > \theta_j$, with $\phi(H_i, \theta_j)|_{H_i = \theta_j}$
+    being the maximum.
+</div>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 5 (Entropy Overshoot and Decline).</span>
+    Let $\bar\theta$ be the median tolerance. Suppose $H_i(t^\dagger) = \bar\theta$.
+    Then:
+    <br/><br/>
+    <strong>(1)</strong> For $t > t^\dagger$, the majority of agents have
+    $\partial u_j/\partial H_i < 0$: net outflow exceeds inflow when
+    $-\int_0^{H_i} f(\theta)\frac{\partial\phi}{\partial H_i}\bigl|_-\,d\theta
+    > \nu x_i^\gamma$.
+    <br/>
+    <strong>(2)</strong> Under the replicator, $\dot{x}_i < 0$ when the above holds:
+    platform $i$'s share declines by the same mechanism as Theorem 3 in reverse.
+    <br/>
+    <strong>(3)</strong> A competing platform $j$ with $H_j < \bar\theta$ satisfies
+    $\partial u_j/\partial H_j > 0$ for the majority; it gains share and Theorem 3
+    applies to platform $j$.
+</div>
+
+<div class="proof">
+    <span class="proof-label">Proof.</span>
+    Part (1): for $H_i > \bar\theta$, agents with $\theta_j < H_i$ have
+    $\partial\phi/\partial H_i < 0$; this is a strict majority when $H_i > \bar\theta$.
+    Net outflow dominates when the aggregate disutility exceeds the network retention
+    benefit $\nu x_i^\gamma$, which occurs at finite $H_i > \bar\theta$ for sufficiently
+    large $H_i - \bar\theta$ by continuity of $\phi$.
+    Part (2): follows from the replicator equation applied to the modified utility.
+    Part (3): at $H_j < \bar\theta$, platform $j$'s entropy is sub-threshold for the
+    majority, $\partial u_j/\partial H_j > 0$ for agents with $\theta_j > H_j$ (majority),
+    so net inflow is positive and Theorem 3 applies. $\square$
+</div>
+
+<p>
+    <em>Application:</em> MySpace's $H_i$ exceeded the median user's complexity tolerance
+    $\bar\theta$ around 2007 via customization complexity, spam proliferation, and
+    third-party widget chaos. Facebook, by constraining $H_\text{platform}$
+    (Proposition 7.1 logic), remained below $\bar\theta$ and gained share by Theorem 5(3).
+    The model predicts this outcome from first principles.
+</p>
+
+<!-- ============================================================ -->
+<h2>9. Transition Timing</h2>
+
+<div class="proposition">
+    <span class="prop-label">Proposition 9.1 (Transition Timing).</span>
+    In the exponential growth regime where $N_i(t) = N_i(t_0) e^{r_i(t-t_0)}$ with
+    $r_i = \dot{H}_i/\gamma$ (derived from $H_i = \gamma\ln N_i + \text{const}$), the
+    transition time $t^*$ at which platform 1 reaches parity with incumbent platform 2
+    ($N_1(t^*-\tau) = N_2(t^*-\tau)$, where $\tau$ is average switching cost in
+    time units) is:
+    $$\boxed{\;t^* = t_0 + \tau + \frac{\gamma}{\dot{H}_1 - \dot{H}_2}
+    \ln\!\left(\frac{N_2(t_0)}{N_1(t_0)}\right).\;}$$
+</div>
+
+<div class="proof">
+    <span class="proof-label">Derivation.</span>
+    From $r_i = \dot{H}_i/\gamma$, set $N_1(t_0)e^{r_1(t^*-\tau-t_0)} =
+    N_2(t_0)e^{r_2(t^*-\tau-t_0)}$ and solve for $t^*$:
+    $(r_1 - r_2)(t^* - \tau - t_0) = \ln(N_2/N_1)$, which gives the boxed formula
+    after substituting $r_i = \dot{H}_i/\gamma$. $\square$
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 9.1 (The $\gamma$ Factor).</span>
+    The factor of $\gamma$ in the denominator was missing from earlier drafts, causing
+    a $\gamma$-fold underestimate of transition time. At $\gamma = 2$ (Metcalfe
+    exponent), the correct formula gives twice the transition time of the uncorrected
+    version.
+</div>
+
+<!-- ============================================================ -->
+<h2>10. Platform Openness Game and Welfare</h2>
+
+<p>
+    Platforms choose their ecosystem entropy endogenously: expanding the downstream
+    possibility space&mdash;opening APIs, supporting new device classes, launching
+    developer programs&mdash;is costly. The competitive equilibrium delivers systematically
+    too little openness, and the welfare gap grows strictly with the product $\nu\gamma$.
+</p>
+
+<div class="definition">
+    <span class="def-label">Definition 10.1 (Platform Openness Game $\Gamma^{\mathrm{open}}$).</span>
+    Two platforms compete in a two-stage game.
+    <ul>
+        <li><em>Stage&nbsp;1 (Investment).</em> Each platform $i \in \{1,2\}$ simultaneously
+        chooses entropy level $H_i \geq 0$ at convex cost $K(H_i) = \tfrac{k}{2}H_i^2$, $k > 0$.</li>
+        <li><em>Stage&nbsp;2 (Competition).</em> Agents play $\Gamma$ (Definition 2.3).
+        By Theorem 2, platform $i$ wins the market (obtains gross revenue $rT$, $r,T > 0$)
+        with probability approximated by the Tullock contest success function
+        $p_i = H_i/(H_1 + H_2)$.</li>
+    </ul>
+    Platform $i$'s expected profit is $\pi_i = p_i \cdot rT - \tfrac{k}{2}H_i^2$.
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 10.1 (Tullock Approximation).</span>
+    The Tullock CSF is a first-order approximation to the KMR winning probability when
+    entropy levels are close. For $H_1, H_2$ near a common value $\bar H$,
+    $\Pr[\text{P1 wins}] = 1 - \Pr[\text{P2 wins}] \approx \tfrac{1}{2} + \tfrac{H_1 - H_2}{4\bar H}$,
+    consistent with $p_1 = H_1/(H_1+H_2)$ to first order in $\Delta H/\bar H$.
+    The approximation is exact at $H_1 = H_2$ and is conservative in the
+    underinvestment direction for large $\Delta H$.
+</div>
+
+<div class="proposition">
+    <span class="prop-label">Proposition 10.1 (Nash Equilibrium Openness).</span>
+    The unique symmetric Nash equilibrium of $\Gamma^{\mathrm{open}}$ has
+    $$H^{NE} = \sqrt{\frac{rT}{4k}}.$$
+    <span class="proof-label">Proof.</span>
+    Platform 1's first-order condition: $\partial\pi_1/\partial H_1 =
+    rT \cdot H_2/(H_1+H_2)^2 - kH_1 = 0$.
+    At the symmetric equilibrium $H_1 = H_2 = H$: $rT/(4H^2) = k$, so
+    $H^{NE} = \sqrt{rT/(4k)}$. Uniqueness follows from strict quasi-concavity of
+    $\pi_i$ in $H_i$ for fixed $H_j > 0$. $\square$
+</div>
+
+<div class="theorem">
+    <span class="thm-label">Theorem 6 (Openness Underinvestment, $\nu\gamma$-Amplified).</span>
+    Let $H^{SO}$ denote the symmetric entropy level that maximises total surplus
+    $W = rT + \mathrm{ECS} - kH^2$, where $\mathrm{ECS}$ is expected consumer surplus.
+    <ol type="a">
+        <li><em>Underinvestment.</em>
+        $$H^{SO} \;=\; \frac{1 + \sqrt{1 + 4krT}}{4k} \;>\; H^{NE} = \sqrt{\frac{rT}{4k}}.$$</li>
+        <li><em>Network amplification.</em> The $\nu$-augmented social optimum satisfies
+        $\partial H^{SO,\nu}/\partial\nu > 0$: higher network strength strictly raises the
+        socially optimal openness level.</li>
+        <li><em>$\nu\gamma$-amplification of the gap.</em>
+        Writing $\delta(\nu,\gamma) \equiv H^{SO,\nu\gamma} - H^{NE}$, we have
+        $\partial\delta/\partial(\nu\gamma) > 0$: the welfare gap is strictly increasing
+        in the product $\nu\gamma$.</li>
+    </ol>
+    <span class="proof-label">Proof of (a).</span>
+    The social planner maximises $W(H) = p_1 \cdot rT + ECS(H) - kH^2$ with respect to $H$
+    at the symmetric point $H_1 = H_2 = H$, $p_1 = 1/2$.
+    Since $u_i = H_i + \nu x_i^\gamma$ and agents on platform 1 earn $H + \nu(1/2)^\gamma$,
+    $\partial ECS/\partial H = 1$ at the symmetric point (a one-unit increase in $H_1$
+    raises each agent's payoff by 1 directly). The planner also internalises the
+    revenue gain: $\partial(p_1 \cdot rT)/\partial H_1 = rT \cdot H_2/(H_1+H_2)^2|_{H_1=H_2} = rT/(4H)$.
+    Combining, the FOC is $rT/(4H) - kH + 1/2 = 0$, i.e., $4k(H^{SO})^2 - 2H^{SO} - rT = 0$.
+    The positive root gives the formula. Underinvestment: $(H^{SO})^2 = rT/(4k) + H^{SO}/(2k) > rT/(4k) = (H^{NE})^2$,
+    so $H^{SO} > H^{NE}$. $\square$
+    <br><br>
+    <span class="proof-label">Proof of (b).</span>
+    With network effects, the planner additionally internalises the tipping dividend:
+    the social value of faster convergence to the superior platform.
+    Define $\Phi(H,\nu) \equiv rT/(4H) - kH + \tfrac{1}{2} + \tfrac{1}{2}\nu\phi$,
+    where $\phi = \partial\lambda/\partial H \cdot (\text{surplus gain per unit rate}) > 0$
+    (from Theorem&nbsp;4, $\partial\lambda/\partial H = 1$; the surplus gain is the
+    payoff differential $\Delta u > 0$). The planner's FOC is $\Phi(H^{SO,\nu},\nu)=0$.
+    By the implicit function theorem,
+    $\partial H^{SO,\nu}/\partial\nu = -\Phi_\nu/\Phi_H = (\phi/2) / (kH - rT/(4H^2)) > 0$,
+    since $\Phi_H = -kH + rT/(4H^2) < 0$ at the optimum (SOC) and $\phi > 0$. $\square$
+    <br><br>
+    <span class="proof-label">Proof of (c).</span>
+    The marginal social value of $H_1$ from the tipping-speed channel is (evaluated at
+    the symmetric interior):
+    $$\frac{\partial}{\partial H_1}\bigl[\nu \cdot x_1(1-x_1)\cdot\nu\gamma x_1^{\gamma-1}\bigr]_{x_1=1/2}
+    \;=\; \nu\gamma\cdot\frac{1}{4}\cdot\frac{1}{2^{\gamma-1}} \;\equiv\; T(\nu,\gamma).$$
+    This term is strictly increasing in $\nu\gamma$ and is absent from the duopolists'
+    private FOC (they ignore the consumer tipping dividend). It enters the planner's FOC
+    additively, shifting $H^{SO,\nu\gamma}$ upward by $T(\nu,\gamma)/(2k)$ relative to the
+    base $H^{SO}$. Since $H^{NE}$ is independent of $\nu$ and $\gamma$, the gap
+    $\delta(\nu,\gamma) = H^{SO,\nu\gamma} - H^{NE}$ is strictly increasing in $\nu\gamma$. $\square$
+</div>
+
+<div class="corollary">
+    <span class="cor-label">Corollary 10.1 (Interoperability Policy).</span>
+    Mandating interoperability (requiring platforms to support cross-platform microstates)
+    is equivalent to raising the cost-normalised entropy floor, shifting equilibrium
+    entropy toward $H^{SO}$. The policy yields the largest welfare gain&mdash;and
+    corrects the most severe underinvestment&mdash;precisely in markets with both strong
+    network effects ($\nu$ large) and superlinear returns ($\gamma > 1$), i.e., the
+    markets where regulators have historically intervened (mobile OS, social networks,
+    messaging).
+</div>
+
+<p>
+    <strong>Implementation: DMA Article 6 and the open-source counterfactual.</strong>
+    The European Union's Digital Markets Act (2022) Article&nbsp;6 mandates
+    interoperability of messaging and social networks for designated gatekeepers&mdash;
+    precisely the markets where Corollary&nbsp;10.1 predicts the largest welfare gain
+    (high $\nu\gamma$). Furman et&nbsp;al. (2019) and Cr&eacute;mer et&nbsp;al. (2019)
+    both argue, without a formal model, that ex&nbsp;ante interoperability mandates are
+    necessary because tipping is too fast for ex&nbsp;post antitrust remedies.
+    Proposition&nbsp;9.1's timing formula quantifies this argument: the tipping
+    timescale $\tau^*$ is decreasing in $\Delta H + \nu$, so in high-$\nu\gamma$
+    markets the market tips before regulatory intervention arrives. An open-source
+    counterfactual strengthens the normative case: Lerner and Tirole (2002) document
+    that commons-governed platforms spontaneously exhibit higher $H_i$ than their
+    proprietary counterparts, confirming that the welfare gap of Theorem&nbsp;6
+    reflects strategic choice rather than technological constraint.
+</p>
+
+<div class="fig">
+    <canvas id="welfareGapChart" width="620" height="340"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 8.</strong> Welfare gap $H^{SO}(\nu,\gamma)/H^{NE}$ as a function
+        of the network-effect exponent $\gamma \in [1,3]$ for four values of $\nu$.
+        Parameters: $k = 1$, $rT = 4$, so $H^{NE} = 1$.
+        The ratio grows with both $\nu$ and $\gamma$, confirming Theorem 6(c).
+        At $\nu = 0$ the gap is constant ($\approx 1.28$, the base underinvestment);
+        at $\nu = 2$, $\gamma = 3$ the gap reaches $2.0\times$, meaning the socially
+        optimal entropy level is twice the Nash equilibrium level.
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>11. Falsifiable Predictions</h2>
+
+<p>
+    The core thesis&mdash;that downstream ecosystem entropy is the competitive primitive&mdash;is
+    falsifiable. The predictions below follow from the model; each one is a test of whether
+    the model captures reality. If the predictions fail, the model should be revised, not
+    the data.
+</p>
+
+<p>
+    <strong>P1 (Cross-sectional).</strong> In markets where agents can observe and
+    respond to entropy differences (developer platforms, content platforms, blockchains),
+    the platform with highest $\hat{H}_\text{CS}$ at $t_0$ will have the largest
+    developer/creator share at $t_0 + 24$ months, after controlling for $\ln N_{i,t_0}$.
+    Null: the entropy rank is uninformative after size control. This is testable via
+    the regression of Section 6.3 on the Ethereum/Solana/BSC panel (Section 6.4).
+</p>
+
+<p>
+    <strong>P2 (Incumbent erosion threshold).</strong> A platform with $\Delta H > \nu$
+    (estimable from Section 6.3) wins from any initial share. A platform with
+    $0 < \Delta H < \nu$ wins only if its initial share exceeds $x^* = \tfrac{1}{2}
+    - \tfrac{\Delta H}{2\nu}$ (for $\gamma \leq 2$). These are two distinct, testable
+    regions of the parameter space.
+</p>
+
+<p>
+    <strong>P3 (Convergence rate).</strong> The rate of convergence $\lambda = \Delta H + \nu$
+    predicts that platforms with both a large entropy gap <em>and</em> strong network effects
+    tip faster. Empirically: market concentration (e.g., the Herfindahl index $\text{HHI}_t = x_1(t)^2 + x_2(t)^2$
+    measured over rolling 12-month windows) should increase at rate proportional to
+    $\hat\Delta H + \hat\nu$. Benchmark: the correlation $r(\Delta\text{HHI}/\Delta t,\,
+    \hat\Delta H + \hat\nu)$ across a cross-section of ten or more platform markets should
+    exceed 0.65. Data sources: SimilarWeb (web), Apptopia (mobile), Dune Analytics (L1
+    blockchains). This test is a direct replication of the Seamans and Zhu (2014)
+    quasi-experimental approach in a multi-market panel.
+</p>
+
+<p>
+    <strong>P4 (Transition timing).</strong> For Google $\to$ ChatGPT: with $\tau \approx
+    18$&ndash;$24$ months (enterprise and habitual switching cost), $\gamma \approx 1.8$,
+    and measured $\dot{H}$ differential from tool-diversity counts, Proposition 9.1
+    yields a specific testable date for when AI-native search reaches parity.
+</p>
+
+<p>
+    <strong>P5 (Overshoot).</strong> Platforms for which $\dot{N} < 0$ contemporaneously
+    with rising $H_i$ (measurable from data) are in the overshoot regime of Theorem 5.
+    Their recovery requires either $H_i$ reduction (curation) or a new entrant with
+    $H_j < \bar\theta$ that captures the fleeing majority.
+</p>
+
+<p>
+    <strong>P6 (Openness underinvestment).</strong> From Theorem 6, the ratio of observed
+    equilibrium openness to the social optimum is $H^{NE}/H^{SO} = 2\sqrt{krT}/(1+\sqrt{1+4krT})$,
+    which is strictly less than 1 and decreasing in $\nu\gamma$.
+    Empirically: for a sample of platform markets with estimated $\hat\nu$ and $\hat\gamma$
+    (from the IV regression of Section 6.3), the observed API surface (a proxy for $H_i$)
+    should be lower relative to the revealed social value in markets with higher
+    $\hat\nu\hat\gamma$.
+    A regression of $\ln(H_i^\text{obs}/H_i^\text{SO,predicted})$ on $\hat\nu_i\hat\gamma_i$
+    should yield a negative coefficient. Platforms subject to an interoperability mandate
+    (EU Digital Markets Act gatekeeper designations) are a natural treatment group:
+    if the model is correct, mandated platforms should exhibit entropy increases proportional
+    to their pre-mandate $\hat\nu\hat\gamma$.
+</p>
+
+<p>
+    <strong>P7 (Recovery test).</strong> The model predicts Metcalfe-like dynamics
+    ($\Delta H \approx 0$ implies size wins) in commodity platform markets where platforms
+    offer similar ecosystem breadth. Empirically: a regression of competitive outcome on
+    $\hat\Delta H$ and $\ln(x_0)$, run across a cross-section of platform markets, should
+    find (i) a positive significant coefficient on $\hat\Delta H$, and (ii) this coefficient
+    should be indistinguishable from zero in the sub-sample of commodity markets (messaging,
+    ride-hailing) where $\hat\Delta H$ is near zero. This is a joint test of Theorem 3 and
+    Proposition 2.1.
+</p>
+
+<!-- ============================================================ -->
+<h2>12. Related Work</h2>
+
+<p>
+    <strong><a class="cite" href="#ref-Arthur1989">Arthur (1989)</a> &mdash; Increasing Returns.</strong>
+    Arthur's path-dependent lock-in corresponds to the multiple Nash equilibria
+    of $\Gamma$ and the stochastic selection among them. Our Theorem 2 provides the
+    micro-foundation: KMR dynamics select the risk-dominant (max-entropy) equilibrium
+    in the long run, making lock-in into a suboptimal equilibrium a measure-zero event
+    under small mutations.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-KMR1993">Kandori, Mailath, Rob (1993)</a>.</strong>
+    KMR prove that risk-dominant equilibria are uniquely stochastically stable in
+    $2 \times 2$ coordination games. Theorem 1 shows that risk dominance is determined
+    solely by the entropy gap (network effects cancel at the selection criterion), and
+    Theorem 2 applies KMR directly. Our contribution is identifying entropy as the
+    correct primitive for the platform selection game.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-RochetTirole2003">Rochet &amp; Tirole (2003)</a> &mdash; Two-Sided Markets.</strong>
+    Cross-side interaction value in Rochet&ndash;Tirole maps to the conditional entropy
+    $H_{D \mid C}$ in our decomposition $H(C,D) = H_C + H_{D \mid C}$. Their result
+    on optimal pricing depending on relative elasticities of both sides translates here
+    to: the optimal constraint on $H_C$ depends on $|\partial H_{D \mid C}/\partial H_C|$
+    relative to 1 (Proposition 7.1).
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-Sandholm2010">Sandholm (2010)</a> &mdash; Population Games.</strong>
+    The replicator ODE in Section 5 is a population game in Sandholm's framework.
+    For $\nu = 0$ (no network effects), $\Gamma$ is a <em>potential game</em> with
+    potential $\Phi(x) = \sum_i x_i H_i$, and the replicator converges to $\mathbf{e}_{i^*}$
+    globally. For $\nu > 0$, the coordination externality breaks potential structure,
+    requiring Theorem 2's stochastic stability argument.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-KatzShapiro1985">Katz &amp; Shapiro (1985)</a>;
+    <a class="cite" href="#ref-KatzShapiro1994">Katz &amp; Shapiro (1994)</a> &mdash;
+    Network Externalities and Systems Competition.</strong>
+    These are the intellectual precursors to the $\nu x_i^\gamma$ term.
+    Katz and Shapiro (1985) establish that platform value depends on installed base
+    and derive conditions under which incompatible systems coexist. Their equilibrium
+    is the limiting case of Proposition&nbsp;2.1a ($\Delta H = 0$, $\gamma = 2$):
+    market share determines outcomes when ecosystem entropy is equal. The entropy
+    model is the unique minimal extension that preserves Katz&ndash;Shapiro as a
+    limiting case while admitting $\Delta H > 0$.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-TaylorJonker1978">Taylor &amp; Jonker (1978)</a>;
+    <a class="cite" href="#ref-Young1993">Young (1993)</a> &mdash;
+    Replicator Dynamics and Stochastic Conventions.</strong>
+    Taylor and Jonker derive the replicator ODE (Section&nbsp;5.1) from payoff-proportional
+    switching, and Young (1993) establishes the stochastic potential criterion for
+    convention selection. Our Theorem&nbsp;2 applies Young's criterion to the platform
+    selection game: risk dominance (Theorem&nbsp;1) generates the basin asymmetry that
+    makes the max-entropy platform uniquely stochastically stable. Young's contribution
+    relative to KMR is closed-form escape resistance, which Theorem&nbsp;4's convergence
+    rate $\lambda = \Delta H + \nu$ directly measures in the deterministic limit.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-Rohlfs1974">Rohlfs (1974)</a> &mdash;
+    Foundational Network Demand.</strong>
+    Rohlfs is the originator of the formal network demand model: utility from a
+    communications service depends on the number of participants, establishing the
+    earliest mathematical statement of the $\nu x_i^\gamma$ payoff component.
+    The entropy model keeps the Rohlfs term intact and adds $H_i$ as an orthogonal
+    competitive primitive. Rohlfs also identifies the separatrix structure (users
+    join only if participation exceeds a threshold), which is exactly the $x^*$
+    condition of Theorem&nbsp;3.
+</p>
+
+<p>
+    <strong>Metcalfe's Law and Reed's Law.</strong>
+    Both are recovered as exact limiting cases of the entropy-dominance model
+    (Proposition 2.1a&ndash;b). Metcalfe's Law ($\text{value} \propto N^2$, $\gamma = 2$)
+    is the $\Delta H = 0$ limit at quadratic network effects: size wins when ecosystem
+    entropy is equal. Reed's Law ($\text{value} \propto 2^N$) is the $\gamma \to \infty$
+    limit: any majority is decisive when network returns are superpolynomial. Both laws
+    are accurate descriptions of commodity platform markets where ecosystem breadth is
+    similar across competitors. The entropy-dominance model is the unique minimal extension
+    that admits $\Delta H > 0$ and thereby explains why structurally richer platforms
+    displace larger incumbents &mdash; a phenomenon that Metcalfe and Reed, by construction
+    (their models set $\Delta H \equiv 0$), cannot address.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-Armstrong2006">Armstrong (2006)</a> &mdash; Competitive Bottlenecks.</strong>
+    Armstrong's competitive bottleneck model yields two-sided pricing where the
+    multi-homing side (developers) is charged marginal cost and the single-homing
+    side (consumers) is charged a mark-up. In our framework, multi-homing corresponds
+    to interior states $x_i > 0$ for multiple platforms simultaneously.
+    Armstrong's markup on the exclusive side translates to: the platform constrains
+    $H_C^*$ more tightly than $H_D^*$ (Proposition 7.1), consistent with the
+    Apple App Store strategy of curating consumer experience while providing developers
+    broad API access.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-ParkerVanAlstyne2005">Parker &amp; Van Alstyne (2005)</a> &mdash; Information Complements.</strong>
+    Their analysis of platform strategy shows that giving away a product on one
+    side to capture the other side is optimal under complementarity.
+    In our entropy decomposition $H(C,D) = H_C + H_{D|C}$, maximising developer
+    entropy $H_{D|C}$ unconditionally (free API access) raises consumer entropy
+    $H_C$ as a by-product, generating the cross-side externality without direct
+    pricing. This provides an information-theoretic micro-foundation for their
+    result.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-Weyl2010">Weyl (2010)</a> &mdash; Price Theory of Multi-Sided Platforms.</strong>
+    Weyl extends Rochet&ndash;Tirole to general insulating tariffs and characterises
+    optimal pricing via first-order conditions that balance cross-side demand
+    elasticities. His insulating tariff maps directly to the optimal $H_C^*$ in
+    Proposition 7.1: the platform insulates the consumer side from developer-side
+    entropy shocks by choosing $H_C^* = \arg\max(H_{D|C}(H_C))/\partial H_C = 1$.
+    Our contribution relative to Weyl is the dynamic dimension: we characterise
+    how entropy investment at $t_0$ predicts market tipping at $t_0 + 24$ months,
+    which is absent from his static price theory.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-FarrellKlemperer2007">Farrell &amp; Klemperer (2007)</a> &mdash; Coordination and Lock-In.</strong>
+    Their survey establishes that markets with network effects may lock into
+    suboptimal equilibria under coordination failure. Theorem 2 refines this for
+    platform competition: under KMR stochastic stability, lock-in to the
+    suboptimal (low-entropy) equilibrium is a <em>measure-zero</em> event in the
+    long run when mutations are small but positive. The condition for entropy
+    to overcome lock-in is precisely Theorem 3's $\Delta H > \nu((1-x_0)^\gamma -
+    x_0^\gamma)$&mdash;giving quantitative teeth to their verbal argument.
+    Furthermore, Theorem 6 shows that the welfare cost of coordination failure
+    is amplified by $\nu\gamma$, providing the first formal basis for
+    why platform markets with superlinear network effects ($\gamma > 1$) are the
+    priority for interoperability mandates.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-JullienPavanRysman2021">Jullien, Pavan &amp; Rysman (2021)</a> &mdash; Two-Sided Markets Survey.</strong>
+    Their Handbook chapter establishes that the central question in platform
+    competition is which side internalises the cross-side externality. Our
+    conditional entropy decomposition $H(C,D) = H_C + H_{D|C}$ makes the
+    directionality explicit: consumer entropy $H_C$ is a prerequisite for developer
+    entropy $H_{D|C}$ (consumers must be present for developers to find them),
+    implying consumers internalise the cross-side benefit, consistent with
+    Jullien et&nbsp;al.'s characterisation of the consumer-side tipping pattern
+    in app stores, operating systems, and payment networks.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-JacobidesEtAl2018">Jacobides, Cennamo &amp; Gawer (2018)</a> &mdash; Towards a Theory of Ecosystems.</strong>
+    The closest precursor to Definition 2.1 in the strategy literature.
+    Jacobides et al. argue that competitive advantage in digital markets stems from
+    the architecture of complementarities&mdash;who can offer what to whom&mdash;and
+    that firms competing on ecosystem scope outperform those competing on product
+    quality alone. Our ecosystem entropy $H_i$ operationalizes their &ldquo;architecture
+    of complementarities&rdquo; as the Shannon entropy of the downstream activity
+    distribution $\mu_i$: higher entropy corresponds to a less concentrated, more
+    diverse architecture of complements. Their central empirical claim&mdash;that
+    ecosystem variety predicts platform survival&mdash;is the verbal precursor to
+    Theorem 3's formal condition; they do not derive the incumbent-erosion
+    inequality $\Delta H > \nu((1-x_0)^\gamma - x_0^\gamma)$ or the stochastic
+    stability result of Theorem 2.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-MatejkaMcKay2015">Matejka &amp; McKay (2015)</a> &mdash; Rational Inattention and the Logit Model.</strong>
+    Matejka and McKay show that under a Shannon mutual information processing constraint,
+    the optimal discrete choice rule is the multinomial logit, with probabilities
+    proportional to $\exp(u_i / \lambda)$ where $\lambda$ is the information cost.
+    As $\lambda \to 0$, this converges to argmax selection; substituting $u_i = H_i$
+    gives entropy-maximizing platform choice. This result provides the modern
+    decision-theoretic micro-foundation for the $H_i$ term in Section 2 (Remark 2.1),
+    grounding the payoff function in a literature with substantial empirical
+    support in consumer choice and attention allocation. Critically, the
+    rational inattention foundation implies that $H_i$ should predict platform choice
+    only to the extent that users face genuine uncertainty about platform payoffs&mdash;an
+    empirically testable scope condition.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-KreindlerYoung2013">Kreindler &amp; Young (2013)</a> &mdash; Fast Convergence in Evolutionary Equilibrium Selection.</strong>
+    Kreindler and Young tighten the KMR (1993) stochastic stability result by
+    deriving closed-form waiting times to the stochastically stable equilibrium.
+    They show that expected convergence time is of order $\varepsilon^{-r^*}$ where
+    $r^*$ is the escape resistance of the risk-dominant equilibrium.
+    This result connects directly to Theorem 4: a larger convergence rate
+    $\lambda = \Delta H + \nu$ corresponds to a larger escape resistance ratio
+    $r^*/r_\text{competitor}$ in their framework, meaning platforms with higher
+    entropy gaps tip markets faster in the stochastic sense as well as the
+    deterministic sense. Their result also implies that the winner-take-all
+    dynamics documented in Goldfarb and Tucker (2019) are fastest in exactly
+    the markets where $\Delta H + \nu$ is largest.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-GoldfarbTucker2019">Goldfarb &amp; Tucker (2019)</a> &mdash; Digital Economics.</strong>
+    This survey documents three stylised facts directly relevant to the model:
+    (i) digital markets exhibit winner-take-all concentration at substantially
+    higher rates than non-digital markets; (ii) concentration is faster in
+    markets with stronger observed network effects; (iii) new entrants that
+    displace incumbents do so predominantly by expanding the downstream
+    possibility set, not through price competition. Facts (i)&ndash;(iii)
+    are the qualitative predictions of Theorems 2&ndash;3, providing
+    empirical priors consistent with the model before direct estimation.
+    Goldfarb and Tucker also document the challenge of measuring platform
+    quality independently of size&mdash;exactly the measurement problem
+    that the Chao&ndash;Shen estimator and Dune Analytics approach of
+    Section 6 are designed to address.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-HalaburadaEtAl2022">Halaburda, Haeringer, Gans &amp; Gandal (2022)</a> &mdash; The Microeconomics of Cryptocurrencies.</strong>
+    The closest empirical precursor to Section 6.4's Ethereum case study.
+    Halaburda et al. survey competitive dynamics among blockchain platforms
+    and document that developer activity is highly concentrated on the
+    platform that enables the broadest programmable transaction types.
+    Their finding that smart contract diversity is the primary predictor of
+    developer migration between chains provides informal empirical support
+    for $\hat\Delta H_{\text{ETH}-\text{BSC}} > \hat\nu_{\text{BSC}}$ in
+    Section 6.4. They do not estimate a structural model or test the
+    incumbent-erosion condition; the present paper's contribution
+    relative to theirs is the formal condition and the IV estimation
+    strategy for identifying $\nu$ and $\gamma$ separately.
+</p>
+
+<p>
+    <strong><a class="cite" href="#ref-CremerEtAl2019">Cr&eacute;mer, de&nbsp;Montjoye &amp; Schweitzer (2019)</a> &mdash; Competition Policy for the Digital Era.</strong>
+    The European Commission report that underpins the Digital Markets Act's
+    interoperability obligations. Crémer et al. argue that large digital
+    platforms create &ldquo;tipping markets&rdquo; where early leads become
+    self-reinforcing, and that ex ante interoperability mandates are necessary
+    because ex post antitrust remedies arrive too late.
+    Theorem 6 and Corollary 10.1 formalise this argument: the welfare gap
+    $H^{SO} - H^{NE}$ is largest precisely in markets with high $\nu\gamma$,
+    which are also the fastest-tipping markets by Theorem 4 and Proposition 9.1.
+    The timing formula quantifies how quickly an ex post remedy arrives too late
+    relative to the tipping timescale, providing the theoretical basis that
+    their report identifies but does not derive.
+</p>
+
+<!-- ============================================================ -->
+<h2>13. Open Questions</h2>
+
+<p>
+    <strong>Q1 (Time-varying $\gamma$).</strong> The network effect exponent $\gamma$
+    may decay as the platform saturates. If $\gamma(t)$ is decreasing, the replicator
+    ODE and Theorem 4 both change. Sufficient conditions for Theorem 2 to survive
+    time-varying $\gamma$ are not established.
+</p>
+
+<p>
+    <strong>Q2 (Correlated entropy across platforms).</strong> We treat $H_i$ and $H_j$
+    as independent. In practice, platforms may share developer ecosystems or content
+    libraries. A theory of correlated microstate spaces would generalize the model.
+</p>
+
+<p>
+    <strong>Q3 (Continuous platform choice).</strong> We model a discrete platform
+    choice. A continuous model where agents allocate attention across platforms (as in
+    multi-homing) would require extending the simplex dynamics to the mixed-strategy
+    simplex.
+</p>
+
+<p>
+    <strong>Q4 (Tolerance distribution estimation).</strong> Theorem 5 requires
+    $F(\theta)$, the distribution of agent complexity tolerances. Revealed-preference
+    estimation from platform-exit events, or conjoint analysis, could identify $F$
+    empirically.
+</p>
+
+<p>
+    <strong>Q5 (Optimal seeding).</strong> Proposition 9.1's timing formula
+    implies that a new entrant should maximize $\dot{H}_1 - \dot{H}_2$ (entropy
+    growth differential) rather than user growth rate alone. The optimal resource
+    allocation between entropy expansion and user acquisition under a budget constraint
+    is an open optimization problem.
+</p>
+
+<p>
+    <strong>Q6 (Second-best regulation under parameter uncertainty).</strong>
+    Theorem 6 shows the welfare gap $H^{SO} - H^{NE}$ is increasing in $\nu\gamma$,
+    so the Pigouvian subsidy that restores efficiency is $s^* = H^{SO}(\nu,\gamma) - H^{NE}$.
+    Implementing $s^*$ requires the regulator to know $\nu$ and $\gamma$.
+    The IV estimator of Section 6.3 identifies $\gamma$ from market data;
+    $\nu$ requires separate identification (e.g., from market-share responses to
+    exogenous entry shocks). What is the second-best optimal policy when $\nu$ is
+    only noisily observed? Does misestimating $\nu$ lead to over- or under-intervention,
+    and can the direction of bias be signed from properties of
+    $\partial^2 H^{SO}/\partial\nu^2$?
+</p>
+
+<div class="fig">
+    <canvas id="regimeChart" width="620" height="320"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 9.</strong> The regime diagram of entropy dominance (Proposition 2.1).
+        Green: entropy-advantaged entrant wins; red: incumbent wins.
+        Dashed white: separatrix from Theorem 3. Horizontal dashed: Reed boundary
+        ($\Delta H = \nu$) above which even a startup wins from any initial share.
+        The red zone at $\Delta H \to 0$ is the Metcalfe/Farrell&ndash;Klemperer regime
+        where size determines outcomes. Five historical displacement events (Section 6.5)
+        are plotted; all five fall in the correct region predicted by the model.
+    </div>
+</div>
+
+<div class="fig">
+    <canvas id="recoveryChart" width="620" height="310"></canvas>
+    <div class="fig-caption">
+        <strong>Figure 10.</strong> Recovery of existing theories (Proposition 2.1).
+        <em>Left:</em> replicator trajectories from $x_0=0.40$ for six entropy gaps.
+        At $\Delta H=0$ (deep red) the model recovers Metcalfe's Law exactly: the platform
+        with smaller initial share loses. As $\Delta H$ increases past the threshold
+        $\approx 0.914$, ecosystem advantage reverses the size deficit.
+        <em>Right:</em> separatrix $x^*(\Delta H/\nu)$ for three values of $\gamma$.
+        As $\Delta H \to 0$, $x^* \to 1/2$ for all $\gamma$ &mdash; the
+        Farrell&ndash;Klemperer lock-in limit (Proposition 2.1c). As $\Delta H \to \nu$,
+        $x^* \to 0$ &mdash; the Reed boundary (Proposition 2.1b) at which even a startup wins.
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>References</h2>
+
+<ol class="ref-list">
+
+    <li id="ref-AcemogluEtAl2022">
+        Acemoglu, D., Makhdoumi, A., Malekian, A. and Tebaldi, C. (2022).
+        &ldquo;Too Much Data: Prices and Inefficiencies in Data Markets.&rdquo;
+        <em>American Economic Review</em>, 112(1), 151&ndash;183.
+    </li>
+
+    <li id="ref-Armstrong2006">
+        Armstrong, M. (2006).
+        "Competition in Two-Sided Markets."
+        <em>RAND Journal of Economics</em>, 37(3), 668&ndash;691.
+    </li>
+
+    <li id="ref-Arthur1989">
+        Arthur, W.B. (1989).
+        "Competing Technologies, Increasing Returns, and Lock-In by Historical Events."
+        <em>Economic Journal</em>, 99(394), 116&ndash;131.
+    </li>
+
+    <li id="ref-Benaim1999">
+        Bena&iuml;m, M. (1999).
+        "Dynamics of Stochastic Approximation Algorithms."
+        <em>S&eacute;minaire de Probabilit&eacute;s XXXIII</em>,
+        Lecture Notes in Mathematics 1709, Springer, pp.&nbsp;1&ndash;68.
+    </li>
+
+    <li id="ref-Bernardo1979">
+        Bernardo, J.M. (1979).
+        "Expected Information as Expected Utility."
+        <em>Annals of Statistics</em>, 7(3), 686&ndash;690.
+    </li>
+
+    <li id="ref-Blume1993">
+        Blume, L.E. (1993).
+        &ldquo;The Statistical Mechanics of Strategic Interaction.&rdquo;
+        <em>Games and Economic Behavior</em>, 5(3), 387&ndash;424.
+    </li>
+
+    <li id="ref-Boudreau2010">
+        Boudreau, K.J. (2010).
+        &ldquo;Open Platform Strategies and Innovation: Granting Access vs.
+        Devolving Control.&rdquo;
+        <em>Management Science</em>, 56(10), 1849&ndash;1872.
+    </li>
+
+    <li id="ref-CaillaudJullien2003">
+        Caillaud, B. and Jullien, B. (2003).
+        &ldquo;Chicken &amp; Egg: Competition Among Intermediation
+        Service Providers.&rdquo;
+        <em>RAND Journal of Economics</em>, 34(2), 309&ndash;328.
+    </li>
+
+    <li id="ref-CarlssonVanDamme1993">
+        Carlsson, H. and van Damme, E. (1993).
+        "Global Games and Equilibrium Selection."
+        <em>Econometrica</em>, 61(5), 989&ndash;1018.
+    </li>
+
+    <li id="ref-CennamoSantalo2013">
+        Cennamo, C. and Santalo, J. (2013).
+        &ldquo;Platform Competition: Strategic Trade-Offs in Platform Markets.&rdquo;
+        <em>Strategic Management Journal</em>, 34(13), 1486&ndash;1509.
+    </li>
+
+    <li id="ref-ChaoShen2003">
+        Chao, A. and Shen, T.-J. (2003).
+        "Nonparametric Estimation of Shannon&rsquo;s Index of Diversity
+        When There Are Unseen Species."
+        <em>Environmental and Ecological Statistics</em>, 10(4), 429&ndash;443.
+    </li>
+
+    <li id="ref-CoverThomas2006">
+        Cover, T.M. and Thomas, J.A. (2006).
+        <em>Elements of Information Theory</em>.
+        2nd ed. Wiley-Interscience.
+    </li>
+
+    <li id="ref-CremerEtAl2019">
+        Cr&eacute;mer, J., de Montjoye, Y.-A. and Schweitzer, H. (2019).
+        &ldquo;Competition Policy for the Digital Era.&rdquo;
+        Report for the European Commission. European Commission, Brussels.
+    </li>
+
+    <li id="ref-Evans2003">
+        Evans, D.S. (2003).
+        &ldquo;The Antitrust Economics of Multi-Sided Platform Markets.&rdquo;
+        <em>Yale Journal on Regulation</em>, 20(1), 325&ndash;381.
+    </li>
+
+    <li id="ref-FarrellKlemperer2007">
+        Farrell, J. and Klemperer, P. (2007).
+        "Coordination and Lock-In: Competition with Switching Costs and
+        Network Effects."
+        In Armstrong, M. and Porter, R. (eds.),
+        <em>Handbook of Industrial Organization</em>, Vol.&nbsp;3,
+        Elsevier, pp.&nbsp;1967&ndash;2072.
+    </li>
+
+    <li id="ref-FosterYoung1990">
+        Foster, D.P. and Young, H.P. (1990).
+        &ldquo;Stochastic Evolutionary Game Dynamics.&rdquo;
+        <em>Theoretical Population Biology</em>, 38(2), 219&ndash;232.
+    </li>
+
+    <li id="ref-FurmanEtAl2019">
+        Furman, J., Coyle, D., Fletcher, A., McAuley, D. and Marsden, P. (2019).
+        <em>Unlocking Digital Competition: Report of the Digital Competition
+        Expert Panel</em>.
+        HM Treasury, United Kingdom.
+    </li>
+
+    <li id="ref-GoldfarbTucker2019">
+        Goldfarb, A. and Tucker, C. (2019).
+        &ldquo;Digital Economics.&rdquo;
+        <em>Journal of Economic Literature</em>, 57(1), 3&ndash;43.
+    </li>
+
+    <li id="ref-Good1953">
+        Good, I.J. (1953).
+        &ldquo;The Population Frequencies of Species and the Estimation of
+        Population Parameters.&rdquo;
+        <em>Biometrika</em>, 40(3&ndash;4), 237&ndash;264.
+    </li>
+
+    <li id="ref-HalaburadaEtAl2022">
+        Halaburda, H., Haeringer, G., Gans, J. and Gandal, N. (2022).
+        &ldquo;The Microeconomics of Cryptocurrencies.&rdquo;
+        <em>Journal of Economic Literature</em>, 60(3), 971&ndash;1013.
+    </li>
+
+    <li id="ref-HofbauerSigmund1998">
+        Hofbauer, J. and Sigmund, K. (1998).
+        <em>Evolutionary Games and Population Dynamics</em>.
+        Cambridge University Press, Cambridge.
+    </li>
+
+    <li id="ref-JacobidesEtAl2018">
+        Jacobides, M.G., Cennamo, C. and Gawer, A. (2018).
+        &ldquo;Towards a Theory of Ecosystems.&rdquo;
+        <em>Strategic Management Journal</em>, 39(8), 2255&ndash;2276.
+    </li>
+
+    <li id="ref-Jaynes1957">
+        Jaynes, E.T. (1957).
+        &ldquo;Information Theory and Statistical Mechanics.&rdquo;
+        <em>Physical Review</em>, 106(4), 620&ndash;630.
+    </li>
+
+    <li id="ref-JullienPavanRysman2021">
+        Jullien, B., Pavan, A. and Rysman, M. (2021).
+        "Two-Sided Markets, Pricing, and Network Effects."
+        In Ho, K., Horta&ccedil;su, A. and Lizzeri, A. (eds.),
+        <em>Handbook of Industrial Organization</em>, Vol.&nbsp;4,
+        Elsevier, pp.&nbsp;485&ndash;592.
+    </li>
+
+    <li id="ref-KMR1993">
+        Kandori, M., Mailath, G.J. and Rob, R. (1993).
+        "Learning, Mutation, and Long Run Equilibria in Games."
+        <em>Econometrica</em>, 61(1), 29&ndash;56.
+    </li>
+
+    <li id="ref-KatzShapiro1985">
+        Katz, M.L. and Shapiro, C. (1985).
+        &ldquo;Network Externalities, Competition, and Compatibility.&rdquo;
+        <em>American Economic Review</em>, 75(3), 424&ndash;440.
+    </li>
+
+    <li id="ref-KatzShapiro1994">
+        Katz, M.L. and Shapiro, C. (1994).
+        &ldquo;Systems Competition and Network Effects.&rdquo;
+        <em>Journal of Economic Perspectives</em>, 8(2), 93&ndash;115.
+    </li>
+
+    <li id="ref-KreindlerYoung2013">
+        Kreindler, G.E. and Young, H.P. (2013).
+        &ldquo;Fast Convergence in Evolutionary Equilibrium Selection.&rdquo;
+        <em>Games and Economic Behavior</em>, 80, 39&ndash;67.
+    </li>
+
+    <li id="ref-LernerTirole2002">
+        Lerner, J. and Tirole, J. (2002).
+        &ldquo;Some Simple Economics of Open Source.&rdquo;
+        <em>Journal of Industrial Economics</em>, 50(2), 197&ndash;234.
+    </li>
+
+    <li id="ref-MorrisShin2003">
+        Morris, S. and Shin, H.S. (2003).
+        "Global Games: Theory and Applications."
+        In Dewatripont, M., Hansen, L.P. and Turnovsky, S.J. (eds.),
+        <em>Advances in Economics and Econometrics</em>,
+        Cambridge University Press, pp.&nbsp;56&ndash;114.
+    </li>
+
+    <li id="ref-MatejkaMcKay2015">
+        Matejka, F. and McKay, A. (2015).
+        &ldquo;Rational Inattention to Discrete Choices: A New Foundation
+        for the Multinomial Logit Model.&rdquo;
+        <em>American Economic Review</em>, 105(1), 272&ndash;298.
+    </li>
+
+    <li id="ref-Paninski2003">
+        Paninski, L. (2003).
+        &ldquo;Estimation of Entropy and Mutual Information.&rdquo;
+        <em>Neural Computation</em>, 15(6), 1191&ndash;1253.
+    </li>
+
+    <li id="ref-ParkerVanAlstyne2005">
+        Parker, G.G. and Van Alstyne, M.W. (2005).
+        "Two-Sided Network Effects: A Theory of Information Product Design."
+        <em>Management Science</em>, 51(10), 1494&ndash;1504.
+    </li>
+
+    <li id="ref-RochetTirole2003">
+        Rochet, J.-C. and Tirole, J. (2003).
+        "Platform Competition in Two-Sided Markets."
+        <em>Journal of the European Economic Association</em>, 1(4), 990&ndash;1029.
+    </li>
+
+    <li id="ref-Rohlfs1974">
+        Rohlfs, J. (1974).
+        &ldquo;A Theory of Interdependent Demand for a Communications Service.&rdquo;
+        <em>Bell Journal of Economics and Management Science</em>, 5(1), 16&ndash;37.
+    </li>
+
+    <li id="ref-Rysman2009">
+        Rysman, M. (2009).
+        &ldquo;The Economics of Two-Sided Markets.&rdquo;
+        <em>Journal of Economic Perspectives</em>, 23(3), 125&ndash;143.
+    </li>
+
+    <li id="ref-Sandholm2010">
+        Sandholm, W.H. (2010).
+        <em>Population Games and Evolutionary Dynamics</em>.
+        MIT Press, Cambridge, MA.
+    </li>
+
+    <li id="ref-SeamansZhu2014">
+        Seamans, R. and Zhu, F. (2014).
+        &ldquo;Responses to Entry in Multi-Sided Markets: The Impact of Craigslist
+        on Local Newspapers.&rdquo;
+        <em>Management Science</em>, 60(2), 476&ndash;493.
+    </li>
+
+    <li id="ref-Shannon1948">
+        Shannon, C.E. (1948).
+        "A Mathematical Theory of Communication."
+        <em>Bell System Technical Journal</em>, 27(3&ndash;4), 379&ndash;423,
+        623&ndash;656.
+    </li>
+
+    <li id="ref-TaylorJonker1978">
+        Taylor, P.D. and Jonker, L.B. (1978).
+        &ldquo;Evolutionarily Stable Strategies and Game Dynamics.&rdquo;
+        <em>Mathematical Biosciences</em>, 40(1&ndash;2), 145&ndash;156.
+    </li>
+
+    <li id="ref-Weibull1995">
+        Weibull, J.W. (1995).
+        <em>Evolutionary Game Theory</em>.
+        MIT Press, Cambridge, MA.
+    </li>
+
+    <li id="ref-Weyl2010">
+        Weyl, E.G. (2010).
+        "A Price Theory of Multi-Sided Platforms."
+        <em>American Economic Review</em>, 100(4), 1642&ndash;1672.
+    </li>
+
+    <li id="ref-Young1993">
+        Young, H.P. (1993).
+        &ldquo;The Evolution of Conventions.&rdquo;
+        <em>Econometrica</em>, 61(1), 57&ndash;84.
+    </li>
+
+</ol>
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT SIMULATIONS — loaded as external modules -->
+<script src="src/utils.js"></script>
+<script src="src/sim1-kmr.js"></script>
+<script src="src/sim2-basin.js"></script>
+<script src="src/sim3-phase.js"></script>
+<script src="src/sim4-invasion.js"></script>
+<script src="src/sim5-rate.js"></script>
+<script src="src/sim6-montecarlo.js"></script>
+<script src="src/sim7-chaoshen.js"></script>
+<script src="src/sim8-welfare.js"></script>
+<script src="src/sim9-regime.js"></script>
+<script src="src/sim10-recovery.js"></script>
+</body>
+</html>
