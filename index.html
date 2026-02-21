@@ -681,8 +681,30 @@ This size asymmetry is the escape-resistance gap that drives long-run selection.
 <h3>5.1 The Replicator ODE</h3>
 
 <p>
+    The replicator ODE is adopted as the dynamic law for three reasons.
+    First, it is the unique dynamics satisfying payoff-monotonicity (platforms with
+    above-average payoff grow in share) and the Folk Theorem of evolutionary game
+    theory: Nash equilibria are the only rest points, and strictly dominated strategies
+    are eliminated (<a class="cite" href="#ref-Weibull1995">Weibull 1995</a>,
+    Ch.&nbsp;3; <a class="cite" href="#ref-Sandholm2010">Sandholm 2010</a>, Thm.&nbsp;5.4).
+    Second, it provides the cleanest analytical characterisation of the separatrix
+    $x^*$ and convergence rate $\lambda$; alternative dynamics (best-response,
+    logit, Brown&ndash;von Neumann&ndash;Nash) produce qualitatively similar corners
+    and interior equilibria but less tractable transition expressions.
+    Third, in platform markets with large populations of heterogeneous adopters —
+    the empirical settings of Section&nbsp;6 — aggregate share dynamics are well
+    approximated by population-level ODEs even when individual switching is lumpy,
+    by a law-of-large-numbers argument (see <a class="cite" href="#ref-Sandholm2010">Sandholm 2010</a>, Ch.&nbsp;10).
+    Results that depend only on the existence and location of $x^*$ (Theorems&nbsp;2
+    and&nbsp;3) are robust across all payoff-monotone dynamics; results that depend on
+    the specific rate $\lambda = \Delta H + \nu$ (Theorem&nbsp;4, Proposition&nbsp;9.1)
+    are specific to the replicator and should be interpreted as approximations in
+    markets where switching is discrete.
+</p>
+
+<p>
     Under the standard replicator dynamics&mdash;agents switch to platforms with
-    above-average payoff at a rate proportional to the payoff difference (<a class="cite" href="#ref-Weibull1995">Weibull 1995</a>)&mdash;the
+    above-average payoff at a rate proportional to the payoff difference&mdash;the
     population state evolves as:
 </p>
 
@@ -893,6 +915,9 @@ speed add, without interaction.</p>
 
 <div class="proposition">
     <span class="prop-label">Proposition 6.1 (Rational Incumbent Passivity).</span>
+    <em>Note: this proposition is stated here, in Section&nbsp;5, because it
+    characterises Phase I behaviour under the replicator ODE; it is numbered 6.1
+    because Part&nbsp;(ii) appeals to the openness game of Section&nbsp;10.</em>
     Suppose $x_1(t_0) < x^*$ (the entrant is in Phase I). Under deterministic
     replicator dynamics:
     <ol type="i">
@@ -1473,7 +1498,7 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
 </p>
 
 <div class="remark">
-    <span class="rem-label">Remark 7.2 (Plausibility of the Curation Condition).</span>
+    <span class="rem-label">Remark 7.1 (Plausibility of the Curation Condition).</span>
     The condition $\partial H_{D \mid C}/\partial H_C < -1$ in Proposition&nbsp;7.1 is an
     empirical claim, not a theorem. It requires that a marginal tightening of consumer
     curation raises conditional developer diversity by more than it costs in consumer-side
@@ -1492,7 +1517,7 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
 </div>
 
 <div class="remark">
-    <span class="rem-label">Remark 7.1 (Correction to Prior Drafts).</span>
+    <span class="rem-label">Remark 7.2 (Correction to Prior Drafts).</span>
     Earlier versions of this paper used the decomposition $H = H_C + H_D + I(C;D)
     + H_\text{platform}$. This is mathematically invalid: substituting
     $I(C;D) = H_C + H_D - H(C,D)$ gives $H = 2H_C + 2H_D - H(C,D)
@@ -1544,7 +1569,9 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     $\partial\phi/\partial H_i < 0$; this is a strict majority when $H_i > \bar\theta$.
     Net outflow dominates when the aggregate disutility exceeds the network retention
     benefit $\nu x_i^\gamma$, which occurs at finite $H_i > \bar\theta$ for sufficiently
-    large $H_i - \bar\theta$ by continuity of $\phi$.
+    large $H_i - \bar\theta$ by continuity of $\phi$. (This existence argument is
+    qualitative; Lemma&nbsp;8.1 below supplies an explicit closed-form threshold under
+    the uniform-tolerance, quadratic-$\phi$ specification.)
     Part (2): follows from the replicator equation applied to the modified utility.
     Part (3): at $H_j < \bar\theta$, platform $j$'s entropy is sub-threshold for the
     majority, $\partial u_j/\partial H_j > 0$ for agents with $\theta_j > H_j$ (majority),
@@ -1652,9 +1679,10 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
         <li><em>Stage&nbsp;1 (Investment).</em> Each platform $i \in \{1,2\}$ simultaneously
         chooses entropy level $H_i \geq 0$ at convex cost $K(H_i) = \tfrac{k}{2}H_i^2$, $k > 0$.</li>
         <li><em>Stage&nbsp;2 (Competition).</em> Agents play $\Gamma$ (Definition 2.3).
-        By Theorem 2, platform $i$ wins the market (obtains gross revenue $rT$, $r,T > 0$)
-        with probability approximated by the Tullock contest success function
-        $p_i = H_i/(H_1 + H_2)$.</li>
+        Platform $i$ wins the market (obtains gross revenue $rT$, $r,T > 0$) with
+        probability given by the Tullock contest success function
+        $p_i = H_i/(H_1 + H_2)$ (a tractable approximation to the winning probability
+        implied by the entropy gap; see Remark&nbsp;10.1).</li>
     </ul>
     Platform $i$'s expected profit is $\pi_i = p_i \cdot rT - \tfrac{k}{2}H_i^2$.
 </div>
@@ -1740,6 +1768,8 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     $$T(\nu,\gamma) \;=\; \frac{\partial \dot x_1}{\partial H_1}\bigg|_{x_1=1/2}
     \cdot \nu\gamma\cdot(1/2)^{\gamma-1}
     \;=\; \frac{\nu\gamma}{4\cdot 2^{\gamma-1}}.$$
+    (Here $T(\nu,\gamma)$ denotes the tipping-speed derivative; it is distinct from the
+    revenue time horizon $T$ appearing in the profit term $rT$.)
     $T(\nu,\gamma)$ is strictly increasing in $\nu\gamma$. It is absent from duopolists'
     private FOC (they ignore the consumer tipping dividend). It enters the planner's FOC
     additively, shifting $H^{SO,\nu\gamma}$ upward by $T(\nu,\gamma)/(2k)$ relative to
