@@ -618,8 +618,10 @@ This size asymmetry is the escape-resistance gap that drives long-run selection.
     coordination game are those with the highest escape resistance: the minimum number
     of mutations required to exit their basin of attraction under best-response dynamics.
     <br/><br/>
-    Let $x^* \in (0, 1/2)$ be the unique unstable interior equilibrium (the separatrix,
-    derived in Section 5). The basin of attraction of $\mathbf{e}_{i^*}$ under
+    Let $x^* \in (0, 1/2)$ be the unique unstable interior equilibrium — the separatrix
+    (existence: $g(x) = (1{-}x)^\gamma - x^\gamma$ is strictly decreasing from $g(0)=1>0$
+    to $g(1)=-1<0$, so by IVT there is a unique zero in $(0,1)$; full derivation in
+    Section&nbsp;5.2). The basin of attraction of $\mathbf{e}_{i^*}$ under
     best-response dynamics is $\{k : k/N > x^*\}$ and that of $\mathbf{e}_j$ is
     $\{k : k/N < x^*\}$.
     <br/><br/>
@@ -903,12 +905,13 @@ speed add, without interaction.</p>
 </div>
 
 <div class="remark">
-    <span class="rem-label">Remark 7.1 (Phase Transitions Require Coordination Shocks).</span>
+    <span class="rem-label">Remark T7.1 (Phase Transitions Require Coordination Shocks).</span>
     Under the deterministic replicator, Phase I $\to$ Phase III requires an exogenous
     shock moving $x_1$ above $x^*$ discontinuously (external funding, viral adoption,
     regulatory mandate, or promotional pricing). Under KMR stochastic dynamics, the
     transition can also occur via accumulated mutations, but the expected waiting time
-    is $O(e^{N \cdot N(x^*-x_0)})$ &mdash; exponentially long in population size $N$.
+    is $O(\varepsilon^{-N(x^*-x_0)})$ &mdash; exponentially long in population size $N$
+    (where $\varepsilon \in (0,1)$ is the per-agent mutation probability).
     For large markets, the deterministic characterisation is the operative one:
     crossing $x^*$ requires a coordination shock, not gradual organic growth.
 </div>
@@ -924,13 +927,14 @@ speed add, without interaction.</p>
         <li><em>Zero competitive threat.</em> $x_1(t) \to 0$ for all $t$,
         independent of $H_1$ and $H_2$. The incumbent's market share is unaffected
         by the entrant's current strategy.</li>
-        <li><em>Optimal entropy is unchanged</em> (under the openness game of
-        Section&nbsp;10). The incumbent's equilibrium openness $H_2^{NE} = \sqrt{rT/(4k)}$
+        <li><em>(ii-a) Optimal entropy is unchanged (openness game, Section&nbsp;10).</em>
+        The incumbent's equilibrium openness $H_2^{NE} = \sqrt{rT/(4k)}$
         (Proposition&nbsp;10.1) is independent of $\Delta H$: the Tullock FOC
-        $rT/(4H_2^2) = k$ does not involve $H_1$ or $x_1$. Within the replicator model
-        of Section&nbsp;5, the analogous statement is that when $x_1 < x^*$ the replicator
-        dynamics are independent of $H_2$ (only the separatrix $x^*$ depends on
-        $\Delta H$), so the incumbent faces no payoff incentive to respond.</li>
+        $rT/(4H_2^2) = k$ does not involve $H_1$ or $x_1$.</li>
+        <li><em>(ii-b) No replicator incentive to respond (Section&nbsp;5).</em>
+        When $x_1 < x^*$ the replicator dynamics are independent of $H_2$ — only
+        the separatrix $x^*$ depends on $\Delta H$ — so the incumbent faces no
+        payoff incentive to increase entropy.</li>
         <li><em>Disruption trigger.</em> The competitive threat materialises only
         when an exogenous shock moves $x_1$ above $x^*$. Thereafter, the replicator
         drives $x_1 \to 1$ at rate $\lambda = \Delta H + \nu$ (Theorem&nbsp;3);
@@ -1076,7 +1080,9 @@ proportional to the log ratio of ecosystem sizes and Theorem 3 applies directly.
     The normalizing constant $Z_M = \sum_{k=1}^M k^{-\alpha} \sim M^{1-\alpha}/(\alpha-1)$
     by integral approximation. With $p_k = k^{-\alpha}/Z_M$:
     $$H = \ln Z_M + \frac{\alpha}{Z_M}\sum_{k=1}^M k^{-\alpha}\ln k.$$
-    Integration by parts gives $\sum_{k=1}^M k^{-\alpha}\ln k \sim M^{1-\alpha}\ln M/(\alpha-1)$.
+    By integral comparison (Euler&ndash;Maclaurin), $\sum_{k=1}^M k^{-\alpha}\ln k \sim
+    \int_1^M x^{-\alpha}\ln x\,dx$; evaluating the integral by parts gives
+    $\int_1^M x^{-\alpha}\ln x\,dx \sim M^{1-\alpha}\ln M/(\alpha-1)$.
     Substituting $\ln Z_M = (1-\alpha)\ln M + O(1)$ yields $H = \tfrac{\alpha-1}{\alpha}\ln M
     + O(1)$. $\square$
 </div>
@@ -1205,7 +1211,7 @@ GROUP BY 1 ORDER BY 1;</pre>
     repositories whose primary topic is platform $i$. Each topic label (e.g.
     <code>defi</code>, <code>kotlin</code>, <code>machine-learning</code>) represents
     a distinct downstream use-case category — a microstate in the sense of
-    Definition&nbsp;2.1. We query the GitHub Search API for the 1,000
+    Definition&nbsp;2.1. We query the GitHub Search API for the 500
     highest-starred repositories per platform (stars $\geq 3$) and apply the
     Chao&ndash;Shen estimator (Section&nbsp;6.2) to the resulting topic-frequency
     distribution. Data collected February 2025; all code and raw JSON available
@@ -1310,8 +1316,9 @@ GROUP BY 1 ORDER BY 1;</pre>
     21 (2017) to 78 (2022–23), giving wide CIs in early years. The 2020–2023 average
     $n \approx 62$ for Bitcoin vs $n \approx 409$ for Ethereum; CIs reported here use the
     period-average $n$. Full year-by-year CIs are in Table&nbsp;6.6.
-    Bootstrap SE: $\hat\sigma = \sqrt{\hat{H}_\text{CS}/n} \times 1.2$; 95% CI =
-    $\hat{H}_\text{CS} \pm 1.96\hat\sigma$. Code: <code>data/bootstrap.py</code>.
+    Bootstrap 95% CI: resample topic-tag draws with replacement ($B = 1000$ resamples),
+    compute $\hat{H}_\text{CS}$ on each resample, take $\hat\sigma = \mathrm{SD}$ across
+    resamples; CI = $\hat{H}_\text{CS} \pm 1.96\hat\sigma$. Code: <code>data/bootstrap.py</code>.
 </p>
 
 <p>
@@ -1464,7 +1471,8 @@ GROUP BY 1 ORDER BY 1;</pre>
         <strong>Table 6.6.</strong> H&#x0302;<sub>CS</sub> time series (nats) with bootstrap 95% CIs.
         Source: GitHub Search API, up to 500 repos per platform per year (stars ≥ 3).
         Microstate: secondary GitHub topic tag. Estimator: Chao–Shen. Collected February 2025.
-        CIs: $\hat{H} \pm 1.96\hat\sigma$ where $\hat\sigma = \sqrt{\hat{H}/n} \times 1.2$.
+        CIs: $\hat{H} \pm 1.96\hat\sigma$ where $\hat\sigma$ is the SD of $\hat{H}_\text{CS}$
+        across $B = 1000$ nonparametric bootstrap resamples of the topic-tag draws.
         BTC 2017: $n=21$, wide CI flagged with *.
     </caption>
     <tr>
@@ -1525,7 +1533,8 @@ GROUP BY 1 ORDER BY 1;</pre>
         Right axis (red): React's share of total annual npm downloads across React, Angular,
         Vue, and Svelte (%).
         React's entropy advantage peaked at $+0.58$ nats in 2014; download share crossed 50%
-        of the React+Angular sub-market by 2017–18 — a lag of approximately three years,
+        of the four-framework total (React, Angular, Vue, and Svelte) by 2017–18 — a lag of
+        approximately three years,
         consistent with Proposition&nbsp;9.1's timing formula at moderate $\gamma$.
         By 2020 Angular had rebuilt entropy in enterprise segments ($\Delta\hat{H} = -0.20$ nats),
         yet React's share continued to grow — consistent with path-dependence once the
@@ -1904,9 +1913,13 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     (Here $T(\nu,\gamma)$ denotes the tipping-speed derivative; it is distinct from the
     revenue time horizon $T$ appearing in the profit term $rT$.)
     $T(\nu,\gamma)$ is strictly increasing in $\nu\gamma$. It is absent from duopolists'
-    private FOC (they ignore the consumer tipping dividend). It enters the planner's FOC
-    additively, shifting $H^{SO,\nu\gamma}$ upward by $T(\nu,\gamma)/(2k)$ relative to
-    the base $H^{SO}$. Since $H^{NE}$ is independent of $\nu$ and $\gamma$, the gap
+    private FOC (they ignore the consumer tipping dividend). The planner's full FOC is
+    $$\frac{rT}{4H} - kH + \frac{1}{2} + T(\nu,\gamma) = 0,$$
+    compared to the base planner's FOC ($\nu=0$: $rT/(4H) - kH + 1/2 = 0$). Implicit
+    differentiation at the symmetric Nash allocation (where $rT/(4H^2) = k$) gives
+    $\partial H^{SO}/\partial T(\nu,\gamma) = 1/(2k)$, so the tipping-speed term shifts
+    $H^{SO,\nu\gamma}$ upward by $T(\nu,\gamma)/(2k)$ relative to the base $H^{SO}$.
+    Since $H^{NE}$ is independent of $\nu$ and $\gamma$, the gap
     $\delta(\nu,\gamma) = H^{SO,\nu\gamma} - H^{NE}$ is strictly increasing in $\nu\gamma$. $\square$
 </div>
 
