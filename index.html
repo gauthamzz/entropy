@@ -14,7 +14,7 @@
             svg: { fontCache: "global" },
         };
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg-full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js" async></script>
     <style>
         /* ── Base ─────────────────────────────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; }
@@ -338,6 +338,27 @@
     Sections&nbsp;11&ndash;13 give falsifiable predictions, related work, and open questions.
 </p>
 
+<p>
+    <strong>Three complementary models.</strong>
+    The paper uses three distinct analytical frameworks, each addressing a different question,
+    and sharing the payoff $u_i(\mathbf{x}) = H_i + \nu x_i^\gamma$.
+    <strong>(A) The static platform selection game</strong> (Sections&nbsp;3&ndash;4):
+    at fixed entropy levels, which platform is risk-dominant (Theorem&nbsp;1) and
+    stochastically stable under KMR mutation dynamics (Theorem&nbsp;2)?
+    <strong>(B) The replicator ODE</strong> (Sections&nbsp;5&ndash;9):
+    given fixed entropy levels, what is the deterministic path of market share, under
+    what conditions does the entrant win (Theorem&nbsp;3), at what rate (Theorem&nbsp;4),
+    and how long does transition take (Proposition&nbsp;9.1)?
+    <strong>(C) The two-stage openness game</strong> (Section&nbsp;10):
+    when entropy investment is costly, how much openness do platforms choose
+    (Proposition&nbsp;10.1), and how does the equilibrium level compare to the social
+    optimum (Theorem&nbsp;6)?
+    Models (A) and (B) are exact consequences of the payoff specification; model (C)
+    additionally uses the Tullock contest function as a tractable approximation to
+    winning probabilities (Remark&nbsp;10.1). Results in (C) depend on this
+    approximation; results in (A) and (B) do not.
+</p>
+
 <!-- ============================================================ -->
 <h2>2. Model</h2>
 
@@ -365,6 +386,28 @@
     <a class="cite" href="#ref-Jaynes1957">Jaynes (1957)</a>: maximising entropy yields
     the least-biased distribution inference from partial market information, grounding
     $H_i$ in information-theoretic rather than ad hoc foundations.
+</div>
+
+<div class="remark">
+    <span class="rem-label">Remark 2.0 (Microstate Granularity).</span>
+    The competitive ranking of platforms by $H_i$ depends on the granularity at which
+    $\Omega_i$ is partitioned. Splitting one microstate into two increases $H_i$
+    mechanically. The model therefore requires that $\Omega_i$ be defined at a
+    <em>consistent level of granularity</em> across competing platforms&mdash;the same
+    category taxonomy applied to both sides of each comparison. Three principles
+    govern this in practice.
+    (i)&nbsp;<em>Natural granularity:</em> developer platforms admit a canonical partition
+    from API surface enumeration (4-byte function selectors for Ethereum, app-store
+    category codes for mobile OS, GitHub topic tags for frameworks). Use the finest
+    unambiguous unit that the platform itself exposes.
+    (ii)&nbsp;<em>Scope restriction:</em> pure conduit platforms (SMS, voice telephony)
+    lack a distinct downstream activity distribution and are outside the model's scope;
+    the empirical methodology of Section&nbsp;6 applies only where $\Omega_i$ is
+    enumerable from platform data.
+    (iii)&nbsp;<em>Matched comparison:</em> entropy comparisons across platforms in the
+    same market (Android vs. iOS, Ethereum vs. Bitcoin) use the same topic taxonomy
+    (Section&nbsp;6.5) so that $\Delta H = H_1 - H_2$ is granularity-invariant within
+    the comparison.
 </div>
 
 <h3>2.2 Agent Payoffs</h3>
@@ -803,9 +846,14 @@ speed add, without interaction.</p>
         The replicator satisfies $\dot x_1 < 0$ for all $t \geq 0$; the entrant's
         share converges monotonically to 0. Organic growth is impossible without
         external support. The <em>minimum viable boost</em> &mdash; the smallest exogenous
-        share increment that exits Phase I &mdash; is:
-        $$\delta_{\min} \;=\; x^* - x_0 \;=\;
-        \tfrac{1}{2} - \tfrac{\Delta H}{2\nu} - x_0 \qquad (\gamma \leq 2).$$
+        share increment that exits Phase I &mdash; is $\delta_{\min} = x^* - x_0$, where
+        for $\gamma \leq 2$ the separatrix has the closed form $x^* = \tfrac{1}{2} -
+        \tfrac{\Delta H}{2\nu}$, giving:
+        $$\delta_{\min} \;=\; \tfrac{1}{2} - \tfrac{\Delta H}{2\nu} - x_0 \qquad (\gamma \leq 2).$$
+        For $\gamma > 2$, $x^*$ must be solved numerically from
+        $\Delta H = \nu\bigl((1-x^*)^\gamma - (x^*)^\gamma\bigr)$
+        (Section&nbsp;5.2), and $\delta_{\min} = x^* - x_0$ accordingly;
+        the Phase I/III partition is still exact.
         </li>
         <li><strong>Phase II (Critical Transition).</strong> $x_0 = x^*$, the
         unstable interior equilibrium. Any perturbation $\delta > 0$ above $x^*$
@@ -851,10 +899,13 @@ speed add, without interaction.</p>
         <li><em>Zero competitive threat.</em> $x_1(t) \to 0$ for all $t$,
         independent of $H_1$ and $H_2$. The incumbent's market share is unaffected
         by the entrant's current strategy.</li>
-        <li><em>Optimal entropy is unchanged.</em> The incumbent's equilibrium
-        openness $H_2^{NE} = \sqrt{rT/(4k)}$ (Proposition&nbsp;10.1) is independent
-        of $\Delta H$; the incumbent has no incentive to deviate from $H_2^{NE}$ in
-        response to the entrant.</li>
+        <li><em>Optimal entropy is unchanged</em> (under the openness game of
+        Section&nbsp;10). The incumbent's equilibrium openness $H_2^{NE} = \sqrt{rT/(4k)}$
+        (Proposition&nbsp;10.1) is independent of $\Delta H$: the Tullock FOC
+        $rT/(4H_2^2) = k$ does not involve $H_1$ or $x_1$. Within the replicator model
+        of Section&nbsp;5, the analogous statement is that when $x_1 < x^*$ the replicator
+        dynamics are independent of $H_2$ (only the separatrix $x^*$ depends on
+        $\Delta H$), so the incumbent faces no payoff incentive to respond.</li>
         <li><em>Disruption trigger.</em> The competitive threat materialises only
         when an exogenous shock moves $x_1$ above $x^*$. Thereafter, the replicator
         drives $x_1 \to 1$ at rate $\lambda = \Delta H + \nu$ (Theorem&nbsp;3);
@@ -871,8 +922,11 @@ speed add, without interaction.</p>
     <span class="proof-label">Proof.</span>
     (i) Theorem&nbsp;3: $x_0 < x^* \Rightarrow x(t) \to 0$ under the deterministic
     replicator, for all $H_1, H_2 > 0$.
-    (ii) Proposition&nbsp;10.1's FOC, $rT/(4H_2^2) = k$, does not involve $H_1$
-    or $x_1$, so $H_2^{NE}$ is independent of the entrant.
+    (ii) In the two-stage openness game (Section&nbsp;10, Definition&nbsp;10.1),
+    Proposition&nbsp;10.1's FOC $rT/(4H_2^2) = k$ does not involve $H_1$ or $x_1$,
+    so $H_2^{NE}$ is independent of the entrant within that model. Note that
+    Sections&nbsp;5 and&nbsp;10 are separate models (see Introduction); the claim
+    is that in neither model does a Phase I entrant alter the incumbent's strategy.
     (iii) Once $x_1 > x^*$, Theorem&nbsp;3 applies with the entrant winning.
     The incumbent can raise $x^*$ by increasing $H_2$ (since $\partial x^*/\partial
     H_2 = 1/(2\nu) > 0$ for $\gamma \leq 2$), but cannot reverse convergence if
@@ -1259,6 +1313,20 @@ GROUP BY 1 ORDER BY 1;</pre>
     was insufficient to overcome the network-effect barrier.
 </p>
 
+<div class="note">
+    <strong>Scope of the estimates.</strong>
+    The mobile OS, blockchain, and framework rows use Chao&ndash;Shen estimates
+    from the GitHub data collection described above and should be read as
+    <em>theory-consistent evidence</em>, not formal econometric estimates: no
+    confidence intervals are reported, no instrument is applied, and no size control
+    is included. The Google+/Facebook row is qualitative (no GitHub proxy exists
+    for social-network microstate diversity at 2012); it illustrates the model's
+    falsifiability logic but carries no empirical weight. Formal identification
+    requires the IV regression of Section&nbsp;6.3 applied to a panel with
+    sufficient variation in $\hat\nu$ and $\hat\gamma$; that analysis is left
+    for subsequent work.
+</div>
+
 <h3>6.6 Time-Series Evidence: Entropy Leads Market Transitions</h3>
 
 <p>
@@ -1403,6 +1471,25 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     segment. This is not a scope-condition exception; it is the model's prediction
     under the correct entropy decomposition.
 </p>
+
+<div class="remark">
+    <span class="rem-label">Remark 7.2 (Plausibility of the Curation Condition).</span>
+    The condition $\partial H_{D \mid C}/\partial H_C < -1$ in Proposition&nbsp;7.1 is an
+    empirical claim, not a theorem. It requires that a marginal tightening of consumer
+    curation raises conditional developer diversity by more than it costs in consumer-side
+    entropy. This is plausible when consumer heterogeneity is high and developers exhibit
+    <em>niche complementarity</em>: specialisation into a narrower consumer segment reveals
+    a larger developer opportunity, attracting more distinct entrants. It is implausible
+    when consumer preferences are homogeneous (curation reduces both $H_C$ and
+    $H_{D \mid C}$ proportionally). A sufficient parametric condition: if
+    $H_{D \mid C} = \alpha / H_C$ for $\alpha > 0$, then $\partial H_{D \mid C}/\partial
+    H_C = -\alpha/H_C^2 < -1$ iff $H_C < \sqrt{\alpha}$&mdash;the dominant platform
+    with large consumer base ($H_C$ high) violates the condition; a niche platform
+    with $H_C$ small satisfies it. For Apple, the condition's plausibility rests on the
+    empirical observation that App Review curation preceded growth in app-category
+    diversity in the premium segment; it is a research proposition to be tested, not a
+    consequence of the information-theoretic structure.
+</div>
 
 <div class="remark">
     <span class="rem-label">Remark 7.1 (Correction to Prior Drafts).</span>
@@ -1573,13 +1660,20 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
 </div>
 
 <div class="remark">
-    <span class="rem-label">Remark 10.1 (Tullock Approximation).</span>
-    The Tullock CSF is a first-order approximation to the KMR winning probability when
-    entropy levels are close. For $H_1, H_2$ near a common value $\bar H$,
-    $\Pr[\text{P1 wins}] = 1 - \Pr[\text{P2 wins}] \approx \tfrac{1}{2} + \tfrac{H_1 - H_2}{4\bar H}$,
-    consistent with $p_1 = H_1/(H_1+H_2)$ to first order in $\Delta H/\bar H$.
-    The approximation is exact at $H_1 = H_2$ and is conservative in the
-    underinvestment direction for large $\Delta H$.
+    <span class="rem-label">Remark 10.1 (Tullock Approximation and Model Scope).</span>
+    The Tullock CSF $p_i = H_i/(H_1+H_2)$ is a stylized model of winning probabilities
+    used in Section&nbsp;10 for tractability; it is not derived from the KMR stationary
+    distribution of Theorem&nbsp;2. The two are connected locally: for $H_1, H_2$ near
+    a common value $\bar H$, any smooth winning probability satisfies
+    $\Pr[\text{P1 wins}] \approx \tfrac{1}{2} + \tfrac{H_1 - H_2}{4\bar H}$
+    to first order in $\Delta H/\bar H$, which matches $p_1 = H_1/(H_1+H_2)$ at
+    this order. For large $\Delta H$, the Tullock CSF and the true KMR winning
+    probability may diverge; the direction of this divergence is not established here.
+    The qualitative underinvestment result $H^{SO} > H^{NE}$ (Theorem&nbsp;6a) is
+    robust to the choice of contest function: it holds for any symmetric $p_i(H_i, H_j)$
+    satisfying $\partial p_i/\partial H_i > 0$ and $\partial^2\pi_i/\partial H_i^2 < 0$.
+    The specific formulas for $H^{NE}$ and $H^{SO}$ in Theorem&nbsp;6 are
+    parametrised by the Tullock functional form.
 </div>
 
 <div class="proposition">
@@ -1625,12 +1719,12 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
     With network effects, the planner additionally internalises the tipping dividend:
     the social value of faster convergence to the superior platform.
     Define $\Phi(H,\nu) \equiv rT/(4H) - kH + \tfrac{1}{2} + \tfrac{1}{2}\nu\phi$,
-    where $\phi = T \cdot \overline{\Delta u}$ with
-    $\overline{\Delta u} = \mathbb{E}_{x \in [x^*,1]}[H_1 - H_2 + \nu(x_1^\gamma - x_2^\gamma)] > 0$
-    the average payoff advantage of the superior platform over the convergence path
-    from $x^*$ to 1. Since $\partial\lambda/\partial H_1 = 1$ (Theorem&nbsp;4) and
-    $\overline{\Delta u} > 0$ whenever $H_1 > H_2$, the planner's marginal value through
-    this channel is $\phi/2 > 0$. The planner's FOC is $\Phi(H^{SO,\nu},\nu)=0$.
+    where $\phi = \int_{x^*}^{1} \bigl[H_1 - H_2 + \nu(x^\gamma - (1-x)^\gamma)\bigr]\,dx > 0$
+    is the integrated surplus advantage of the superior platform over the convergence
+    path from $x^*$ to 1. For $x \in (x^*, 1)$ we have $x > x^*$ which implies
+    $x^\gamma > (1-x)^\gamma$, and $H_1 > H_2$ by assumption, so every integrand is
+    strictly positive and $\phi > 0$. The planner's marginal value through this channel
+    is $\phi/2 > 0$. The planner's FOC is $\Phi(H^{SO,\nu},\nu)=0$.
     By the implicit function theorem,
     $\partial H^{SO,\nu}/\partial\nu = -\Phi_\nu/\Phi_H = (\phi/2) / (kH - rT/(4H^2)) > 0$,
     since $\Phi_H = -kH + rT/(4H^2) < 0$ at the optimum (SOC) and $\phi > 0$. $\square$
@@ -2398,17 +2492,17 @@ $$H(C, D) \;=\; H_C + H_{D \mid C}.$$
 
 <!-- ============================================================ -->
 <!-- JAVASCRIPT SIMULATIONS — loaded as external modules -->
-<script src="src/utils.js"></script>
-<script src="src/sim1-kmr.js"></script>
-<script src="src/sim2-basin.js"></script>
-<script src="src/sim3-phase.js"></script>
-<script src="src/sim4-invasion.js"></script>
-<script src="src/sim5-rate.js"></script>
-<script src="src/sim6-montecarlo.js"></script>
-<script src="src/sim7-chaoshen.js"></script>
-<script src="src/sim8-welfare.js"></script>
-<script src="src/sim9-regime.js"></script>
-<script src="src/sim10-recovery.js"></script>
-<script src="src/sim11-empirical.js"></script>
+<script src="src/utils.js" defer></script>
+<script src="src/sim1-kmr.js" defer></script>
+<script src="src/sim2-basin.js" defer></script>
+<script src="src/sim3-phase.js" defer></script>
+<script src="src/sim4-invasion.js" defer></script>
+<script src="src/sim5-rate.js" defer></script>
+<script src="src/sim6-montecarlo.js" defer></script>
+<script src="src/sim7-chaoshen.js" defer></script>
+<script src="src/sim8-welfare.js" defer></script>
+<script src="src/sim9-regime.js" defer></script>
+<script src="src/sim10-recovery.js" defer></script>
+<script src="src/sim11-empirical.js" defer></script>
 </body>
 </html>
