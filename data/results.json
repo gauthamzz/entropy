@@ -1,0 +1,2130 @@
+{
+  "github": {
+    "ethereum": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2229,
+      "n_topic_instances": 6999,
+      "H_plugin": 6.4944,
+      "H_cs": 7.7179,
+      "S_eff": 2248.3,
+      "top_topics": [
+        [
+          "blockchain",
+          335
+        ],
+        [
+          "solidity",
+          276
+        ],
+        [
+          "web3",
+          165
+        ],
+        [
+          "smart-contracts",
+          160
+        ],
+        [
+          "bitcoin",
+          154
+        ],
+        [
+          "cryptocurrency",
+          114
+        ],
+        [
+          "evm",
+          109
+        ],
+        [
+          "dapp",
+          85
+        ],
+        [
+          "defi",
+          81
+        ],
+        [
+          "typescript",
+          63
+        ],
+        [
+          "crypto",
+          60
+        ],
+        [
+          "react",
+          52
+        ],
+        [
+          "rust",
+          51
+        ],
+        [
+          "python",
+          51
+        ],
+        [
+          "security",
+          49
+        ],
+        [
+          "eth",
+          48
+        ],
+        [
+          "wallet",
+          48
+        ],
+        [
+          "erc20",
+          45
+        ],
+        [
+          "nft",
+          41
+        ],
+        [
+          "javascript",
+          39
+        ]
+      ],
+      "name": "Ethereum",
+      "context": "L1 blockchain developer ecosystem",
+      "expected_rank": 1
+    },
+    "bitcoin": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2511,
+      "n_topic_instances": 7669,
+      "H_plugin": 6.6748,
+      "H_cs": 7.9604,
+      "S_eff": 2865.2,
+      "top_topics": [
+        [
+          "cryptocurrency",
+          330
+        ],
+        [
+          "ethereum",
+          272
+        ],
+        [
+          "blockchain",
+          210
+        ],
+        [
+          "crypto",
+          117
+        ],
+        [
+          "trading",
+          108
+        ],
+        [
+          "wallet",
+          105
+        ],
+        [
+          "python",
+          87
+        ],
+        [
+          "lightning-network",
+          87
+        ],
+        [
+          "btc",
+          81
+        ],
+        [
+          "trading-bot",
+          78
+        ],
+        [
+          "lightning",
+          70
+        ],
+        [
+          "binance",
+          64
+        ],
+        [
+          "litecoin",
+          61
+        ],
+        [
+          "exchange",
+          59
+        ],
+        [
+          "cryptocurrencies",
+          50
+        ],
+        [
+          "bitcoin-wallet",
+          48
+        ],
+        [
+          "cryptography",
+          47
+        ],
+        [
+          "javascript",
+          42
+        ],
+        [
+          "bot",
+          38
+        ],
+        [
+          "rust",
+          38
+        ]
+      ],
+      "name": "Bitcoin",
+      "context": "L1 blockchain developer ecosystem",
+      "expected_rank": 2
+    },
+    "solana": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2155,
+      "n_topic_instances": 6793,
+      "H_plugin": 6.5261,
+      "H_cs": 7.7523,
+      "S_eff": 2327.0,
+      "top_topics": [
+        [
+          "blockchain",
+          230
+        ],
+        [
+          "rust",
+          196
+        ],
+        [
+          "web3",
+          148
+        ],
+        [
+          "ethereum",
+          134
+        ],
+        [
+          "typescript",
+          105
+        ],
+        [
+          "nft",
+          90
+        ],
+        [
+          "anchor",
+          88
+        ],
+        [
+          "cryptocurrency",
+          84
+        ],
+        [
+          "bot",
+          75
+        ],
+        [
+          "pumpfun",
+          73
+        ],
+        [
+          "defi",
+          72
+        ],
+        [
+          "raydium",
+          69
+        ],
+        [
+          "crypto",
+          65
+        ],
+        [
+          "bitcoin",
+          63
+        ],
+        [
+          "solana-program",
+          61
+        ],
+        [
+          "trading",
+          58
+        ],
+        [
+          "smart-contracts",
+          54
+        ],
+        [
+          "wallet",
+          53
+        ],
+        [
+          "react",
+          51
+        ],
+        [
+          "python",
+          49
+        ]
+      ],
+      "name": "Solana",
+      "context": "L1 blockchain developer ecosystem",
+      "expected_rank": 3
+    },
+    "android": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3532,
+      "n_topic_instances": 7823,
+      "H_plugin": 7.3281,
+      "H_cs": 9.2219,
+      "S_eff": 10116.3,
+      "top_topics": [
+        [
+          "ios",
+          231
+        ],
+        [
+          "kotlin",
+          163
+        ],
+        [
+          "java",
+          162
+        ],
+        [
+          "windows",
+          71
+        ],
+        [
+          "react-native",
+          71
+        ],
+        [
+          "linux",
+          71
+        ],
+        [
+          "material-design",
+          63
+        ],
+        [
+          "android-library",
+          63
+        ],
+        [
+          "hacktoberfest",
+          61
+        ],
+        [
+          "flutter",
+          59
+        ],
+        [
+          "macos",
+          59
+        ],
+        [
+          "mobile",
+          50
+        ],
+        [
+          "cross-platform",
+          40
+        ],
+        [
+          "javascript",
+          39
+        ],
+        [
+          "jetpack-compose",
+          39
+        ],
+        [
+          "react",
+          38
+        ],
+        [
+          "kotlin-android",
+          33
+        ],
+        [
+          "app",
+          32
+        ],
+        [
+          "apk",
+          32
+        ],
+        [
+          "compose",
+          31
+        ]
+      ],
+      "name": "Android",
+      "context": "Mobile OS developer ecosystem",
+      "expected_rank": 1
+    },
+    "ios": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3221,
+      "n_topic_instances": 8474,
+      "H_plugin": 6.9024,
+      "H_cs": 8.4794,
+      "S_eff": 4814.4,
+      "top_topics": [
+        [
+          "swift",
+          388
+        ],
+        [
+          "android",
+          381
+        ],
+        [
+          "macos",
+          188
+        ],
+        [
+          "react-native",
+          127
+        ],
+        [
+          "objective-c",
+          117
+        ],
+        [
+          "flutter",
+          95
+        ],
+        [
+          "cocoapods",
+          91
+        ],
+        [
+          "swiftui",
+          70
+        ],
+        [
+          "mobile",
+          69
+        ],
+        [
+          "tvos",
+          69
+        ],
+        [
+          "windows",
+          68
+        ],
+        [
+          "ui",
+          67
+        ],
+        [
+          "animation",
+          67
+        ],
+        [
+          "xcode",
+          62
+        ],
+        [
+          "linux",
+          59
+        ],
+        [
+          "hacktoberfest",
+          57
+        ],
+        [
+          "cross-platform",
+          56
+        ],
+        [
+          "carthage",
+          55
+        ],
+        [
+          "react",
+          54
+        ],
+        [
+          "javascript",
+          54
+        ]
+      ],
+      "name": "iOS",
+      "context": "Mobile OS developer ecosystem",
+      "expected_rank": 2
+    },
+    "react": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3271,
+      "n_topic_instances": 8670,
+      "H_plugin": 7.1136,
+      "H_cs": 8.642,
+      "S_eff": 5664.8,
+      "top_topics": [
+        [
+          "javascript",
+          267
+        ],
+        [
+          "typescript",
+          264
+        ],
+        [
+          "nextjs",
+          125
+        ],
+        [
+          "vue",
+          124
+        ],
+        [
+          "reactjs",
+          124
+        ],
+        [
+          "react-native",
+          98
+        ],
+        [
+          "hacktoberfest",
+          89
+        ],
+        [
+          "nodejs",
+          69
+        ],
+        [
+          "angular",
+          68
+        ],
+        [
+          "redux",
+          67
+        ],
+        [
+          "tailwindcss",
+          56
+        ],
+        [
+          "css",
+          52
+        ],
+        [
+          "ui",
+          51
+        ],
+        [
+          "svelte",
+          45
+        ],
+        [
+          "webpack",
+          44
+        ],
+        [
+          "ios",
+          40
+        ],
+        [
+          "frontend",
+          39
+        ],
+        [
+          "components",
+          39
+        ],
+        [
+          "react-components",
+          39
+        ],
+        [
+          "electron",
+          39
+        ]
+      ],
+      "name": "React",
+      "context": "Frontend JS framework ecosystem",
+      "expected_rank": 1
+    },
+    "angular": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3282,
+      "n_topic_instances": 8262,
+      "H_plugin": 7.1702,
+      "H_cs": 8.8025,
+      "S_eff": 6651.1,
+      "top_topics": [
+        [
+          "typescript",
+          270
+        ],
+        [
+          "react",
+          192
+        ],
+        [
+          "javascript",
+          187
+        ],
+        [
+          "vue",
+          135
+        ],
+        [
+          "angular2",
+          81
+        ],
+        [
+          "nodejs",
+          76
+        ],
+        [
+          "hacktoberfest",
+          61
+        ],
+        [
+          "angular4",
+          51
+        ],
+        [
+          "angular-cli",
+          44
+        ],
+        [
+          "svelte",
+          43
+        ],
+        [
+          "ionic",
+          43
+        ],
+        [
+          "angular-components",
+          41
+        ],
+        [
+          "ngrx",
+          41
+        ],
+        [
+          "frontend",
+          39
+        ],
+        [
+          "rxjs",
+          39
+        ],
+        [
+          "angularjs",
+          38
+        ],
+        [
+          "vuejs",
+          35
+        ],
+        [
+          "html",
+          32
+        ],
+        [
+          "webpack",
+          32
+        ],
+        [
+          "css",
+          32
+        ]
+      ],
+      "name": "Angular",
+      "context": "Frontend JS framework ecosystem",
+      "expected_rank": 2
+    },
+    "vue": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3136,
+      "n_topic_instances": 8452,
+      "H_plugin": 7.0211,
+      "H_cs": 8.5465,
+      "S_eff": 5148.7,
+      "top_topics": [
+        [
+          "javascript",
+          229
+        ],
+        [
+          "react",
+          196
+        ],
+        [
+          "vuejs",
+          181
+        ],
+        [
+          "typescript",
+          162
+        ],
+        [
+          "vue3",
+          133
+        ],
+        [
+          "vuex",
+          79
+        ],
+        [
+          "angular",
+          76
+        ],
+        [
+          "vite",
+          64
+        ],
+        [
+          "vue-components",
+          63
+        ],
+        [
+          "vue-router",
+          61
+        ],
+        [
+          "svelte",
+          59
+        ],
+        [
+          "element-ui",
+          57
+        ],
+        [
+          "electron",
+          57
+        ],
+        [
+          "webpack",
+          56
+        ],
+        [
+          "css",
+          53
+        ],
+        [
+          "vue2",
+          53
+        ],
+        [
+          "nuxt",
+          52
+        ],
+        [
+          "nodejs",
+          51
+        ],
+        [
+          "vuejs2",
+          47
+        ],
+        [
+          "hacktoberfest",
+          45
+        ]
+      ],
+      "name": "Vue",
+      "context": "Frontend JS framework ecosystem",
+      "expected_rank": 3
+    },
+    "svelte": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3025,
+      "n_topic_instances": 7441,
+      "H_plugin": 6.9778,
+      "H_cs": 8.6665,
+      "S_eff": 5805.3,
+      "top_topics": [
+        [
+          "sveltekit",
+          272
+        ],
+        [
+          "typescript",
+          201
+        ],
+        [
+          "react",
+          164
+        ],
+        [
+          "sveltejs",
+          155
+        ],
+        [
+          "javascript",
+          145
+        ],
+        [
+          "vue",
+          140
+        ],
+        [
+          "tailwindcss",
+          107
+        ],
+        [
+          "hacktoberfest",
+          67
+        ],
+        [
+          "angular",
+          59
+        ],
+        [
+          "rust",
+          52
+        ],
+        [
+          "svelte-components",
+          52
+        ],
+        [
+          "vite",
+          48
+        ],
+        [
+          "tauri",
+          38
+        ],
+        [
+          "ui",
+          33
+        ],
+        [
+          "css",
+          32
+        ],
+        [
+          "components",
+          31
+        ],
+        [
+          "nextjs",
+          31
+        ],
+        [
+          "svelte5",
+          31
+        ],
+        [
+          "tailwind",
+          31
+        ],
+        [
+          "solid",
+          30
+        ]
+      ],
+      "name": "Svelte",
+      "context": "Frontend JS framework ecosystem",
+      "expected_rank": 4
+    },
+    "openai": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2821,
+      "n_topic_instances": 10305,
+      "H_plugin": 6.5446,
+      "H_cs": 7.6491,
+      "S_eff": 2098.7,
+      "top_topics": [
+        [
+          "chatgpt",
+          403
+        ],
+        [
+          "ai",
+          382
+        ],
+        [
+          "llm",
+          336
+        ],
+        [
+          "gpt",
+          174
+        ],
+        [
+          "python",
+          165
+        ],
+        [
+          "gpt-4",
+          131
+        ],
+        [
+          "langchain",
+          126
+        ],
+        [
+          "gemini",
+          124
+        ],
+        [
+          "anthropic",
+          115
+        ],
+        [
+          "chatbot",
+          113
+        ],
+        [
+          "claude",
+          109
+        ],
+        [
+          "openai-api",
+          103
+        ],
+        [
+          "gpt-3",
+          98
+        ],
+        [
+          "agent",
+          97
+        ],
+        [
+          "ollama",
+          96
+        ],
+        [
+          "deepseek",
+          82
+        ],
+        [
+          "typescript",
+          74
+        ],
+        [
+          "machine-learning",
+          72
+        ],
+        [
+          "rag",
+          72
+        ],
+        [
+          "mcp",
+          70
+        ]
+      ],
+      "name": "OpenAI/GPT",
+      "context": "LLM developer ecosystem",
+      "expected_rank": 1
+    },
+    "langchain": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2360,
+      "n_topic_instances": 9104,
+      "H_plugin": 6.2392,
+      "H_cs": 7.281,
+      "S_eff": 1452.4,
+      "top_topics": [
+        [
+          "llm",
+          414
+        ],
+        [
+          "openai",
+          353
+        ],
+        [
+          "ai",
+          288
+        ],
+        [
+          "python",
+          270
+        ],
+        [
+          "rag",
+          200
+        ],
+        [
+          "chatgpt",
+          176
+        ],
+        [
+          "langgraph",
+          151
+        ],
+        [
+          "chatbot",
+          122
+        ],
+        [
+          "streamlit",
+          100
+        ],
+        [
+          "llms",
+          100
+        ],
+        [
+          "gpt",
+          99
+        ],
+        [
+          "agent",
+          99
+        ],
+        [
+          "agents",
+          94
+        ],
+        [
+          "langchain-python",
+          90
+        ],
+        [
+          "ollama",
+          84
+        ],
+        [
+          "generative-ai",
+          78
+        ],
+        [
+          "fastapi",
+          73
+        ],
+        [
+          "gpt-4",
+          72
+        ],
+        [
+          "ai-agents",
+          69
+        ],
+        [
+          "large-language-models",
+          68
+        ]
+      ],
+      "name": "LangChain",
+      "context": "LLM developer ecosystem",
+      "expected_rank": 2
+    },
+    "aws": {
+      "n_repos": 1000,
+      "n_distinct_topics": 2984,
+      "n_topic_instances": 8503,
+      "H_plugin": 6.9579,
+      "H_cs": 8.3741,
+      "S_eff": 4333.5,
+      "top_topics": [
+        [
+          "serverless",
+          175
+        ],
+        [
+          "cloud",
+          147
+        ],
+        [
+          "azure",
+          134
+        ],
+        [
+          "kubernetes",
+          132
+        ],
+        [
+          "terraform",
+          124
+        ],
+        [
+          "gcp",
+          120
+        ],
+        [
+          "python",
+          113
+        ],
+        [
+          "aws-lambda",
+          107
+        ],
+        [
+          "devops",
+          103
+        ],
+        [
+          "lambda",
+          99
+        ],
+        [
+          "docker",
+          96
+        ],
+        [
+          "security",
+          90
+        ],
+        [
+          "hacktoberfest",
+          63
+        ],
+        [
+          "golang",
+          62
+        ],
+        [
+          "s3",
+          54
+        ],
+        [
+          "cloudformation",
+          49
+        ],
+        [
+          "nodejs",
+          48
+        ],
+        [
+          "javascript",
+          46
+        ],
+        [
+          "typescript",
+          46
+        ],
+        [
+          "go",
+          45
+        ]
+      ],
+      "name": "AWS",
+      "context": "Cloud platform ecosystem",
+      "expected_rank": 1
+    },
+    "azure": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3333,
+      "n_topic_instances": 8688,
+      "H_plugin": 7.1866,
+      "H_cs": 8.747,
+      "S_eff": 6291.8,
+      "top_topics": [
+        [
+          "aws",
+          240
+        ],
+        [
+          "gcp",
+          152
+        ],
+        [
+          "kubernetes",
+          130
+        ],
+        [
+          "cloud",
+          127
+        ],
+        [
+          "terraform",
+          111
+        ],
+        [
+          "devops",
+          94
+        ],
+        [
+          "microsoft",
+          82
+        ],
+        [
+          "python",
+          81
+        ],
+        [
+          "docker",
+          74
+        ],
+        [
+          "hacktoberfest",
+          66
+        ],
+        [
+          "openai",
+          61
+        ],
+        [
+          "azure-functions",
+          61
+        ],
+        [
+          "serverless",
+          58
+        ],
+        [
+          "security",
+          54
+        ],
+        [
+          "dotnet",
+          49
+        ],
+        [
+          "ai",
+          45
+        ],
+        [
+          "azure-devops",
+          41
+        ],
+        [
+          "machine-learning",
+          36
+        ],
+        [
+          "powershell",
+          36
+        ],
+        [
+          "typescript",
+          34
+        ]
+      ],
+      "name": "Azure",
+      "context": "Cloud platform ecosystem",
+      "expected_rank": 2
+    },
+    "google-cloud": {
+      "n_repos": 1000,
+      "n_distinct_topics": 3085,
+      "n_topic_instances": 7615,
+      "H_plugin": 7.0891,
+      "H_cs": 8.7629,
+      "S_eff": 6392.4,
+      "top_topics": [
+        [
+          "google-cloud-platform",
+          233
+        ],
+        [
+          "gcp",
+          194
+        ],
+        [
+          "python",
+          111
+        ],
+        [
+          "kubernetes",
+          94
+        ],
+        [
+          "docker",
+          85
+        ],
+        [
+          "terraform",
+          82
+        ],
+        [
+          "google",
+          82
+        ],
+        [
+          "aws",
+          79
+        ],
+        [
+          "cloud",
+          65
+        ],
+        [
+          "nodejs",
+          59
+        ],
+        [
+          "google-cloud-storage",
+          56
+        ],
+        [
+          "bigquery",
+          54
+        ],
+        [
+          "firebase",
+          53
+        ],
+        [
+          "azure",
+          51
+        ],
+        [
+          "machine-learning",
+          47
+        ],
+        [
+          "golang",
+          42
+        ],
+        [
+          "vertex-ai",
+          41
+        ],
+        [
+          "typescript",
+          39
+        ],
+        [
+          "serverless",
+          37
+        ],
+        [
+          "gke",
+          36
+        ]
+      ],
+      "name": "GCP",
+      "context": "Cloud platform ecosystem",
+      "expected_rank": 3
+    }
+  },
+  "npm": {
+    "react": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1199,
+      "H_plugin": 6.4437,
+      "H_cs": 7.8299,
+      "S_eff": 2514.6,
+      "top_keywords": [
+        [
+          "react-component",
+          130
+        ],
+        [
+          "component",
+          46
+        ],
+        [
+          "react-native",
+          40
+        ],
+        [
+          "vue",
+          34
+        ],
+        [
+          "reactjs",
+          32
+        ],
+        [
+          "typescript",
+          31
+        ],
+        [
+          "hooks",
+          28
+        ],
+        [
+          "animation",
+          23
+        ],
+        [
+          "css",
+          21
+        ],
+        [
+          "components",
+          21
+        ],
+        [
+          "svelte",
+          20
+        ],
+        [
+          "email",
+          20
+        ],
+        [
+          "charts",
+          20
+        ],
+        [
+          "ui",
+          17
+        ],
+        [
+          "javascript",
+          17
+        ],
+        [
+          "angular",
+          16
+        ],
+        [
+          "mui",
+          16
+        ],
+        [
+          "table",
+          16
+        ],
+        [
+          "material-ui",
+          15
+        ],
+        [
+          "router",
+          14
+        ]
+      ],
+      "name": "React",
+      "context": "Frontend framework"
+    },
+    "angular": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1790,
+      "H_plugin": 6.3036,
+      "H_cs": 7.4584,
+      "S_eff": 1734.3,
+      "top_keywords": [
+        [
+          "react",
+          125
+        ],
+        [
+          "vue",
+          112
+        ],
+        [
+          "canvas",
+          90
+        ],
+        [
+          "typescript",
+          79
+        ],
+        [
+          "reactjs",
+          78
+        ],
+        [
+          "vuejs",
+          77
+        ],
+        [
+          "angularjs",
+          68
+        ],
+        [
+          "javascript",
+          62
+        ],
+        [
+          "web",
+          61
+        ],
+        [
+          "frontend",
+          50
+        ],
+        [
+          "css",
+          49
+        ],
+        [
+          "html",
+          49
+        ],
+        [
+          "animation",
+          48
+        ],
+        [
+          "preact",
+          47
+        ],
+        [
+          "ng",
+          47
+        ],
+        [
+          "jquery",
+          47
+        ],
+        [
+          "front-end",
+          45
+        ],
+        [
+          "angular2",
+          45
+        ],
+        [
+          "tsparticles",
+          44
+        ],
+        [
+          "particles.js",
+          44
+        ]
+      ],
+      "name": "Angular",
+      "context": "Frontend framework"
+    },
+    "vue": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1213,
+      "H_plugin": 5.8677,
+      "H_cs": 6.7083,
+      "S_eff": 819.2,
+      "top_keywords": [
+        [
+          "react",
+          148
+        ],
+        [
+          "vuejs",
+          114
+        ],
+        [
+          "angular",
+          103
+        ],
+        [
+          "canvas",
+          88
+        ],
+        [
+          "typescript",
+          87
+        ],
+        [
+          "reactjs",
+          75
+        ],
+        [
+          "javascript",
+          69
+        ],
+        [
+          "html",
+          57
+        ],
+        [
+          "preact",
+          55
+        ],
+        [
+          "web",
+          55
+        ],
+        [
+          "css",
+          54
+        ],
+        [
+          "front-end",
+          49
+        ],
+        [
+          "frontend",
+          49
+        ],
+        [
+          "animation",
+          46
+        ],
+        [
+          "jquery",
+          45
+        ],
+        [
+          "html5",
+          45
+        ],
+        [
+          "vue3",
+          44
+        ],
+        [
+          "tsparticles",
+          43
+        ],
+        [
+          "particles.js",
+          43
+        ],
+        [
+          "particlesjs",
+          43
+        ]
+      ],
+      "name": "Vue",
+      "context": "Frontend framework"
+    },
+    "svelte": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1480,
+      "H_plugin": 6.4904,
+      "H_cs": 8.0461,
+      "S_eff": 3121.7,
+      "top_keywords": [
+        [
+          "vue",
+          82
+        ],
+        [
+          "react",
+          79
+        ],
+        [
+          "sveltekit",
+          74
+        ],
+        [
+          "sveltejs",
+          66
+        ],
+        [
+          "typescript",
+          65
+        ],
+        [
+          "component",
+          60
+        ],
+        [
+          "svelte3",
+          56
+        ],
+        [
+          "svelte-components",
+          51
+        ],
+        [
+          "material",
+          47
+        ],
+        [
+          "material-design",
+          46
+        ],
+        [
+          "material-ui",
+          45
+        ],
+        [
+          "angular",
+          31
+        ],
+        [
+          "solid",
+          31
+        ],
+        [
+          "vite",
+          30
+        ],
+        [
+          "javascript",
+          29
+        ],
+        [
+          "ui",
+          27
+        ],
+        [
+          "components",
+          23
+        ],
+        [
+          "svg",
+          19
+        ],
+        [
+          "preact",
+          18
+        ],
+        [
+          "lightweight",
+          18
+        ]
+      ],
+      "name": "Svelte",
+      "context": "Frontend framework"
+    },
+    "ethereum": {
+      "n_packages": 500,
+      "n_distinct_keywords": 787,
+      "H_plugin": 5.6355,
+      "H_cs": 6.4577,
+      "S_eff": 637.6,
+      "top_keywords": [
+        [
+          "web3",
+          142
+        ],
+        [
+          "blockchain",
+          104
+        ],
+        [
+          "smart-contracts",
+          89
+        ],
+        [
+          "dapps",
+          73
+        ],
+        [
+          "solidity",
+          72
+        ],
+        [
+          "wallet",
+          65
+        ],
+        [
+          "crypto",
+          64
+        ],
+        [
+          "hardhat",
+          60
+        ],
+        [
+          "typescript",
+          53
+        ],
+        [
+          "bitcoin",
+          41
+        ],
+        [
+          "appkit",
+          35
+        ],
+        [
+          "eth",
+          34
+        ],
+        [
+          "evm",
+          34
+        ],
+        [
+          "solana",
+          34
+        ],
+        [
+          "hardhat-plugin",
+          34
+        ],
+        [
+          "wagmi",
+          33
+        ],
+        [
+          "dapp",
+          32
+        ],
+        [
+          "walletconnect",
+          30
+        ],
+        [
+          "sdk",
+          27
+        ],
+        [
+          "onboarding",
+          24
+        ]
+      ],
+      "name": "Ethereum",
+      "context": "Web3 / Blockchain"
+    },
+    "bitcoin": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1688,
+      "H_plugin": 6.7105,
+      "H_cs": 7.4811,
+      "S_eff": 1774.3,
+      "top_keywords": [
+        [
+          "ethereum",
+          133
+        ],
+        [
+          "crypto",
+          99
+        ],
+        [
+          "cryptocurrency",
+          91
+        ],
+        [
+          "wallet",
+          82
+        ],
+        [
+          "blockchain",
+          76
+        ],
+        [
+          "btc",
+          65
+        ],
+        [
+          "web3",
+          58
+        ],
+        [
+          "bitcoinjs",
+          55
+        ],
+        [
+          "api",
+          55
+        ],
+        [
+          "solana",
+          50
+        ],
+        [
+          "litecoin",
+          48
+        ],
+        [
+          "lightning",
+          44
+        ],
+        [
+          "javascript",
+          37
+        ],
+        [
+          "bip32",
+          33
+        ],
+        [
+          "trading",
+          33
+        ],
+        [
+          "wagmi",
+          32
+        ],
+        [
+          "dogecoin",
+          32
+        ],
+        [
+          "dapps",
+          30
+        ],
+        [
+          "typescript",
+          30
+        ],
+        [
+          "address",
+          29
+        ]
+      ],
+      "name": "Bitcoin",
+      "context": "Web3 / Blockchain"
+    },
+    "solana": {
+      "n_packages": 500,
+      "n_distinct_keywords": 876,
+      "H_plugin": 5.5893,
+      "H_cs": 6.6389,
+      "S_eff": 764.3,
+      "top_keywords": [
+        [
+          "blockchain",
+          189
+        ],
+        [
+          "web3",
+          168
+        ],
+        [
+          "ethereum",
+          94
+        ],
+        [
+          "wallet",
+          77
+        ],
+        [
+          "sdk",
+          74
+        ],
+        [
+          "crypto",
+          62
+        ],
+        [
+          "defi",
+          54
+        ],
+        [
+          "typescript",
+          49
+        ],
+        [
+          "bitcoin",
+          47
+        ],
+        [
+          "wagmi",
+          34
+        ],
+        [
+          "dapps",
+          31
+        ],
+        [
+          "framework",
+          30
+        ],
+        [
+          "anchor",
+          30
+        ],
+        [
+          "appkit",
+          29
+        ],
+        [
+          "cli",
+          29
+        ],
+        [
+          "standard",
+          28
+        ],
+        [
+          "payments",
+          28
+        ],
+        [
+          "onboarding",
+          27
+        ],
+        [
+          "reown",
+          26
+        ],
+        [
+          "dex",
+          22
+        ]
+      ],
+      "name": "Solana",
+      "context": "Web3 / Blockchain"
+    },
+    "openai": {
+      "n_packages": 500,
+      "n_distinct_keywords": 1854,
+      "H_plugin": 6.215,
+      "H_cs": 7.3564,
+      "S_eff": 1566.2,
+      "top_keywords": [
+        [
+          "ai",
+          372
+        ],
+        [
+          "llm",
+          252
+        ],
+        [
+          "anthropic",
+          195
+        ],
+        [
+          "claude",
+          157
+        ],
+        [
+          "gemini",
+          113
+        ],
+        [
+          "cli",
+          106
+        ],
+        [
+          "typescript",
+          95
+        ],
+        [
+          "chatgpt",
+          89
+        ],
+        [
+          "gpt",
+          83
+        ],
+        [
+          "mcp",
+          78
+        ],
+        [
+          "chatbot",
+          56
+        ],
+        [
+          "agent",
+          55
+        ],
+        [
+          "chat",
+          48
+        ],
+        [
+          "model-context-protocol",
+          42
+        ],
+        [
+          "copilot",
+          41
+        ],
+        [
+          "codex",
+          40
+        ],
+        [
+          "ollama",
+          40
+        ],
+        [
+          "react",
+          38
+        ],
+        [
+          "automation",
+          38
+        ],
+        [
+          "agents",
+          36
+        ]
+      ],
+      "name": "OpenAI",
+      "context": "LLM tooling"
+    },
+    "langchain": {
+      "n_packages": 500,
+      "n_distinct_keywords": 2415,
+      "H_plugin": 6.5962,
+      "H_cs": 8.2092,
+      "S_eff": 3674.6,
+      "top_keywords": [
+        [
+          "ai",
+          331
+        ],
+        [
+          "llm",
+          193
+        ],
+        [
+          "openai",
+          163
+        ],
+        [
+          "typescript",
+          109
+        ],
+        [
+          "agent",
+          98
+        ],
+        [
+          "anthropic",
+          81
+        ],
+        [
+          "mcp",
+          80
+        ],
+        [
+          "langgraph",
+          74
+        ],
+        [
+          "n8n-community-node-package",
+          71
+        ],
+        [
+          "n8n",
+          56
+        ],
+        [
+          "gpt",
+          53
+        ],
+        [
+          "claude",
+          53
+        ],
+        [
+          "agents",
+          52
+        ],
+        [
+          "rag",
+          49
+        ],
+        [
+          "chatbot",
+          42
+        ],
+        [
+          "tools",
+          39
+        ],
+        [
+          "react",
+          39
+        ],
+        [
+          "automation",
+          36
+        ],
+        [
+          "chat",
+          35
+        ],
+        [
+          "ai-agent",
+          35
+        ]
+      ],
+      "name": "LangChain",
+      "context": "LLM tooling"
+    }
+  },
+  "metadata": {
+    "timestamp": "2026-02-21T15:07:07.713447"
+  }
+}

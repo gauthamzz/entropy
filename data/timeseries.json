@@ -1,0 +1,996 @@
+{
+  "mobile": {
+    "android": {
+      "2011": {
+        "H_cs": 7.8196,
+        "H_plugin": 5.504,
+        "n_repos": 79,
+        "n_topics": 349,
+        "top10": [
+          "java",
+          "ios",
+          "linux",
+          "windows",
+          "macos",
+          "game-engine",
+          "android-application",
+          "c-plus-plus",
+          "kotlin",
+          "opengl"
+        ]
+      },
+      "2013": {
+        "H_cs": 8.4935,
+        "H_plugin": 6.258,
+        "n_repos": 324,
+        "n_topics": 966,
+        "top10": [
+          "java",
+          "ios",
+          "mobile",
+          "hacktoberfest",
+          "library",
+          "javascript",
+          "kotlin",
+          "cordova",
+          "linux",
+          "windows"
+        ]
+      },
+      "2015": {
+        "H_cs": 9.0924,
+        "H_plugin": 6.7767,
+        "n_repos": 500,
+        "n_topics": 1592,
+        "top10": [
+          "java",
+          "android-library",
+          "ios",
+          "kotlin",
+          "material-design",
+          "animation",
+          "hacktoberfest",
+          "react-native",
+          "rxjava",
+          "linux"
+        ]
+      },
+      "2017": {
+        "H_cs": 9.0787,
+        "H_plugin": 6.9126,
+        "n_repos": 500,
+        "n_topics": 1881,
+        "top10": [
+          "ios",
+          "kotlin",
+          "android-library",
+          "java",
+          "react-native",
+          "material-design",
+          "library",
+          "animation",
+          "android-ui",
+          "android-development"
+        ]
+      },
+      "2019": {
+        "H_cs": 9.3813,
+        "H_plugin": 7.0914,
+        "n_repos": 500,
+        "n_topics": 2336,
+        "top10": [
+          "ios",
+          "kotlin",
+          "flutter",
+          "react-native",
+          "dart",
+          "java",
+          "hacktoberfest",
+          "android-library",
+          "mobile",
+          "kotlin-android"
+        ]
+      },
+      "2021": {
+        "H_cs": 9.006,
+        "H_plugin": 6.8907,
+        "n_repos": 500,
+        "n_topics": 2055,
+        "top10": [
+          "ios",
+          "kotlin",
+          "jetpack-compose",
+          "flutter",
+          "react-native",
+          "java",
+          "hacktoberfest",
+          "compose",
+          "linux",
+          "windows"
+        ]
+      },
+      "2023": {
+        "H_cs": 8.8882,
+        "H_plugin": 6.854,
+        "n_repos": 500,
+        "n_topics": 2170,
+        "top10": [
+          "kotlin",
+          "ios",
+          "jetpack-compose",
+          "compose",
+          "flutter",
+          "kotlin-multiplatform",
+          "compose-multiplatform",
+          "kotlin-android",
+          "linux",
+          "windows"
+        ]
+      }
+    },
+    "ios": {
+      "2011": {
+        "H_cs": 6.4947,
+        "H_plugin": 4.742,
+        "n_repos": 32,
+        "n_topics": 159,
+        "top10": [
+          "objective-c",
+          "android",
+          "macos",
+          "swift",
+          "linux",
+          "windows",
+          "c-plus-plus",
+          "python",
+          "cocoapods",
+          "tvos"
+        ]
+      },
+      "2013": {
+        "H_cs": 7.786,
+        "H_plugin": 5.7861,
+        "n_repos": 205,
+        "n_topics": 663,
+        "top10": [
+          "objective-c",
+          "android",
+          "swift",
+          "library",
+          "mobile",
+          "macos",
+          "javascript",
+          "java",
+          "cordova",
+          "cocoapods"
+        ]
+      },
+      "2015": {
+        "H_cs": 8.2155,
+        "H_plugin": 6.3441,
+        "n_repos": 500,
+        "n_topics": 1502,
+        "top10": [
+          "swift",
+          "android",
+          "objective-c",
+          "cocoapods",
+          "macos",
+          "carthage",
+          "tvos",
+          "animation",
+          "react-native",
+          "watchos"
+        ]
+      },
+      "2017": {
+        "H_cs": 8.6354,
+        "H_plugin": 6.6913,
+        "n_repos": 500,
+        "n_topics": 1910,
+        "top10": [
+          "swift",
+          "android",
+          "react-native",
+          "macos",
+          "cocoapods",
+          "objective-c",
+          "carthage",
+          "animation",
+          "xcode",
+          "apple"
+        ]
+      },
+      "2019": {
+        "H_cs": 8.4643,
+        "H_plugin": 6.5979,
+        "n_repos": 500,
+        "n_topics": 1941,
+        "top10": [
+          "android",
+          "swift",
+          "flutter",
+          "macos",
+          "react-native",
+          "dart",
+          "swiftui",
+          "mobile",
+          "react",
+          "tvos"
+        ]
+      },
+      "2021": {
+        "H_cs": 8.2972,
+        "H_plugin": 6.5173,
+        "n_repos": 500,
+        "n_topics": 1805,
+        "top10": [
+          "android",
+          "swift",
+          "flutter",
+          "swiftui",
+          "macos",
+          "react-native",
+          "dart",
+          "mobile",
+          "uikit",
+          "hacktoberfest"
+        ]
+      },
+      "2023": {
+        "H_cs": 8.2832,
+        "H_plugin": 6.4609,
+        "n_repos": 500,
+        "n_topics": 1818,
+        "top10": [
+          "android",
+          "swift",
+          "swiftui",
+          "macos",
+          "react-native",
+          "kotlin",
+          "kotlin-multiplatform",
+          "flutter",
+          "compose-multiplatform",
+          "apple"
+        ]
+      }
+    }
+  },
+  "blockchain": {
+    "ethereum_app": {
+      "2017": {
+        "H_cs": 5.3209,
+        "H_plugin": 4.3871,
+        "n_repos": 342,
+        "n_topics": 556,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "smart-contracts",
+          "blockchain",
+          "truffle",
+          "ethereum-contract",
+          "dapp",
+          "solidity-contracts",
+          "web3",
+          "javascript"
+        ]
+      },
+      "2018": {
+        "H_cs": 5.5469,
+        "H_plugin": 4.6645,
+        "n_repos": 500,
+        "n_topics": 813,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "smart-contracts",
+          "dapp",
+          "truffle",
+          "ethereum-contract",
+          "web3",
+          "solidity-contracts",
+          "ethereum-dapp"
+        ]
+      },
+      "2019": {
+        "H_cs": 5.6735,
+        "H_plugin": 4.6139,
+        "n_repos": 264,
+        "n_topics": 544,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "smart-contracts",
+          "blockchain",
+          "dapp",
+          "truffle",
+          "web3",
+          "javascript",
+          "nodejs",
+          "react"
+        ]
+      },
+      "2020": {
+        "H_cs": 5.7573,
+        "H_plugin": 4.7286,
+        "n_repos": 264,
+        "n_topics": 567,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "smart-contracts",
+          "defi",
+          "web3",
+          "dapp",
+          "truffle",
+          "react",
+          "solidity-contracts"
+        ]
+      },
+      "2021": {
+        "H_cs": 5.4297,
+        "H_plugin": 4.6428,
+        "n_repos": 500,
+        "n_topics": 778,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "smart-contracts",
+          "dapp",
+          "web3",
+          "defi",
+          "hardhat",
+          "nft",
+          "react"
+        ]
+      },
+      "2022": {
+        "H_cs": 5.8121,
+        "H_plugin": 4.9329,
+        "n_repos": 500,
+        "n_topics": 941,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "smart-contracts",
+          "web3",
+          "hardhat",
+          "dapp",
+          "defi",
+          "evm",
+          "foundry"
+        ]
+      },
+      "2023": {
+        "H_cs": 5.8491,
+        "H_plugin": 4.8961,
+        "n_repos": 373,
+        "n_topics": 788,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "smart-contracts",
+          "web3",
+          "hardhat",
+          "dapp",
+          "evm",
+          "typescript",
+          "defi"
+        ]
+      }
+    },
+    "ethereum_all": {
+      "2017": {
+        "H_cs": 6.8665,
+        "H_plugin": 5.6301,
+        "n_repos": 500,
+        "n_topics": 1194,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "solidity",
+          "bitcoin",
+          "cryptocurrency",
+          "smart-contracts",
+          "truffle",
+          "dapp",
+          "web3",
+          "ethereum-contract"
+        ]
+      },
+      "2018": {
+        "H_cs": 7.1013,
+        "H_plugin": 5.8146,
+        "n_repos": 500,
+        "n_topics": 1319,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "solidity",
+          "bitcoin",
+          "smart-contracts",
+          "cryptocurrency",
+          "dapp",
+          "web3",
+          "erc20",
+          "wallet"
+        ]
+      },
+      "2019": {
+        "H_cs": 7.1753,
+        "H_plugin": 5.7778,
+        "n_repos": 500,
+        "n_topics": 1322,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "solidity",
+          "smart-contracts",
+          "bitcoin",
+          "cryptocurrency",
+          "dapp",
+          "web3",
+          "truffle",
+          "crypto"
+        ]
+      },
+      "2020": {
+        "H_cs": 7.0914,
+        "H_plugin": 5.6955,
+        "n_repos": 500,
+        "n_topics": 1231,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "solidity",
+          "defi",
+          "smart-contracts",
+          "cryptocurrency",
+          "bitcoin",
+          "web3",
+          "dapp",
+          "react"
+        ]
+      },
+      "2021": {
+        "H_cs": 6.895,
+        "H_plugin": 5.6559,
+        "n_repos": 500,
+        "n_topics": 1248,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "solidity",
+          "web3",
+          "smart-contracts",
+          "nft",
+          "defi",
+          "cryptocurrency",
+          "dapp",
+          "bitcoin"
+        ]
+      },
+      "2022": {
+        "H_cs": 6.7768,
+        "H_plugin": 5.6192,
+        "n_repos": 500,
+        "n_topics": 1227,
+        "top10": [
+          "ethereum",
+          "solidity",
+          "blockchain",
+          "web3",
+          "smart-contracts",
+          "evm",
+          "defi",
+          "nft",
+          "dapp",
+          "bitcoin"
+        ]
+      },
+      "2023": {
+        "H_cs": 7.203,
+        "H_plugin": 5.8199,
+        "n_repos": 500,
+        "n_topics": 1348,
+        "top10": [
+          "ethereum",
+          "blockchain",
+          "web3",
+          "solidity",
+          "evm",
+          "smart-contracts",
+          "rust",
+          "cryptocurrency",
+          "defi",
+          "bitcoin"
+        ]
+      }
+    },
+    "bitcoin_app": {
+      "2017": {
+        "H_cs": 5.3297,
+        "H_plugin": 3.8422,
+        "n_repos": 21,
+        "n_topics": 84,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "cryptocurrency",
+          "blockchain",
+          "litecoin",
+          "payment-channel",
+          "lightning-charge",
+          "lightning-charge-client",
+          "nodejs"
+        ]
+      },
+      "2018": {
+        "H_cs": 4.889,
+        "H_plugin": 3.7989,
+        "n_repos": 72,
+        "n_topics": 149,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "lnd",
+          "payments",
+          "cryptocurrency",
+          "micropayments",
+          "api",
+          "blockchain",
+          "litecoin"
+        ]
+      },
+      "2019": {
+        "H_cs": 5.2247,
+        "H_plugin": 4.0687,
+        "n_repos": 78,
+        "n_topics": 188,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "c-lightning",
+          "lnd",
+          "cryptocurrency",
+          "bitcoind",
+          "payments",
+          "blockchain",
+          "docker"
+        ]
+      },
+      "2020": {
+        "H_cs": 5.326,
+        "H_plugin": 3.9472,
+        "n_repos": 33,
+        "n_topics": 112,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "lnd",
+          "bitcoin-node",
+          "umbrel",
+          "full-node",
+          "lightning-node",
+          "bitcoin-wallet",
+          "blockchain"
+        ]
+      },
+      "2021": {
+        "H_cs": 5.0441,
+        "H_plugin": 3.8828,
+        "n_repos": 57,
+        "n_topics": 136,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "lnd",
+          "payments",
+          "cryptocurrency",
+          "graphql",
+          "micropayments",
+          "umbrel",
+          "plebnet"
+        ]
+      },
+      "2022": {
+        "H_cs": 5.9492,
+        "H_plugin": 4.5211,
+        "n_repos": 78,
+        "n_topics": 251,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "nostr",
+          "lnd",
+          "privacy",
+          "p2p",
+          "self-hosted",
+          "bitcoin-wallet",
+          "wallet"
+        ]
+      },
+      "2023": {
+        "H_cs": 5.4701,
+        "H_plugin": 4.1824,
+        "n_repos": 78,
+        "n_topics": 204,
+        "top10": [
+          "bitcoin",
+          "lightning-network",
+          "lightning",
+          "nostr",
+          "lnd",
+          "taproot",
+          "payments",
+          "dlc",
+          "rust",
+          "nostr-protocol"
+        ]
+      }
+    },
+    "bitcoin_all": {
+      "2017": {
+        "H_cs": 7.0829,
+        "H_plugin": 5.7956,
+        "n_repos": 500,
+        "n_topics": 1334,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "litecoin",
+          "cryptocurrencies",
+          "trading",
+          "python",
+          "btc",
+          "crypto"
+        ]
+      },
+      "2018": {
+        "H_cs": 7.3501,
+        "H_plugin": 5.9719,
+        "n_repos": 500,
+        "n_topics": 1497,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "crypto",
+          "lightning-network",
+          "litecoin",
+          "trading",
+          "lightning",
+          "trading-bot"
+        ]
+      },
+      "2019": {
+        "H_cs": 7.3545,
+        "H_plugin": 5.8749,
+        "n_repos": 433,
+        "n_topics": 1269,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "lightning-network",
+          "crypto",
+          "wallet",
+          "lightning",
+          "python",
+          "trading"
+        ]
+      },
+      "2020": {
+        "H_cs": 7.6637,
+        "H_plugin": 6.0552,
+        "n_repos": 395,
+        "n_topics": 1336,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "crypto",
+          "btc",
+          "trading",
+          "python",
+          "wallet",
+          "binance"
+        ]
+      },
+      "2021": {
+        "H_cs": 7.411,
+        "H_plugin": 5.9496,
+        "n_repos": 500,
+        "n_topics": 1494,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "crypto",
+          "trading",
+          "python",
+          "lightning-network",
+          "binance",
+          "wallet"
+        ]
+      },
+      "2022": {
+        "H_cs": 7.2351,
+        "H_plugin": 5.8733,
+        "n_repos": 470,
+        "n_topics": 1367,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "blockchain",
+          "crypto",
+          "python",
+          "lightning-network",
+          "btc",
+          "bitcoin-wallet",
+          "wallet"
+        ]
+      },
+      "2023": {
+        "H_cs": 7.5971,
+        "H_plugin": 5.9643,
+        "n_repos": 409,
+        "n_topics": 1266,
+        "top10": [
+          "bitcoin",
+          "cryptocurrency",
+          "ethereum",
+          "lightning-network",
+          "lightning",
+          "wallet",
+          "blockchain",
+          "nostr",
+          "crypto",
+          "ordinals"
+        ]
+      }
+    }
+  },
+  "frontend": {
+    "react": {
+      "2014": {
+        "H_cs": 8.4662,
+        "H_plugin": 6.0994,
+        "n_repos": 188,
+        "n_topics": 726,
+        "top10": [
+          "javascript",
+          "typescript",
+          "reactjs",
+          "nodejs",
+          "redux",
+          "webpack",
+          "react-component",
+          "nextjs",
+          "angular",
+          "hacktoberfest"
+        ]
+      },
+      "2016": {
+        "H_cs": 8.5423,
+        "H_plugin": 6.6419,
+        "n_repos": 500,
+        "n_topics": 1601,
+        "top10": [
+          "redux",
+          "javascript",
+          "react-native",
+          "reactjs",
+          "typescript",
+          "webpack",
+          "ios",
+          "android",
+          "hacktoberfest",
+          "react-router"
+        ]
+      },
+      "2018": {
+        "H_cs": 8.8907,
+        "H_plugin": 6.8761,
+        "n_repos": 500,
+        "n_topics": 1884,
+        "top10": [
+          "javascript",
+          "reactjs",
+          "typescript",
+          "redux",
+          "react-native",
+          "vue",
+          "nextjs",
+          "nodejs",
+          "graphql",
+          "react-hooks"
+        ]
+      },
+      "2020": {
+        "H_cs": 8.8729,
+        "H_plugin": 6.8788,
+        "n_repos": 500,
+        "n_topics": 2063,
+        "top10": [
+          "typescript",
+          "javascript",
+          "reactjs",
+          "nextjs",
+          "vue",
+          "hacktoberfest",
+          "nodejs",
+          "tailwindcss",
+          "css",
+          "react-native"
+        ]
+      },
+      "2022": {
+        "H_cs": 8.631,
+        "H_plugin": 6.7677,
+        "n_repos": 500,
+        "n_topics": 1947,
+        "top10": [
+          "typescript",
+          "nextjs",
+          "reactjs",
+          "javascript",
+          "tailwindcss",
+          "hacktoberfest",
+          "react-native",
+          "vue",
+          "nodejs",
+          "vite"
+        ]
+      },
+      "2024": {
+        "H_cs": 8.3967,
+        "H_plugin": 6.6409,
+        "n_repos": 500,
+        "n_topics": 1885,
+        "top10": [
+          "typescript",
+          "nextjs",
+          "tailwindcss",
+          "shadcn-ui",
+          "javascript",
+          "reactjs",
+          "vite",
+          "ai",
+          "ui",
+          "shadcn"
+        ]
+      }
+    },
+    "angular": {
+      "2014": {
+        "H_cs": 7.8859,
+        "H_plugin": 5.6178,
+        "n_repos": 129,
+        "n_topics": 439,
+        "top10": [
+          "javascript",
+          "angularjs",
+          "nodejs",
+          "html",
+          "react",
+          "typescript",
+          "angular-directives",
+          "css",
+          "directive",
+          "node"
+        ]
+      },
+      "2016": {
+        "H_cs": 8.4004,
+        "H_plugin": 6.6002,
+        "n_repos": 500,
+        "n_topics": 1535,
+        "top10": [
+          "typescript",
+          "angular2",
+          "javascript",
+          "react",
+          "webpack",
+          "angular4",
+          "nodejs",
+          "angular-cli",
+          "angularjs",
+          "ngrx"
+        ]
+      },
+      "2018": {
+        "H_cs": 8.8315,
+        "H_plugin": 6.9073,
+        "n_repos": 500,
+        "n_topics": 1808,
+        "top10": [
+          "typescript",
+          "react",
+          "javascript",
+          "angular6",
+          "nodejs",
+          "ngrx",
+          "angular-material",
+          "angular7",
+          "docker",
+          "angular-cli"
+        ]
+      },
+      "2020": {
+        "H_cs": 9.075,
+        "H_plugin": 6.9572,
+        "n_repos": 500,
+        "n_topics": 1897,
+        "top10": [
+          "typescript",
+          "react",
+          "javascript",
+          "vue",
+          "hacktoberfest",
+          "nodejs",
+          "angular-material",
+          "rxjs",
+          "docker",
+          "html"
+        ]
+      },
+      "2022": {
+        "H_cs": 8.5689,
+        "H_plugin": 6.7188,
+        "n_repos": 500,
+        "n_topics": 1627,
+        "top10": [
+          "typescript",
+          "react",
+          "javascript",
+          "vue",
+          "nodejs",
+          "spring-boot",
+          "java",
+          "bootstrap",
+          "tailwindcss",
+          "docker"
+        ]
+      },
+      "2024": {
+        "H_cs": 8.7936,
+        "H_plugin": 6.6632,
+        "n_repos": 310,
+        "n_topics": 1288,
+        "top10": [
+          "typescript",
+          "javascript",
+          "spring-boot",
+          "react",
+          "java",
+          "docker",
+          "tailwindcss",
+          "vue",
+          "rxjs",
+          "nodejs"
+        ]
+      }
+    }
+  }
+}
